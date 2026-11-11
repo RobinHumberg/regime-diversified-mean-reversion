@@ -57,14 +57,15 @@ def dip_exposure(close: pd.Series) -> pd.Series:
     return (1.0 + st["dip"] - 0.5 * st["overbought"]).clip(0.5, 2.0)
 
 
-def exposure_book(exposure: pd.Series, ret: pd.Series, cash: pd.Series) -> pd.Series:
+def exposure_book(exposure: pd.Series, ret: pd.Series, cash: pd.Series,
+                  cost_per_side: float = COST_PER_SIDE, margin_spread_pa: float = MARGIN_SPREAD_PA) -> pd.Series:
     """Excess return of holding ``exposure`` x the asset (decided at close t, held on day t+1).
 
     total = held * r - cost + (1 - held) * cash - max(held - 1, 0) * spread; excess = total - cash.
     """
     held = exposure.shift(1).fillna(0.0)
-    cost = held.diff().abs().fillna(held.abs()) * COST_PER_SIDE
-    total = held * ret.fillna(0.0) - cost + (1 - held) * cash - (held - 1).clip(lower=0) * MARGIN_SPREAD_PA / 252
+    cost = held.diff().abs().fillna(held.abs()) * cost_per_side
+    total = held * ret.fillna(0.0) - cost + (1 - held) * cash - (held - 1).clip(lower=0) * margin_spread_pa / 252
     return total - cash
 
 
@@ -97,34 +98,41 @@ def crp_weights(R: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(W, index=R.index, columns=R.columns)
 
 
-def weights_book(W: pd.DataFrame, R: pd.DataFrame, cash: pd.Series) -> pd.Series:
+def weights_book(W: pd.DataFrame, R: pd.DataFrame, cash: pd.Series,
+                 cost_per_side: float = COST_PER_SIDE, margin_spread_pa: float = MARGIN_SPREAD_PA) -> pd.Series:
     """Excess return of daily weights W (held from the next day), cost on exact drift turnover."""
     Wv, Rv, cv = W.to_numpy(), R.fillna(0.0).to_numpy(), cash.to_numpy()
     out = np.zeros(len(W))
     for t in range(1, len(W)):
         held = Wv[t - 1]
         c = 1.0 - held.sum()
-        port = held @ Rv[t] + c * cv[t] - max(-c, 0.0) * MARGIN_SPREAD_PA / 252
+        port = held @ Rv[t] + c * cv[t] - max(-c, 0.0) * margin_spread_pa / 252
         drifted = held * (1 + Rv[t]) / (1 + port)
-        cost = COST_PER_SIDE * np.abs(Wv[t] - drifted).sum() if t < len(W) - 1 else 0.0
+        cost = cost_per_side * np.abs(Wv[t] - drifted).sum() if t < len(W) - 1 else 0.0
         out[t] = port - cost - cv[t]
     return pd.Series(out, index=W.index)
 
 
-def build(end: str | None = None, crp_assets: list[str] | None = None) -> dict[str, pd.Series]:
-    """Daily excess returns of book 1, book 2, the strategy (C-A) and SPY buy & hold."""
+def build(end: str | None = None, crp_assets: list[str] | None = None,
+          cost_per_side: float = COST_PER_SIDE, margin_spread_pa: float = MARGIN_SPREAD_PA) -> dict[str, pd.Series]:
+    """Daily excess returns of book 1, book 2, the strategy (C-A) and SPY buy & hold.
+
+    ``cost_per_side`` and ``margin_spread_pa`` exist for cost-sensitivity analysis only; the
+    strategy is defined with the module defaults.
+    """
     crp_assets = crp_assets or CRP_ASSETS
     spy = closes(["SPY"], end)["SPY"]
     r_spy = spy.pct_change().iloc[1:]
     spy = spy.loc[r_spy.index]
     cash_spy = daily_cash(r_spy.index)
-    book1 = exposure_book(dip_exposure(spy), r_spy, cash_spy)
+    book1 = exposure_book(dip_exposure(spy), r_spy, cash_spy, cost_per_side, margin_spread_pa)
 
     px = closes(crp_assets, end).loc[CRP_START:].dropna()
     R = px.pct_change().iloc[1:]
     cash = daily_cash(R.index)
     first = R.rolling(VOL_WINDOW).std().dropna().index[0]
-    book2 = weights_book(crp_weights(R), R, cash).loc[first + pd.Timedelta(days=WARMUP_DAYS):]
+    book2 = weights_book(crp_weights(R), R, cash, cost_per_side, margin_spread_pa).loc[
+        first + pd.Timedelta(days=WARMUP_DAYS):]
 
     both = pd.concat([book1.rename("book1"), book2.rename("book2")], axis=1).dropna()
     return {"book1": both["book1"], "book2": both["book2"], "strategy": both.mean(axis=1),

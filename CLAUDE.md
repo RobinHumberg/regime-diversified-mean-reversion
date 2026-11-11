@@ -69,6 +69,25 @@ The only way to reach a statistically clear verdict is new data. Suggested proto
 4. Track the regime risks: rolling 252-day SPY–TLT correlation (book 2 weakens when it turns
    positive, as in 2022) and the number of dip signals per year (book 1 does nothing without them).
 
+## Diagnostics layer (costs, win rates, leverage)
+
+`run_analysis.py` + `strategy/analysis.py` add gross/net, cost sensitivity, win rates, static
+leverage and six leverage-timing variants. They do not change C-A.
+
+- `analysis.simulate` rebuilds C-A from its target weights (daily rebalancing, same cost and
+  financing accounting as `books.py`). It matches `build()` to within 0.6 bp p.a.; the test
+  `tests/test_analysis.py::test_simulator_reproduces_the_strategy` guards this. Use it whenever
+  you scale positions (leverage, per-book weights) instead of multiplying return series, which
+  would skip financing and turnover costs.
+- The data end is frozen at 2026-11-06 in `run_analysis.py`, so its numbers match
+  `results/backtest.json`.
+- The leverage variants V1–V6 were registered in `research/LEVERAGE_HYPOTHESES.md` before they
+  were computed. All are in-sample; none met its registered condition. V2 (1.5 × when SPY > SMA200)
+  is the only one with a raw rotation-null p < 0.05 (Holm 0.25). If you want to pursue it, register
+  it as a forward test next to C-A — do not adopt it on the backtest.
+- Reference values: net Sharpe 2007–2026 0.776 (gross 0.788), turnover 10 × p.a., break-even
+  trading cost vs SPY 35.6 bp per side, dip-trade win rate 72.3 % (159 trades).
+
 ## Known pitfalls
 
 - `month_ends` must not treat the last close of a running month as a month end. Otherwise the live
