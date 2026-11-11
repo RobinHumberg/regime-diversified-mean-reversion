@@ -360,7 +360,7 @@ The largest drawdown, 2008, happened with **no dip signal at all**: SPY was belo
 | D2 exit when close < SMA200 | 159 | 71 % | −4.4 % / −7.9 % | −4.1 % / −4.9 % | 0.73 / 0.61 | 0.771 | no |
 | D3 price stop at 3 σ | 159 | 72 % | −4.2 % / −7.9 % | −3.9 % / −5.0 % | 0.72 / 0.55 | 0.763 | no |
 | **D4 inverse-vol sizing** | 159 | 72 % | −9.4 % / −3.6 % | −4.9 % / −3.2 % | 0.61 / 0.71 | 0.772 | **yes** |
-| D5 no entry when VIX ≥ VIX3M | 135 | 73 % | −4.0 % / −3.2 % | −3.3 % / −2.8 % | 0.84 / 0.81 | 0.800 | yes, **but fails the timing check** |
+| D5 no entry when VIX ≥ VIX3M | 135 | 73 % | −4.0 % / −3.2 % | −3.3 % / −2.8 % | 0.84 / 0.81 | 0.800 | yes, **but fails the timing and threshold checks** |
 | D6 only when SMA200 is rising | 156 | 72 % | −10.1 % / −4.1 % | −5.1 % / −3.4 % | 0.55 / 0.75 | 0.772 | no |
 | D7 D1 + D2 with dip exposure 3.0 | 159 | 70 % | −9.5 % / −15.9 % | −8.5 % / −10.6 % | 0.67 / 0.54 | 0.789 | no |
 
@@ -371,13 +371,32 @@ Trade figures are per unit of book-1 capital after costs and financing. No strat
 1. **Exit rules (D1–D3) do not work: they move the loss instead of removing it.** They cut the August 2011 trade from −10.1 % to about −4.5 %, but they create new, larger losers after 2016. In February 2020, the trend-break exit and the price stop sold on 27 February at −7.9 %. C-A held on to the 2 March rebound and lost only −4.0 %. This is the textbook result of Kaminski & Lo (2014): in a mean-reverting position a stop-loss sells at the moment of the highest expected return. D3 was predicted to hurt and does.
 2. **Inverse-volatility sizing (D4) is the only rule that is robust.** The extra exposure becomes min(1, 15 % / realised 20-day volatility), so dips in calm markets get the full extra unit and dips in a storm get less. Worst trade and CVaR improve in both halves and the overlay Sharpe stays within 0.03. The effect is small (worst trade −9.4 % instead of −10.1 %), because the crash-type dips of 2011 and 2020 started from moderate volatility.
 3. **The VIX veto (D5) looks best, but its edge comes entirely from same-day information.** With the VIX term structure at the close of the entry day, it vetoes 27 trades, including the three worst (2011, 2020, 2018), and beats a rotation null (overlay Sharpe p = 0.017, CVaR p = 0.023). But VIX settles at 16:15 ET, 15 minutes after SPY. Aged by one day, **the whole improvement disappears**: worst trade −10.1 % again, overlay Sharpe 0.63 vs 0.67 for C-A. The term structure flips into backwardation on the very day of the sell-off, so the signal is only usable if it is read *before* the closing order is sent (around 15:45 ET). Daily data cannot show whether that reading would have been the same. Note also that the vetoed trades were profitable on average (+0.29 %, 70 % win rate); the veto buys a smaller tail with lower average return. **Before relying on D5, it needs a check with intraday VIX/VIX3M quotes at 15:45.**
+
+   *Intraday check (2026-11-11): not possible with the available data.* The London Strategic Edge vault serves intraday VIX only from 2026-10-08 onwards (no dip entry in that window), has no VIX3M or VX futures at all, and its archive export now returns HTTP 410. What daily data *can* show is how close each veto was to the 1.0 threshold:
+
+   | Vetoed entry close | VIX / VIX3M | Trade P&L in C-A |
+   |---|---:|---:|
+   | 2011-07-27 | **1.013** | −10.1 % |
+   | 2020-02-24 | 1.142 | −4.1 % |
+   | 2018-02-02 | **1.016** | −3.6 % |
+   | 2007-07-24 | **1.012** | −2.6 % |
+
+   Only the February 2020 veto is clear-cut. The veto that produces most of the improvement, August 2011, sat 1.3 % above the threshold, while the ratio moves by a median 1.7 % per day. A 15-minute move could have flipped it either way. The threshold sensitivity confirms the fragility (not new trials, only a look at the same rule):
+
+   | Veto when VIX/VIX3M ≥ | 0.95 | 0.98 | **1.00 (D5)** | 1.02 | 1.05 | C-A |
+   |---|---:|---:|---:|---:|---:|---:|
+   | Dip trades | 90 | 120 | 135 | 146 | 153 | 159 |
+   | Worst trade | −4.0 % | −4.0 % | −4.0 % | −10.1 % | −10.1 % | −10.1 % |
+   | Sum of trade P&L | 0.37 | 0.60 | 0.71 | 0.64 | 0.67 | 0.75 |
+
+   Requiring a *clear* backwardation (≥ 1.02) brings the −10.1 % trade back. A cautious threshold (≥ 0.98) keeps the small tail, but it gives up a fifth of the overlay's total P&L. **D5 is therefore not a robust tail control. Its result rests on one borderline day.**
 4. **Cutting the tails and then levering the dip (D7) is worse than not cutting.** The exit rules do not remove enough tail to pay for a third unit: the worst trade in 2016–2026 grows to −15.9 % (February 2020).
 
 ### 9.3 What follows for leverage
 
 - Dip-trade risk controls are **not** the route to more leverage for the whole strategy. The leverage limit comes from bear markets in the base SPY position (2008, 2020) and from stock–bond crashes in book 2 (2022). Dips are rare in those periods because SPY is below its 200-day average.
 - The route that addresses exactly those drawdowns is **trend-conditional leverage** ([§ 8.3](#83-the-six-registered-timing-variants), V2): lever in uptrends, drop the extra leverage below the 200-day average. It achieved a smaller drawdown than static leverage with the same average risk.
-- Within the dip leg, **inverse-volatility sizing (D4)** is the one control worth carrying into a forward test. If the VIX term structure can be read at 15:45, the **VIX veto (D5)** is the second candidate. Both should be registered with frozen parameters and run next to C-A, not adopted on this backtest.
+- Within the dip leg, **inverse-volatility sizing (D4)** is the one control worth carrying into a forward test. The **VIX veto (D5)** is not a candidate: its improvement rests on the borderline August 2011 veto, which a 15-minute timing difference could have flipped. Both should be registered with frozen parameters and run next to C-A, not adopted on this backtest.
 
 ---
 

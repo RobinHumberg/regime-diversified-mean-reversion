@@ -147,6 +147,19 @@ def main() -> None:
     out["d5_robustness"]["vetoed_trades"] = {"n": int(len(gone)), "win_rate": round(float((gone["pnl"] > 0).mean()), 3),
                                              "mean_pnl": round(float(gone["pnl"].mean()), 4),
                                              "sum_pnl": round(float(gone["pnl"].sum()), 4)}
+    # How far from the 1.0 threshold were the vetoes? A 15-minute VIX move cannot flip a clear
+    # backwardation, but it can flip a borderline one. No intraday VIX/VIX3M history is available.
+    ratio = (vix["^VIX"] / vix["^VIX3M"]).reindex(spy.index)
+    entry_close = gone["start"].map(lambda d: spy.index[spy.index.get_loc(d) - 1])
+    out["d5_robustness"]["vetoed_entry_ratio"] = [
+        {"entry_close": str(e.date()), "vix_vix3m": round(float(ratio.loc[e]), 3), "pnl": round(float(p), 4)}
+        for e, p in sorted(zip(entry_close, gone["pnl"]), key=lambda t: t[1])]
+    sens = {}
+    for m in (-0.05, -0.02, 0.0, 0.02, 0.05):
+        okm = (ratio < 1 + m).where(ratio.notna(), True).astype(bool)
+        tr = D.dip_trades(D.dip_exposure_variant(spy, entry_ok=okm)["extra"], r_spy, cash_spy, COST_PER_SIDE, MARGIN_SPREAD_PA)
+        sens[f"veto_if_ratio_ge_{1 + m:.2f}"] = D.trade_stats(tr[tr["start"] >= idx[0]])
+    out["d5_robustness"]["threshold_sensitivity"] = sens
     Path("results/dip_risk.json").write_text(json.dumps(out, indent=2, default=str), encoding="utf-8")
 
     # ------------------------------------------------------------- figures

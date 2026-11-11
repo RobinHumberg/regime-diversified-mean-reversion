@@ -101,6 +101,9 @@ in-sample. Findings you should not have to rediscover:
 - D5 (no entry when VIX ≥ VIX3M) passes its registered condition and a rotation null, but its
   whole effect disappears when the VIX signal is aged by one day. VIX settles 15 minutes after
   SPY. Do not use it unless an intraday (≈ 15:45 ET) VIX/VIX3M check shows the same vetoes.
+  As of 2026-11-11 no such data is available (LSE vault: intraday VIX only from 2026-10-08, no
+  VIX3M, export endpoint HTTP 410). The decisive veto (2011-07-27) sat at VIX/VIX3M = 1.013;
+  a threshold of 1.02 brings the −10.1 % trade back. Treat D5 as fragile, not as a candidate.
 - D4 (inverse-vol sizing of the extra unit) is the only robust control; the effect is small.
 - `dip_risk.dip_exposure_variant` with default arguments reproduces `books.dip_exposure`
   exactly (tested). A forced exit blocks re-entry until close > SMA5.

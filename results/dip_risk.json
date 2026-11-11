@@ -1089,6 +1089,190 @@
       "win_rate": 0.704,
       "mean_pnl": 0.0029,
       "sum_pnl": 0.0779
+    },
+    "vetoed_entry_ratio": [
+      {
+        "entry_close": "2011-07-27",
+        "vix_vix3m": 1.013,
+        "pnl": -0.1013
+      },
+      {
+        "entry_close": "2020-02-24",
+        "vix_vix3m": 1.142,
+        "pnl": -0.0406
+      },
+      {
+        "entry_close": "2018-02-02",
+        "vix_vix3m": 1.016,
+        "pnl": -0.0363
+      },
+      {
+        "entry_close": "2007-07-24",
+        "vix_vix3m": 1.012,
+        "pnl": -0.026
+      },
+      {
+        "entry_close": "2026-03-03",
+        "vix_vix3m": 1.001,
+        "pnl": -0.016
+      },
+      {
+        "entry_close": "2010-05-18",
+        "vix_vix3m": 1.023,
+        "pnl": -0.0139
+      },
+      {
+        "entry_close": "2019-05-09",
+        "vix_vix3m": 1.036,
+        "pnl": -0.006
+      },
+      {
+        "entry_close": "2010-01-22",
+        "vix_vix3m": 1.039,
+        "pnl": -0.0017
+      },
+      {
+        "entry_close": "2014-01-24",
+        "vix_vix3m": 1.043,
+        "pnl": 0.0016
+      },
+      {
+        "entry_close": "2017-04-12",
+        "vix_vix3m": 1.032,
+        "pnl": 0.002
+      },
+      {
+        "entry_close": "2015-06-29",
+        "vix_vix3m": 1.007,
+        "pnl": 0.0088
+      },
+      {
+        "entry_close": "2013-06-20",
+        "vix_vix3m": 1.007,
+        "pnl": 0.0096
+      },
+      {
+        "entry_close": "2020-01-27",
+        "vix_vix3m": 1.004,
+        "pnl": 0.0123
+      },
+      {
+        "entry_close": "2015-01-15",
+        "vix_vix3m": 1.013,
+        "pnl": 0.0129
+      },
+      {
+        "entry_close": "2024-10-31",
+        "vix_vix3m": 1.023,
+        "pnl": 0.0133
+      },
+      {
+        "entry_close": "2007-06-26",
+        "vix_vix3m": 1.046,
+        "pnl": 0.0138
+      },
+      {
+        "entry_close": "2018-03-01",
+        "vix_vix3m": 1.049,
+        "pnl": 0.0163
+      },
+      {
+        "entry_close": "2011-03-16",
+        "vix_vix3m": 1.093,
+        "pnl": 0.0165
+      },
+      {
+        "entry_close": "2012-12-28",
+        "vix_vix3m": 1.038,
+        "pnl": 0.0167
+      },
+      {
+        "entry_close": "2024-12-18",
+        "vix_vix3m": 1.139,
+        "pnl": 0.0168
+      },
+      {
+        "entry_close": "2014-02-03",
+        "vix_vix3m": 1.065,
+        "pnl": 0.0186
+      },
+      {
+        "entry_close": "2021-01-27",
+        "vix_vix3m": 1.041,
+        "pnl": 0.0189
+      },
+      {
+        "entry_close": "2010-04-27",
+        "vix_vix3m": 1.004,
+        "pnl": 0.0197
+      },
+      {
+        "entry_close": "2024-08-05",
+        "vix_vix3m": 1.144,
+        "pnl": 0.0247
+      },
+      {
+        "entry_close": "2020-10-28",
+        "vix_vix3m": 1.067,
+        "pnl": 0.0282
+      },
+      {
+        "entry_close": "2010-05-06",
+        "vix_vix3m": 1.244,
+        "pnl": 0.0288
+      },
+      {
+        "entry_close": "2020-06-11",
+        "vix_vix3m": 1.009,
+        "pnl": 0.0402
+      }
+    ],
+    "threshold_sensitivity": {
+      "veto_if_ratio_ge_0.95": {
+        "trades": 90,
+        "win_rate": 0.7222,
+        "avg_pnl": 0.00412,
+        "total_pnl": 0.3712,
+        "worst_trade": -0.0402,
+        "cvar5_trade": -0.0341,
+        "avg_holding_days": 3.33
+      },
+      "veto_if_ratio_ge_0.98": {
+        "trades": 120,
+        "win_rate": 0.7333,
+        "avg_pnl": 0.00496,
+        "total_pnl": 0.5953,
+        "worst_trade": -0.0402,
+        "cvar5_trade": -0.032,
+        "avg_holding_days": 3.27
+      },
+      "veto_if_ratio_ge_1.00": {
+        "trades": 135,
+        "win_rate": 0.7333,
+        "avg_pnl": 0.00528,
+        "total_pnl": 0.713,
+        "worst_trade": -0.0402,
+        "cvar5_trade": -0.0314,
+        "avg_holding_days": 3.3
+      },
+      "veto_if_ratio_ge_1.02": {
+        "trades": 146,
+        "win_rate": 0.726,
+        "avg_pnl": 0.00438,
+        "total_pnl": 0.6399,
+        "worst_trade": -0.1013,
+        "cvar5_trade": -0.042,
+        "avg_holding_days": 3.4
+      },
+      "veto_if_ratio_ge_1.05": {
+        "trades": 153,
+        "win_rate": 0.719,
+        "avg_pnl": 0.00438,
+        "total_pnl": 0.6705,
+        "worst_trade": -0.1013,
+        "cvar5_trade": -0.042,
+        "avg_holding_days": 3.44
+      }
     }
   }
 }
