@@ -30,8 +30,9 @@ In a holdout period that was not touched until the strategy was selected and fro
 6. [Win rates](#6-win-rates)
 7. [Leverage](#7-leverage)
 8. [Where leverage can be used strategically](#8-where-leverage-can-be-used-strategically)
-9. [Honest caveats](#honest-caveats)
-10. [How to run](#how-to-run) · [Repository layout](#repository-layout) · [Research provenance](#research-provenance-what-did-not-work)
+9. [Reducing the risk of the dip trades](#9-reducing-the-risk-of-the-dip-trades)
+10. [Honest caveats](#honest-caveats)
+11. [How to run](#how-to-run) · [Repository layout](#repository-layout) · [Research provenance](#research-provenance-what-did-not-work)
 
 ---
 
@@ -326,6 +327,60 @@ p raw: rotation null (V1, V2, V4, V6: the timing signal is rotated by a random o
 
 ---
 
+## 9. Reducing the risk of the dip trades
+
+> **Status:** in-sample diagnostics, registered before computing in [`research/DIP_RISK_HYPOTHESES.md`](research/DIP_RISK_HYPOTHESES.md) (7 trials, fixed parameters, success condition stated in advance). C-A is not changed. Reproduce with `python run_dip_risk.py` (output: `results/dip_risk.json`).
+
+The idea: if the losing dip trades were smaller, the strategy could carry more leverage. Before testing any rule, one has to check whether the dip trades are what limits leverage in the first place.
+
+### 9.1 The dip trades are not what limits leverage
+
+![Drawdown decomposition](results/figures/dip_risk_drawdown.png)
+
+| Drawdown of C-A | Depth | SPY half of book 1 | Dip/overbought overlay | Book 2 | Dip days in the window |
+|---|---:|---:|---:|---:|---:|
+| 2008-05 → 2008-11 | −32.4 % | −28.6 % | **+1.4 %** | −10.2 % | 0 |
+| 2020-02 → 2020-03 | −23.6 % | −19.1 % | −2.0 % | −4.5 % | 5 |
+| 2021-12 → 2022-10 | −22.9 % | −13.3 % | +0.2 % | −12.9 % | 12 |
+| 2011-07 → 2011-08 | −15.3 % | −8.9 % | **−7.4 %** | 0.0 % | 8 |
+| 2018-01 → 2018-12 | −14.9 % | −9.4 % | −3.1 % | −4.5 % | 41 |
+
+(Contributions are sums of daily excess returns over the window, so they do not add up exactly to the compounded depth.)
+
+The largest drawdown, 2008, happened with **no dip signal at all**: SPY was below its 200-day average, so the overlay was flat or even reduced exposure, and contributed +1.4 %. The 2020 and 2022 drawdowns also came from the base SPY position and the bond leg. Only August 2011 was driven by a dip trade. As a result, **none of the seven rules changes the leverage at which the strategy's maximum drawdown reaches −40 %: it stays at 1.25 × for every variant.**
+
+### 9.2 The seven registered rules
+
+![Dip risk controls](results/figures/dip_risk_trades.png)
+
+| Rule | Trades | Win rate | Worst trade 07–15 / 16–26 | CVaR 5 % 07–15 / 16–26 | Overlay Sharpe 07–15 / 16–26 | Strategy Sharpe | Registered condition |
+|---|---:|---:|---:|---:|---:|---:|---|
+| **C-A** | 159 | 72 % | −10.1 % / −4.1 % | −5.1 % / −3.4 % | 0.59 / 0.74 | 0.776 | – |
+| D1 time stop after 5 days | 159 | 71 % | −4.7 % / −6.2 % | −4.0 % / −4.7 % | 0.74 / 0.60 | 0.771 | no |
+| D2 exit when close < SMA200 | 159 | 71 % | −4.4 % / −7.9 % | −4.1 % / −4.9 % | 0.73 / 0.61 | 0.771 | no |
+| D3 price stop at 3 σ | 159 | 72 % | −4.2 % / −7.9 % | −3.9 % / −5.0 % | 0.72 / 0.55 | 0.763 | no |
+| **D4 inverse-vol sizing** | 159 | 72 % | −9.4 % / −3.6 % | −4.9 % / −3.2 % | 0.61 / 0.71 | 0.772 | **yes** |
+| D5 no entry when VIX ≥ VIX3M | 135 | 73 % | −4.0 % / −3.2 % | −3.3 % / −2.8 % | 0.84 / 0.81 | 0.800 | yes, **but fails the timing check** |
+| D6 only when SMA200 is rising | 156 | 72 % | −10.1 % / −4.1 % | −5.1 % / −3.4 % | 0.55 / 0.75 | 0.772 | no |
+| D7 D1 + D2 with dip exposure 3.0 | 159 | 70 % | −9.5 % / −15.9 % | −8.5 % / −10.6 % | 0.67 / 0.54 | 0.789 | no |
+
+Trade figures are per unit of book-1 capital after costs and financing. No strategy-level Sharpe difference is significant (Holm-adjusted p = 1.0 for all seven).
+
+**What the results say.**
+
+1. **Exit rules (D1–D3) do not work: they move the loss instead of removing it.** They cut the August 2011 trade from −10.1 % to about −4.5 %, but they create new, larger losers after 2016. In February 2020, the trend-break exit and the price stop sold on 27 February at −7.9 %. C-A held on to the 2 March rebound and lost only −4.0 %. This is the textbook result of Kaminski & Lo (2014): in a mean-reverting position a stop-loss sells at the moment of the highest expected return. D3 was predicted to hurt and does.
+2. **Inverse-volatility sizing (D4) is the only rule that is robust.** The extra exposure becomes min(1, 15 % / realised 20-day volatility), so dips in calm markets get the full extra unit and dips in a storm get less. Worst trade and CVaR improve in both halves and the overlay Sharpe stays within 0.03. The effect is small (worst trade −9.4 % instead of −10.1 %), because the crash-type dips of 2011 and 2020 started from moderate volatility.
+3. **The VIX veto (D5) looks best, but its edge comes entirely from same-day information.** With the VIX term structure at the close of the entry day, it vetoes 27 trades, including the three worst (2011, 2020, 2018), and beats a rotation null (overlay Sharpe p = 0.017, CVaR p = 0.023). But VIX settles at 16:15 ET, 15 minutes after SPY. Aged by one day, **the whole improvement disappears**: worst trade −10.1 % again, overlay Sharpe 0.63 vs 0.67 for C-A. The term structure flips into backwardation on the very day of the sell-off, so the signal is only usable if it is read *before* the closing order is sent (around 15:45 ET). Daily data cannot show whether that reading would have been the same. Note also that the vetoed trades were profitable on average (+0.29 %, 70 % win rate); the veto buys a smaller tail with lower average return. **Before relying on D5, it needs a check with intraday VIX/VIX3M quotes at 15:45.**
+4. **Cutting the tails and then levering the dip (D7) is worse than not cutting.** The exit rules do not remove enough tail to pay for a third unit: the worst trade in 2016–2026 grows to −15.9 % (February 2020).
+
+### 9.3 What follows for leverage
+
+- Dip-trade risk controls are **not** the route to more leverage for the whole strategy. The leverage limit comes from bear markets in the base SPY position (2008, 2020) and from stock–bond crashes in book 2 (2022). Dips are rare in those periods because SPY is below its 200-day average.
+- The route that addresses exactly those drawdowns is **trend-conditional leverage** ([§ 8.3](#83-the-six-registered-timing-variants), V2): lever in uptrends, drop the extra leverage below the 200-day average. It achieved a smaller drawdown than static leverage with the same average risk.
+- Within the dip leg, **inverse-volatility sizing (D4)** is the one control worth carrying into a forward test. If the VIX term structure can be read at 15:45, the **VIX veto (D5)** is the second candidate. Both should be registered with frozen parameters and run next to C-A, not adopted on this backtest.
+
+---
+
 ## Honest caveats
 
 - **Not statistically significant.** Before the holdout, "clearly beats" was defined as a Sharpe at least SPY + 0.25 *and* p < 0.10. The difference (+0.33) qualifies, the p-value (0.165) does not. The strategy is 92 % correlated with SPY, so a 0.3 Sharpe difference needs roughly 4–5 years of data to reach p < 0.10. Three years cannot settle it.
@@ -333,7 +388,7 @@ p raw: rotation null (V1, V2, V4, V6: the timing signal is rotated by a random o
 - **The holdout is not perfectly blind to the analyst.** The research was done by an AI model whose training data covers markets until about mid-2026, including the 2024–25 gold rally. The design was motivated by measurements on 2005–2015, but this cannot be fully excluded. Diagnostics:
   - Without gold (book 2 = SPY/TLT only), the holdout Sharpe is **1.22** against 1.09.
   - On the 91 days after the knowledge cutoff (2026-07-01 → 11-06), the strategy returned +0.4 % excess, SPY −2.7 %. That is too short for any conclusion.
-- **The leverage analysis is in-sample.** Sections 7 and 8 use data that was already seen. Static leverage only rescales risk; the timing variants are diagnostics, and none passed its registered condition.
+- **The leverage and dip-risk analyses are in-sample.** Sections 7–9 use data that was already seen. Static leverage only rescales risk; the timing variants are diagnostics, and none passed its registered condition.
 - **International replication is weaker than it looks.** The frozen rule was applied to eight MSCI country ETFs: EAFE, Japan, Germany, UK, Canada, Australia, Switzerland and France.
   - It beats the local index in 8/8 markets (mean +0.16 Sharpe).
   - But the markets are 74 % correlated, so they count as ~1.3 independent witnesses, not 8.
@@ -352,6 +407,7 @@ p raw: rotation null (V1, V2, V4, V6: the timing signal is rotated by a random o
 pip install -r requirements.txt
 python run_backtest.py     # reproduces every number in § 4, writes results/backtest.json
 python run_analysis.py     # § 5–8: gross/net, costs, win rates, leverage; writes results/analysis.json + figures
+python run_dip_risk.py     # § 9: drawdown decomposition and dip risk controls; writes results/dip_risk.json
 python signal_today.py     # portfolio to hold from the next session (run after the US close)
 pytest -q                  # accounting, no-look-ahead, simulator and one-day-delay checks
 ```
@@ -365,13 +421,17 @@ strategy/data.py              price and T-bill loaders (cached)
 strategy/books.py             the two books, the combination, today's target portfolio
 strategy/evaluate.py          Sharpe, Sortino, drawdown, paired Sharpe test, bootstrap
 strategy/analysis.py          portfolio-level simulator, win rates, leverage, regimes, rotation null
+strategy/dip_risk.py          dip-leg risk controls (time stop, trend exit, stop, sizing, entry filters)
 run_backtest.py               all reported periods
 run_analysis.py               gross/net, cost sensitivity, win rates, leverage diagnostics
+run_dip_risk.py               drawdown decomposition and dip risk controls
 signal_today.py               live/paper signal
 research/LEVERAGE_HYPOTHESES.md  the leverage variants, registered before they were computed
+research/DIP_RISK_HYPOTHESES.md  the dip risk controls, registered before they were computed
 tests/                        self-checks
 results/backtest.json         reference numbers (§ 4)
 results/analysis.json         numbers of § 5–8
+results/dip_risk.json         numbers of § 9
 results/dip_trades.csv        every dip trade of book 1
 results/figures/              charts used in this README
 CLAUDE.md                     handoff document for an AI agent continuing this work
@@ -401,6 +461,7 @@ The strategy came out of a pre-registered programme. Each round reproduced a pap
 - Erb, C. & Harvey, C. (2013). The golden dilemma. *Financial Analysts Journal* 69(4).
 - Faber, M. (2007). A quantitative approach to tactical asset allocation. *Journal of Wealth Management* 9(4).
 - Frazzini, A. & Pedersen, L. H. (2014). Betting against beta. *Journal of Financial Economics* 111(1).
+- Kaminski, K. & Lo, A. (2014). When do stop-loss rules stop losses? *Journal of Financial Markets* 18.
 - Grossman, S. & Miller, M. (1988). Liquidity and market structure. *Journal of Finance* 43(3).
 - Lehmann, B. (1990). Fads, martingales, and market efficiency. *Quarterly Journal of Economics* 105(1).
 - Lo, A. & MacKinlay, C. (1990). When are contrarian profits due to stock market overreaction? *Review of Financial Studies* 3(2).

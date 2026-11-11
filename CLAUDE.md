@@ -88,6 +88,23 @@ leverage and six leverage-timing variants. They do not change C-A.
 - Reference values: net Sharpe 2007–2026 0.776 (gross 0.788), turnover 10 × p.a., break-even
   trading cost vs SPY 35.6 bp per side, dip-trade win rate 72.3 % (159 trades).
 
+## Dip risk controls (`run_dip_risk.py`)
+
+Seven controls for the dip leg (D1–D7), registered in `research/DIP_RISK_HYPOTHESES.md`. All
+in-sample. Findings you should not have to rediscover:
+
+- The dip trades do not limit the strategy's leverage: the 2008 drawdown had zero dip days, and
+  the max-DD-at-−40 % leverage is 1.25 × for every control. Leverage limits come from the base SPY
+  position in bear markets and from book 2 in 2022.
+- Exit rules (time stop, trend-break exit, price stop) relocate losses (Feb 2020: −7.9 % instead
+  of −4.0 %); do not retry them in another parametrisation without a new economic argument.
+- D5 (no entry when VIX ≥ VIX3M) passes its registered condition and a rotation null, but its
+  whole effect disappears when the VIX signal is aged by one day. VIX settles 15 minutes after
+  SPY. Do not use it unless an intraday (≈ 15:45 ET) VIX/VIX3M check shows the same vetoes.
+- D4 (inverse-vol sizing of the extra unit) is the only robust control; the effect is small.
+- `dip_risk.dip_exposure_variant` with default arguments reproduces `books.dip_exposure`
+  exactly (tested). A forced exit blocks re-entry until close > SMA5.
+
 ## Known pitfalls
 
 - `month_ends` must not treat the last close of a running month as a month end. Otherwise the live

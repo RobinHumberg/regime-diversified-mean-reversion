@@ -1,0 +1,1094 @@
+{
+  "data_end": "2026-11-06",
+  "note": "in-sample diagnostics; see research/DIP_RISK_HYPOTHESES.md",
+  "drawdown_decomposition": [
+    {
+      "peak": "2008-05-19",
+      "trough": "2008-11-20",
+      "depth": -0.3239,
+      "sum_excess": -0.3742,
+      "SPY half of book 1": -0.2861,
+      "dip/overbought overlay": 0.0143,
+      "book 2": -0.1024,
+      "dip_days_in_window": 0
+    },
+    {
+      "peak": "2020-02-19",
+      "trough": "2020-03-23",
+      "depth": -0.2358,
+      "sum_excess": -0.2564,
+      "SPY half of book 1": -0.1911,
+      "dip/overbought overlay": -0.0203,
+      "book 2": -0.045,
+      "dip_days_in_window": 5
+    },
+    {
+      "peak": "2021-12-27",
+      "trough": "2022-10-14",
+      "depth": -0.2293,
+      "sum_excess": -0.2602,
+      "SPY half of book 1": -0.1326,
+      "dip/overbought overlay": 0.0016,
+      "book 2": -0.1293,
+      "dip_days_in_window": 12
+    },
+    {
+      "peak": "2011-07-22",
+      "trough": "2011-08-08",
+      "depth": -0.1533,
+      "sum_excess": -0.1626,
+      "SPY half of book 1": -0.0887,
+      "dip/overbought overlay": -0.0741,
+      "book 2": 0.0001,
+      "dip_days_in_window": 8
+    },
+    {
+      "peak": "2018-01-26",
+      "trough": "2018-12-24",
+      "depth": -0.1488,
+      "sum_excess": -0.1694,
+      "SPY half of book 1": -0.0938,
+      "dip/overbought overlay": -0.031,
+      "book 2": -0.0446,
+      "dip_days_in_window": 41
+    }
+  ],
+  "variants": {
+    "C-A": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.697,
+          "avg_pnl": 0.00397,
+          "total_pnl": 0.2622,
+          "worst_trade": -0.1013,
+          "cvar5_trade": -0.0513,
+          "avg_holding_days": 3.59
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7419,
+          "avg_pnl": 0.0052,
+          "total_pnl": 0.484,
+          "worst_trade": -0.0406,
+          "cvar5_trade": -0.0339,
+          "avg_holding_days": 3.32
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.7233,
+          "avg_pnl": 0.00469,
+          "total_pnl": 0.7461,
+          "worst_trade": -0.1013,
+          "cvar5_trade": -0.0436,
+          "avg_holding_days": 3.43
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00816,
+          "total_pnl": 0.2693,
+          "worst_trade": -0.016,
+          "cvar5_trade": -0.0134,
+          "avg_holding_days": 2.79
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.594,
+        "2016_2026": 0.739,
+        "full_2007_2026": 0.669,
+        "holdout_2023_11": 1.439
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.626,
+          "excess_return_pa": 0.0936,
+          "volatility_pa": 0.1495,
+          "cagr_total": 0.093,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.287,
+          "worst_day": -0.0641,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0385
+        },
+        "2016_2026": {
+          "sharpe": 0.915,
+          "excess_return_pa": 0.1228,
+          "volatility_pa": 0.1342,
+          "cagr_total": 0.1464,
+          "max_drawdown_total": -0.2358,
+          "calmar": 0.621,
+          "worst_day": -0.0687,
+          "worst_month": -0.0836,
+          "days": 2728,
+          "cvar1_daily": -0.0353
+        },
+        "full_2007_2026": {
+          "sharpe": 0.776,
+          "excess_return_pa": 0.1096,
+          "volatility_pa": 0.1413,
+          "cagr_total": 0.122,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.377,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0371
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.417,
+          "excess_return_pa": 0.1851,
+          "volatility_pa": 0.1306,
+          "cagr_total": 0.2458,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.909,
+          "worst_day": -0.0408,
+          "worst_month": -0.0661,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1426
+      }
+    },
+    "D1_time_stop_5d": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.6818,
+          "avg_pnl": 0.00403,
+          "total_pnl": 0.2657,
+          "worst_trade": -0.0473,
+          "cvar5_trade": -0.0404,
+          "avg_holding_days": 3.17
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7312,
+          "avg_pnl": 0.00397,
+          "total_pnl": 0.3694,
+          "worst_trade": -0.0617,
+          "cvar5_trade": -0.0474,
+          "avg_holding_days": 3.0
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.7107,
+          "avg_pnl": 0.00399,
+          "total_pnl": 0.6352,
+          "worst_trade": -0.0617,
+          "cvar5_trade": -0.0455,
+          "avg_holding_days": 3.07
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00847,
+          "total_pnl": 0.2796,
+          "worst_trade": -0.0109,
+          "cvar5_trade": -0.0108,
+          "avg_holding_days": 2.64
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.74,
+        "2016_2026": 0.601,
+        "full_2007_2026": 0.662,
+        "holdout_2023_11": 1.542
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.648,
+          "excess_return_pa": 0.0938,
+          "volatility_pa": 0.1448,
+          "cagr_total": 0.094,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.29,
+          "worst_day": -0.0602,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0355
+        },
+        "2016_2026": {
+          "sharpe": 0.883,
+          "excess_return_pa": 0.1175,
+          "volatility_pa": 0.133,
+          "cagr_total": 0.1406,
+          "max_drawdown_total": -0.2358,
+          "calmar": 0.596,
+          "worst_day": -0.0687,
+          "worst_month": -0.0836,
+          "days": 2728,
+          "cvar1_daily": -0.0353
+        },
+        "full_2007_2026": {
+          "sharpe": 0.771,
+          "excess_return_pa": 0.1068,
+          "volatility_pa": 0.1384,
+          "cagr_total": 0.1193,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.368,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0357
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.436,
+          "excess_return_pa": 0.1868,
+          "volatility_pa": 0.13,
+          "cagr_total": 0.248,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.926,
+          "worst_day": -0.0408,
+          "worst_month": -0.0611,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1393
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.648,
+          "sharpe_b": 0.626,
+          "diff": 0.022,
+          "rho": 0.99,
+          "z": 0.46,
+          "p_value": 0.6454
+        },
+        "2016_2026": {
+          "sharpe_a": 0.883,
+          "sharpe_b": 0.915,
+          "diff": -0.032,
+          "rho": 0.998,
+          "z": -1.51,
+          "p_value": 0.1316
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.771,
+          "sharpe_b": 0.776,
+          "diff": -0.004,
+          "rho": 0.994,
+          "z": -0.18,
+          "p_value": 0.8608
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": false
+    },
+    "D2_trend_break_exit": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.6818,
+          "avg_pnl": 0.00405,
+          "total_pnl": 0.2671,
+          "worst_trade": -0.0438,
+          "cvar5_trade": -0.0405,
+          "avg_holding_days": 3.32
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7312,
+          "avg_pnl": 0.004,
+          "total_pnl": 0.3722,
+          "worst_trade": -0.0794,
+          "cvar5_trade": -0.0494,
+          "avg_holding_days": 3.13
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.7107,
+          "avg_pnl": 0.00402,
+          "total_pnl": 0.6393,
+          "worst_trade": -0.0794,
+          "cvar5_trade": -0.0476,
+          "avg_holding_days": 3.21
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00816,
+          "total_pnl": 0.2693,
+          "worst_trade": -0.016,
+          "cvar5_trade": -0.0134,
+          "avg_holding_days": 2.79
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.729,
+        "2016_2026": 0.61,
+        "full_2007_2026": 0.663,
+        "holdout_2023_11": 1.44
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.647,
+          "excess_return_pa": 0.0938,
+          "volatility_pa": 0.1451,
+          "cagr_total": 0.094,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.29,
+          "worst_day": -0.0602,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0355
+        },
+        "2016_2026": {
+          "sharpe": 0.885,
+          "excess_return_pa": 0.1176,
+          "volatility_pa": 0.1329,
+          "cagr_total": 0.1407,
+          "max_drawdown_total": -0.2499,
+          "calmar": 0.563,
+          "worst_day": -0.0687,
+          "worst_month": -0.0816,
+          "days": 2728,
+          "cvar1_daily": -0.0353
+        },
+        "full_2007_2026": {
+          "sharpe": 0.771,
+          "excess_return_pa": 0.1069,
+          "volatility_pa": 0.1385,
+          "cagr_total": 0.1194,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.369,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0357
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.417,
+          "excess_return_pa": 0.1851,
+          "volatility_pa": 0.1306,
+          "cagr_total": 0.2458,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.909,
+          "worst_day": -0.0408,
+          "worst_month": -0.0661,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1394
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.647,
+          "sharpe_b": 0.626,
+          "diff": 0.021,
+          "rho": 0.991,
+          "z": 0.45,
+          "p_value": 0.6514
+        },
+        "2016_2026": {
+          "sharpe_a": 0.885,
+          "sharpe_b": 0.915,
+          "diff": -0.03,
+          "rho": 0.997,
+          "z": -1.3,
+          "p_value": 0.1929
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.771,
+          "sharpe_b": 0.776,
+          "diff": -0.004,
+          "rho": 0.994,
+          "z": -0.17,
+          "p_value": 0.8661
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": false
+    },
+    "D3_price_stop_3sigma": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.697,
+          "avg_pnl": 0.00391,
+          "total_pnl": 0.2578,
+          "worst_trade": -0.0422,
+          "cvar5_trade": -0.0386,
+          "avg_holding_days": 3.06
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7312,
+          "avg_pnl": 0.00327,
+          "total_pnl": 0.3038,
+          "worst_trade": -0.0794,
+          "cvar5_trade": -0.05,
+          "avg_holding_days": 2.87
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.717,
+          "avg_pnl": 0.00353,
+          "total_pnl": 0.5616,
+          "worst_trade": -0.0794,
+          "cvar5_trade": -0.0466,
+          "avg_holding_days": 2.95
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00686,
+          "total_pnl": 0.2265,
+          "worst_trade": -0.0284,
+          "cvar5_trade": -0.0272,
+          "avg_holding_days": 2.67
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.723,
+        "2016_2026": 0.548,
+        "full_2007_2026": 0.628,
+        "holdout_2023_11": 1.208
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.645,
+          "excess_return_pa": 0.0933,
+          "volatility_pa": 0.1448,
+          "cagr_total": 0.0935,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.289,
+          "worst_day": -0.0602,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0355
+        },
+        "2016_2026": {
+          "sharpe": 0.873,
+          "excess_return_pa": 0.1144,
+          "volatility_pa": 0.1311,
+          "cagr_total": 0.1374,
+          "max_drawdown_total": -0.2499,
+          "calmar": 0.55,
+          "worst_day": -0.0687,
+          "worst_month": -0.0816,
+          "days": 2728,
+          "cvar1_daily": -0.0344
+        },
+        "full_2007_2026": {
+          "sharpe": 0.763,
+          "excess_return_pa": 0.1049,
+          "volatility_pa": 0.1374,
+          "cagr_total": 0.1174,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.362,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0353
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.37,
+          "excess_return_pa": 0.1779,
+          "volatility_pa": 0.1299,
+          "cagr_total": 0.2371,
+          "max_drawdown_total": -0.1354,
+          "calmar": 1.751,
+          "worst_day": -0.0408,
+          "worst_month": -0.0719,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1369
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.645,
+          "sharpe_b": 0.626,
+          "diff": 0.019,
+          "rho": 0.99,
+          "z": 0.4,
+          "p_value": 0.6905
+        },
+        "2016_2026": {
+          "sharpe_a": 0.873,
+          "sharpe_b": 0.915,
+          "diff": -0.042,
+          "rho": 0.994,
+          "z": -1.21,
+          "p_value": 0.2251
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.763,
+          "sharpe_b": 0.776,
+          "diff": -0.012,
+          "rho": 0.992,
+          "z": -0.43,
+          "p_value": 0.6703
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": false
+    },
+    "D4_inverse_vol_size": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.697,
+          "avg_pnl": 0.00373,
+          "total_pnl": 0.2461,
+          "worst_trade": -0.0941,
+          "cvar5_trade": -0.0494,
+          "avg_holding_days": 3.59
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7419,
+          "avg_pnl": 0.00479,
+          "total_pnl": 0.4451,
+          "worst_trade": -0.0363,
+          "cvar5_trade": -0.0323,
+          "avg_holding_days": 3.32
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.7233,
+          "avg_pnl": 0.00435,
+          "total_pnl": 0.6912,
+          "worst_trade": -0.0941,
+          "cvar5_trade": -0.0416,
+          "avg_holding_days": 3.43
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00795,
+          "total_pnl": 0.2624,
+          "worst_trade": -0.016,
+          "cvar5_trade": -0.0134,
+          "avg_holding_days": 2.79
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.611,
+        "2016_2026": 0.715,
+        "full_2007_2026": 0.665,
+        "holdout_2023_11": 1.426
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.625,
+          "excess_return_pa": 0.0927,
+          "volatility_pa": 0.1482,
+          "cagr_total": 0.0922,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.285,
+          "worst_day": -0.0617,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0378
+        },
+        "2016_2026": {
+          "sharpe": 0.907,
+          "excess_return_pa": 0.121,
+          "volatility_pa": 0.1334,
+          "cagr_total": 0.1445,
+          "max_drawdown_total": -0.2327,
+          "calmar": 0.621,
+          "worst_day": -0.0687,
+          "worst_month": -0.0775,
+          "days": 2728,
+          "cvar1_daily": -0.0349
+        },
+        "full_2007_2026": {
+          "sharpe": 0.772,
+          "excess_return_pa": 0.1082,
+          "volatility_pa": 0.1402,
+          "cagr_total": 0.1206,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.372,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0366
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.411,
+          "excess_return_pa": 0.1839,
+          "volatility_pa": 0.1303,
+          "cagr_total": 0.2444,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.898,
+          "worst_day": -0.0408,
+          "worst_month": -0.0661,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1409
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.625,
+          "sharpe_b": 0.626,
+          "diff": -0.0,
+          "rho": 0.999,
+          "z": -0.04,
+          "p_value": 0.9653
+        },
+        "2016_2026": {
+          "sharpe_a": 0.907,
+          "sharpe_b": 0.915,
+          "diff": -0.008,
+          "rho": 1.0,
+          "z": -0.96,
+          "p_value": 0.3357
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.772,
+          "sharpe_b": 0.776,
+          "diff": -0.004,
+          "rho": 1.0,
+          "z": -0.59,
+          "p_value": 0.5583
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": true
+    },
+    "D5_vix_backwardation_veto": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 53,
+          "win_rate": 0.6981,
+          "avg_pnl": 0.00515,
+          "total_pnl": 0.2732,
+          "worst_trade": -0.0402,
+          "cvar5_trade": -0.0325,
+          "avg_holding_days": 3.47
+        },
+        "2016_2026": {
+          "trades": 82,
+          "win_rate": 0.7561,
+          "avg_pnl": 0.00536,
+          "total_pnl": 0.4398,
+          "worst_trade": -0.0324,
+          "cvar5_trade": -0.0283,
+          "avg_holding_days": 3.18
+        },
+        "full_2007_2026": {
+          "trades": 135,
+          "win_rate": 0.7333,
+          "avg_pnl": 0.00528,
+          "total_pnl": 0.713,
+          "worst_trade": -0.0402,
+          "cvar5_trade": -0.0314,
+          "avg_holding_days": 3.3
+        },
+        "holdout_2023_11": {
+          "trades": 31,
+          "win_rate": 0.8387,
+          "avg_pnl": 0.00839,
+          "total_pnl": 0.2601,
+          "worst_trade": -0.0109,
+          "cvar5_trade": -0.0108,
+          "avg_holding_days": 2.48
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.843,
+        "2016_2026": 0.807,
+        "full_2007_2026": 0.823,
+        "holdout_2023_11": 1.518
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.659,
+          "excess_return_pa": 0.0942,
+          "volatility_pa": 0.1428,
+          "cagr_total": 0.0947,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.292,
+          "worst_day": -0.0602,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0348
+        },
+        "2016_2026": {
+          "sharpe": 0.929,
+          "excess_return_pa": 0.1207,
+          "volatility_pa": 0.1299,
+          "cagr_total": 0.1448,
+          "max_drawdown_total": -0.2293,
+          "calmar": 0.631,
+          "worst_day": -0.0687,
+          "worst_month": -0.0775,
+          "days": 2728,
+          "cvar1_daily": -0.0324
+        },
+        "full_2007_2026": {
+          "sharpe": 0.8,
+          "excess_return_pa": 0.1087,
+          "volatility_pa": 0.1359,
+          "cagr_total": 0.1219,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.376,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0338
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.424,
+          "excess_return_pa": 0.1835,
+          "volatility_pa": 0.1288,
+          "cagr_total": 0.2442,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.896,
+          "worst_day": -0.0408,
+          "worst_month": -0.0526,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1427
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.659,
+          "sharpe_b": 0.626,
+          "diff": 0.033,
+          "rho": 0.986,
+          "z": 0.61,
+          "p_value": 0.5449
+        },
+        "2016_2026": {
+          "sharpe_a": 0.929,
+          "sharpe_b": 0.915,
+          "diff": 0.014,
+          "rho": 0.991,
+          "z": 0.36,
+          "p_value": 0.7173
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.8,
+          "sharpe_b": 0.776,
+          "diff": 0.025,
+          "rho": 0.989,
+          "z": 0.73,
+          "p_value": 0.4631
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": true
+    },
+    "D6_rising_sma200": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 64,
+          "win_rate": 0.6875,
+          "avg_pnl": 0.00359,
+          "total_pnl": 0.2298,
+          "worst_trade": -0.1013,
+          "cvar5_trade": -0.0513,
+          "avg_holding_days": 3.59
+        },
+        "2016_2026": {
+          "trades": 92,
+          "win_rate": 0.75,
+          "avg_pnl": 0.00532,
+          "total_pnl": 0.489,
+          "worst_trade": -0.0406,
+          "cvar5_trade": -0.0339,
+          "avg_holding_days": 3.28
+        },
+        "full_2007_2026": {
+          "trades": 156,
+          "win_rate": 0.7244,
+          "avg_pnl": 0.00461,
+          "total_pnl": 0.7188,
+          "worst_trade": -0.1013,
+          "cvar5_trade": -0.0436,
+          "avg_holding_days": 3.41
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.00816,
+          "total_pnl": 0.2693,
+          "worst_trade": -0.016,
+          "cvar5_trade": -0.0134,
+          "avg_holding_days": 2.79
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.548,
+        "2016_2026": 0.748,
+        "full_2007_2026": 0.652,
+        "holdout_2023_11": 1.439
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.615,
+          "excess_return_pa": 0.0917,
+          "volatility_pa": 0.1493,
+          "cagr_total": 0.091,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.281,
+          "worst_day": -0.0641,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0385
+        },
+        "2016_2026": {
+          "sharpe": 0.917,
+          "excess_return_pa": 0.123,
+          "volatility_pa": 0.1341,
+          "cagr_total": 0.1467,
+          "max_drawdown_total": -0.2358,
+          "calmar": 0.622,
+          "worst_day": -0.0687,
+          "worst_month": -0.0836,
+          "days": 2728,
+          "cvar1_daily": -0.0353
+        },
+        "full_2007_2026": {
+          "sharpe": 0.772,
+          "excess_return_pa": 0.1089,
+          "volatility_pa": 0.1411,
+          "cagr_total": 0.1213,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.374,
+          "worst_day": -0.0687,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0371
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.417,
+          "excess_return_pa": 0.1851,
+          "volatility_pa": 0.1306,
+          "cagr_total": 0.2458,
+          "max_drawdown_total": -0.1288,
+          "calmar": 1.909,
+          "worst_day": -0.0408,
+          "worst_month": -0.0661,
+          "days": 757,
+          "cvar1_daily": -0.0286
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1416
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.615,
+          "sharpe_b": 0.626,
+          "diff": -0.011,
+          "rho": 1.0,
+          "z": -1.17,
+          "p_value": 0.2431
+        },
+        "2016_2026": {
+          "sharpe_a": 0.917,
+          "sharpe_b": 0.915,
+          "diff": 0.002,
+          "rho": 1.0,
+          "z": 0.43,
+          "p_value": 0.6637
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.772,
+          "sharpe_b": 0.776,
+          "diff": -0.004,
+          "rho": 1.0,
+          "z": -0.76,
+          "p_value": 0.4494
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": false
+    },
+    "D7_D1+D2_dip_3x": {
+      "trade_level": {
+        "2007_2015": {
+          "trades": 66,
+          "win_rate": 0.6818,
+          "avg_pnl": 0.00775,
+          "total_pnl": 0.5114,
+          "worst_trade": -0.0945,
+          "cvar5_trade": -0.0847,
+          "avg_holding_days": 3.06
+        },
+        "2016_2026": {
+          "trades": 93,
+          "win_rate": 0.7204,
+          "avg_pnl": 0.00683,
+          "total_pnl": 0.6348,
+          "worst_trade": -0.1589,
+          "cvar5_trade": -0.1064,
+          "avg_holding_days": 2.9
+        },
+        "full_2007_2026": {
+          "trades": 159,
+          "win_rate": 0.7044,
+          "avg_pnl": 0.00721,
+          "total_pnl": 1.1463,
+          "worst_trade": -0.1589,
+          "cvar5_trade": -0.1007,
+          "avg_holding_days": 2.97
+        },
+        "holdout_2023_11": {
+          "trades": 33,
+          "win_rate": 0.8182,
+          "avg_pnl": 0.01694,
+          "total_pnl": 0.5591,
+          "worst_trade": -0.0217,
+          "cvar5_trade": -0.0216,
+          "avg_holding_days": 2.64
+        }
+      },
+      "overlay_sharpe": {
+        "2007_2015": 0.673,
+        "2016_2026": 0.544,
+        "full_2007_2026": 0.599,
+        "holdout_2023_11": 1.719
+      },
+      "strategy": {
+        "2007_2015": {
+          "sharpe": 0.688,
+          "excess_return_pa": 0.1076,
+          "volatility_pa": 0.1564,
+          "cagr_total": 0.1072,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.331,
+          "worst_day": -0.0699,
+          "worst_month": -0.1362,
+          "days": 2242,
+          "cvar1_daily": -0.0392
+        },
+        "2016_2026": {
+          "sharpe": 0.878,
+          "excess_return_pa": 0.1297,
+          "volatility_pa": 0.1478,
+          "cagr_total": 0.1522,
+          "max_drawdown_total": -0.2807,
+          "calmar": 0.542,
+          "worst_day": -0.0729,
+          "worst_month": -0.1194,
+          "days": 2728,
+          "cvar1_daily": -0.0426
+        },
+        "full_2007_2026": {
+          "sharpe": 0.789,
+          "excess_return_pa": 0.1197,
+          "volatility_pa": 0.1517,
+          "cagr_total": 0.1317,
+          "max_drawdown_total": -0.324,
+          "calmar": 0.406,
+          "worst_day": -0.0729,
+          "worst_month": -0.1362,
+          "days": 4970,
+          "cvar1_daily": -0.0413
+        },
+        "holdout_2023_11": {
+          "sharpe": 1.624,
+          "excess_return_pa": 0.2333,
+          "volatility_pa": 0.1436,
+          "cagr_total": 0.305,
+          "max_drawdown_total": -0.1338,
+          "calmar": 2.28,
+          "worst_day": -0.0408,
+          "worst_month": -0.064,
+          "days": 757,
+          "cvar1_daily": -0.0307
+        }
+      },
+      "leverage_at_minus_40pct_dd": {
+        "leverage": 1.25,
+        "cagr": 0.1543
+      },
+      "paired_vs_CA": {
+        "2007_2015": {
+          "sharpe_a": 0.688,
+          "sharpe_b": 0.626,
+          "diff": 0.062,
+          "rho": 0.977,
+          "z": 0.86,
+          "p_value": 0.3916
+        },
+        "2016_2026": {
+          "sharpe_a": 0.878,
+          "sharpe_b": 0.915,
+          "diff": -0.037,
+          "rho": 0.981,
+          "z": -0.63,
+          "p_value": 0.5318
+        },
+        "full_2007_2026": {
+          "sharpe_a": 0.789,
+          "sharpe_b": 0.776,
+          "diff": 0.013,
+          "rho": 0.979,
+          "z": 0.29,
+          "p_value": 0.7737
+        }
+      },
+      "p_holm": 1.0,
+      "passes_registered_condition": false
+    }
+  },
+  "d5_robustness": {
+    "aging": {
+      "lag_0d": {
+        "overlay_sharpe": 0.823,
+        "worst_trade": -0.0402,
+        "cvar5_trade": -0.0314,
+        "trades": 135
+      },
+      "lag_1d": {
+        "overlay_sharpe": 0.629,
+        "worst_trade": -0.1013,
+        "cvar5_trade": -0.0436,
+        "trades": 152
+      },
+      "lag_2d": {
+        "overlay_sharpe": 0.679,
+        "worst_trade": -0.1013,
+        "cvar5_trade": -0.0436,
+        "trades": 156
+      },
+      "C-A": {
+        "overlay_sharpe": 0.669,
+        "worst_trade": -0.1013,
+        "cvar5_trade": -0.0436,
+        "trades": 159
+      }
+    },
+    "rotation_null": {
+      "overlay_sharpe_p": 0.0166,
+      "cvar5_p": 0.0233,
+      "null_median_overlay_sharpe": 0.585
+    },
+    "share_of_days_backwardated": 0.111,
+    "vetoed_trades": {
+      "n": 27,
+      "win_rate": 0.704,
+      "mean_pnl": 0.0029,
+      "sum_pnl": 0.0779
+    }
+  }
+}
