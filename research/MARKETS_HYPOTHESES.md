@@ -64,3 +64,16 @@ equity market, which is not news. M2 is the test of the strategy-specific idea.
 Per-market table (Sharpe, CAGR, max drawdown, p-values, number of dip trades and their win rate),
 group averages, n_eff, cost break-even, and figures. Failing markets are reported, not dropped. No
 parameter is changed per market.
+
+## Erratum and one unregistered comparison (added 2026-11-14, after computing)
+
+- The sentence "No backtest of any of the rules below on any of these ETFs has been computed in this
+  repository" is wrong. The README caveats already reported an earlier replication on eight MSCI
+  country ETFs (EAFE, Japan, Germany, UK, Canada, Australia, Switzerland, France): C-A beat the local
+  index in 8/8, but abroad the dip overlay *reduced* the Sharpe compared with book 2 alone. The
+  analyst overlooked that bullet when writing this registration. Six of the 19 markets here
+  (EFA, EWJ, EWG, EWU, EWC, EWA) overlap with that run, so they are not fresh witnesses for M1.
+- Because of that earlier finding, `run_markets.py` also reports **C-A vs book 2 alone**
+  (`ca_vs_book2_unregistered`). It was added after the registered results were seen and has no
+  success condition. It answers a different question from M2: M2 asks whether the overlay improves
+  an equity position; this asks whether the 50 % equity book should be there at all.

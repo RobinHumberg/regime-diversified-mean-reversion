@@ -31,8 +31,9 @@ In a holdout period that was not touched until the strategy was selected and fro
 7. [Leverage](#7-leverage)
 8. [Where leverage can be used strategically](#8-where-leverage-can-be-used-strategically)
 9. [Reducing the risk of the dip trades](#9-reducing-the-risk-of-the-dip-trades)
-10. [Honest caveats](#honest-caveats)
-11. [How to run](#how-to-run) · [Repository layout](#repository-layout) · [Research provenance](#research-provenance-what-did-not-work)
+10. [Other markets: does C-A travel?](#10-other-markets-does-c-a-travel)
+11. [Honest caveats](#honest-caveats)
+12. [How to run](#how-to-run) · [Repository layout](#repository-layout) · [Research provenance](#research-provenance-what-did-not-work)
 
 ---
 
@@ -400,6 +401,64 @@ Trade figures are per unit of book-1 capital after costs and financing. No strat
 
 ---
 
+## 10. Other markets: does C-A travel?
+
+The frozen rules were applied to **19 other equity markets**: five US segments, seven developed markets outside the US and seven emerging markets. In each market, SPY is replaced by a US-listed ETF on that market, in book 1 *and* in book 2. TLT, GLD, every threshold, the costs and the cash accounting are unchanged. Returns are in USD, for a US-dollar investor, from 2007-02 to 2026-11-06. The hypotheses and success conditions were registered before the first number was computed ([`research/MARKETS_HYPOTHESES.md`](research/MARKETS_HYPOTHESES.md)). Run it with `python run_markets.py`.
+
+**Verdict.** C-A beats buy & hold of the local market in all 19 markets, and the dip overlay adds Sharpe in all 19 over the full period. But the overlay's pooled evidence is only significant in 2007–2015. In 2016–2026 it is positive in 17 of 19 markets with a pooled p of 0.27, so the registered condition "C-A generalises" (M1 **and** M2) is **not met**. And outside US large caps, book 2 alone would have done better than C-A.
+
+| Group | Markets | C-A Sharpe | Buy & hold Sharpe | Book 1 − buy & hold | C-A max DD | Buy & hold max DD | Break-even cost |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Reference | SPY | 0.78 | 0.53 | +0.15 | −32 % | −55 % | 38 bp |
+| US segments | QQQ, IWM, MDY, DIA, OEF | 0.70 | 0.51 | +0.09 | −34 % | −55 % | 32 bp |
+| Developed ex-US | EFA, EZU, EWG, EWU, EWJ, EWA, EWC | 0.42 | 0.25 | +0.09 | −41 % | −62 % | 33 bp |
+| Emerging | EEM, EWZ, FXI, EWY, EWT, EWW, EZA | 0.42 | 0.27 | +0.10 | −50 % | −69 % | 37 bp |
+
+Group values are simple averages over the markets in the group. Every market is in [`results/markets.csv`](results/markets.csv). Break-even cost is the cost per side at which C-A's Sharpe advantage over buy & hold disappears.
+
+![C-A vs buy and hold](results/figures/markets_sharpe.png)
+
+### 10.1 The registered tests
+
+| ID | Test | Result | Registered condition |
+|---|---|---|---|
+| M1 | C-A Sharpe > buy & hold | 19 of 19; pooled z 2.54, **p = 0.011** (n_eff 1.34) | **passed** |
+| M2 | Book 1 (dip overlay) Sharpe > buy & hold | full: 19/19, p = 0.024 · 2007–15: 18/19, p = 0.043 · 2016–26: 17/19, **p = 0.27** | **failed** (needs p < 0.10 in both halves) |
+| M3 | Monthly rebalancing > never rebalanced | 19 of 19; Spearman(volatility, premium) = +0.74 | **passed** |
+| M4 | Result survives 5 bp per side | 19 of 19 still beat buy & hold; break-even 22–48 bp | **passed** |
+
+**Several markets are not several witnesses.** The daily return differences between C-A and buy & hold are 73 % correlated across the 19 markets, so they count as only **1.3 independent markets**. All of them beat buy & hold for the same main reason: half the money sits in a portfolio with Treasuries and gold. The dip overlay's differences are much less correlated (35 %), worth about **2.6 independent markets**, which is why its pooled test has more power than its individual tests. Individually, the overlay is significant at 5 % in only two markets (OEF and EEM).
+
+### 10.2 The dip overlay
+
+![Dip overlay by market](results/figures/markets_overlay.png)
+
+- **The overlay adds Sharpe everywhere, by about +0.09 on average.** It accounts for 14 % (Canada) to 62 % (EEM) of C-A's advantage over buy & hold; book 2 accounts for the rest. Dip trades win 66–77 % of the time in every market (122–172 trades per market).
+- **The prediction for emerging markets was wrong.** The registration expected a weaker overlay there, because emerging-market indices show more short-horizon momentum. The opposite happened: EEM has the largest overlay gain of all (+0.18, p = 0.003), and the emerging group has the strongest pooled evidence (p = 0.02). A plausible, *untested* explanation: a US-listed EM ETF trades while its local markets are closed, so US-hours selling can push it below the value of its holdings, and that gap closes the next day. That would be an ETF-microstructure effect, not the index reversal the strategy is built on. Checking it needs the local indices or the ETFs' NAVs.
+- **It has weakened.** In 2007–2015 the average gain was +0.12 and the pooled p 0.04. In 2016–2026 the average gain was +0.06 and the pooled p 0.27. In Brazil and Mexico it turned slightly negative. This matches what the research found for SPY: index reversal was stronger before 2016 (see "Research provenance").
+
+### 10.3 The rebalancing book
+
+![Rebalancing premium vs volatility](results/figures/markets_rebalancing.png)
+
+Monthly rebalancing beats the never-rebalanced version of the same three assets in all 19 markets over the full period. The premium grows with the volatility of the equity market (Spearman +0.74), as the diversification-return formula ½(Σ wᵢσᵢ² − σ_p²) predicts. Korea, Brazil and South Africa gain 0.5–0.7 % p.a. QQQ is the exception in returns (−1.3 % p.a.): the unrebalanced portfolio let the Nasdaq-100 grow to a large weight during its long rally. Its Sharpe is still slightly higher with rebalancing. No single market's rebalancing gain is significant, and in 2016–2026 rebalancing won in only 8 of 19 markets, because letting gold run during its 2024–25 rally paid.
+
+### 10.4 C-A vs book 2 alone (not registered)
+
+The earlier eight-country check in the caveats found that, abroad, the dip overlay lowered the Sharpe *relative to book 2 alone*. That comparison was added here after the registered results were known, so it has no success condition. It confirms the earlier finding: **book 2 alone has a higher Sharpe than C-A in 15 of 19 markets.** C-A is ahead only on QQQ, DIA, OEF and EEM (and on SPY). None of these differences is significant (pooled p = 0.77).
+
+The two findings do not contradict each other. M2 asks whether the overlay improves an equity position; it does, everywhere. C-A vs book 2 asks whether a 50 % equity-heavy book belongs in the portfolio at all. Where equities earned a low Sharpe from 2007 to 2026 (Europe, Japan, most emerging markets), less equity was better, overlay or not. That is a statement about which markets did well in this sample, not about the mean-reversion mechanism.
+
+![Equity curves](results/figures/markets_equity.png)
+
+### 10.5 What follows
+
+- The **rebalancing book travels**, and its premium scales with volatility as theory says. That part of C-A does not depend on the US market.
+- The **dip overlay travels in sign but not in strength**. Its evidence is concentrated in 2007–2015. It is not a reason to trade C-A on foreign markets instead of SPY.
+- **C-A on SPY remains the strategy.** Nothing here was used to change it. Testing whether the EEM overlay gain is an ETF premium/discount effect would be a separate, newly registered study.
+
+---
+
 ## Honest caveats
 
 - **Not statistically significant.** Before the holdout, "clearly beats" was defined as a Sharpe at least SPY + 0.25 *and* p < 0.10. The difference (+0.33) qualifies, the p-value (0.165) does not. The strategy is 92 % correlated with SPY, so a 0.3 Sharpe difference needs roughly 4–5 years of data to reach p < 0.10. Three years cannot settle it.
@@ -412,6 +471,7 @@ Trade figures are per unit of book-1 capital after costs and financing. No strat
   - It beats the local index in 8/8 markets (mean +0.16 Sharpe).
   - But the markets are 74 % correlated, so they count as ~1.3 independent witnesses, not 8.
   - Abroad, the gain came from the diversification book. The dip overlay *reduced* the Sharpe there compared with book 2 alone.
+  - The registered 19-market study in [§ 10](#10-other-markets-does-c-a-travel) confirms this: the overlay beats buy & hold in all 19 markets, but its evidence after 2016 is weak (pooled p = 0.27), and book 2 alone beats C-A in 15 of 19.
 - **Regime risk in the bond leg.** The rebalancing premium needs low or negative stock–bond correlation. In 2022 both fell together. That is why the second validation segment is weak.
 - **Negative skew in the dip overlay.** 72 % of dip trades win, but the losers are larger, and the worst ones are dips that turned into crashes.
 - **Survivorship and data.** All instruments are ETFs that exist today. yfinance adjusted prices can be revised slightly over time.
@@ -427,6 +487,7 @@ pip install -r requirements.txt
 python run_backtest.py     # reproduces every number in § 4, writes results/backtest.json
 python run_analysis.py     # § 5–8: gross/net, costs, win rates, leverage; writes results/analysis.json + figures
 python run_dip_risk.py     # § 9: drawdown decomposition and dip risk controls; writes results/dip_risk.json
+python run_markets.py      # § 10: C-A on 19 other equity markets; writes results/markets.json/.csv + figures
 python signal_today.py     # portfolio to hold from the next session (run after the US close)
 pytest -q                  # accounting, no-look-ahead, simulator and one-day-delay checks
 ```
@@ -441,17 +502,22 @@ strategy/books.py             the two books, the combination, today's target por
 strategy/evaluate.py          Sharpe, Sortino, drawdown, paired Sharpe test, bootstrap
 strategy/analysis.py          portfolio-level simulator, win rates, leverage, regimes, rotation null
 strategy/dip_risk.py          dip-leg risk controls (time stop, trend exit, stop, sizing, entry filters)
+strategy/markets.py           C-A with the equity asset swapped for another market; n_eff
 run_backtest.py               all reported periods
 run_analysis.py               gross/net, cost sensitivity, win rates, leverage diagnostics
 run_dip_risk.py               drawdown decomposition and dip risk controls
+run_markets.py                C-A on 19 other equity markets
 signal_today.py               live/paper signal
 research/LEVERAGE_HYPOTHESES.md  the leverage variants, registered before they were computed
 research/DIP_RISK_HYPOTHESES.md  the dip risk controls, registered before they were computed
+research/MARKETS_HYPOTHESES.md   the other-markets study, registered before it was computed
 tests/                        self-checks
 results/backtest.json         reference numbers (§ 4)
 results/analysis.json         numbers of § 5–8
 results/dip_risk.json         numbers of § 9
 results/dip_trades.csv        every dip trade of book 1
+results/markets.json          numbers of § 10 (per market, pooled tests, M1–M4)
+results/markets.csv           one row per market
 results/figures/              charts used in this README
 CLAUDE.md                     handoff document for an AI agent continuing this work
 ```

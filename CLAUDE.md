@@ -108,6 +108,23 @@ in-sample. Findings you should not have to rediscover:
 - `dip_risk.dip_exposure_variant` with default arguments reproduces `books.dip_exposure`
   exactly (tested). A forced exit blocks re-entry until close > SMA5.
 
+## Other markets (`run_markets.py`)
+
+C-A with SPY swapped for 19 other equity ETFs (US segments, developed ex-US, emerging), registered
+in `research/MARKETS_HYPOTHESES.md`. `strategy/markets.build_market("SPY")` reproduces `build()`
+exactly (tested). Findings you should not have to rediscover:
+
+- C-A beats local buy & hold in 19/19 (pooled p 0.011), but those 19 count as n_eff ≈ 1.3: the
+  common cause is the Treasury/gold half. This is not evidence for the mean-reversion idea.
+- The dip overlay beats buy & hold in 19/19 over 2007–2026 (pooled p 0.024, n_eff ≈ 2.6), but only
+  17/19 with pooled p 0.27 in 2016–2026, so M2 failed. Overlay evidence sits in 2007–2015.
+- EEM has the strongest overlay (+0.18, p 0.003), against the registered prediction. Suspected
+  cause: US-listed EM ETFs trading while local markets are closed (premium/discount reversion).
+  Untested; needs local indices or NAVs, and a new registration.
+- Book 2 alone beats C-A in 15/19 markets (unregistered, none significant). Do not read this as
+  "drop book 1 on SPY" — on SPY, C-A is ahead.
+- Break-even trading cost vs buy & hold is 22–48 bp per side in every market.
+
 ## Known pitfalls
 
 - `month_ends` must not treat the last close of a running month as a month end. Otherwise the live
@@ -126,3 +143,7 @@ in-sample. Findings you should not have to rediscover:
 - Connors RSI(2): Connors & Alvarez, "Short Term Trading Strategies That Work" (2008).
 - Stock–bond correlation regimes: Campbell, Sunderam & Viceira (2017).
 - What failed and why: see README → "Research provenance".
+
+## Lessons Learned
+
+- **2026-11-14:** The other-markets registration claimed no earlier run on those ETFs existed, but the README caveats already reported an eight-country replication. Before registering a study, grep README and research/ for prior results on the same assets and state them in the "what the analyst knew" paragraph.
