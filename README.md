@@ -453,6 +453,9 @@ The two findings do not contradict each other. M2 asks whether the overlay impro
 
 ### 10.5 What follows
 
+A slide deck with these results is in [`presentation/regime_mr_other_markets.pptx`](presentation/regime_mr_other_markets.pptx) (PDF: [`presentation/regime_mr_other_markets.pdf`](presentation/regime_mr_other_markets.pdf)).
+
+
 - The **rebalancing book travels**, and its premium scales with volatility as theory says. That part of C-A does not depend on the US market.
 - The **dip overlay travels in sign but not in strength**. Its evidence is concentrated in 2007–2015. It is not a reason to trade C-A on foreign markets instead of SPY.
 - **C-A on SPY remains the strategy.** Nothing here was used to change it. Testing whether the EEM overlay gain is an ETF premium/discount effect would be a separate, newly registered study.
@@ -519,6 +522,7 @@ results/dip_trades.csv        every dip trade of book 1
 results/markets.json          numbers of § 10 (per market, pooled tests, M1–M4)
 results/markets.csv           one row per market
 results/figures/              charts used in this README
+presentation/                 slide deck on § 10 (.pptx and .pdf) and the scripts that build it
 CLAUDE.md                     handoff document for an AI agent continuing this work
 ```
 

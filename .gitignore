@@ -5,3 +5,6 @@ data_cache/
 .pytest_cache/
 .env
 *.key
+node_modules/
+presentation/build/*.png
+presentation/build/data.json
