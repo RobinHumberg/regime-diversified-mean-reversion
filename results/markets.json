@@ -1,0 +1,3718 @@
+{
+  "data_end": "2026-11-06",
+  "markets": {
+    "SPY": {
+      "name": "S&P 500",
+      "group": "Reference",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.776,
+          "sortino": 0.984,
+          "excess_return_pa": 0.1097,
+          "volatility_pa": 0.1413,
+          "cagr_total": 0.1221,
+          "max_drawdown_total": -0.3239,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.533,
+          "sortino": 0.653,
+          "excess_return_pa": 0.1043,
+          "volatility_pa": 0.1958,
+          "cagr_total": 0.1059,
+          "max_drawdown_total": -0.5519,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.68,
+          "sortino": 0.827,
+          "excess_return_pa": 0.1501,
+          "volatility_pa": 0.2208,
+          "cagr_total": 0.1517,
+          "max_drawdown_total": -0.4868,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.698,
+          "sortino": 0.953,
+          "excess_return_pa": 0.0692,
+          "volatility_pa": 0.0992,
+          "cagr_total": 0.0831,
+          "max_drawdown_total": -0.2305,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.671,
+          "sortino": 0.895,
+          "excess_return_pa": 0.0708,
+          "volatility_pa": 0.1056,
+          "cagr_total": 0.0841,
+          "max_drawdown_total": -0.2276,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.776,
+            "sharpe_b": 0.533,
+            "diff": 0.244,
+            "rho": 0.926,
+            "z": 2.82,
+            "p_value": 0.0049
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.68,
+            "sharpe_b": 0.533,
+            "diff": 0.147,
+            "rho": 0.953,
+            "z": 2.13,
+            "p_value": 0.0331
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.698,
+            "sharpe_b": 0.671,
+            "diff": 0.028,
+            "rho": 0.969,
+            "z": 0.49,
+            "p_value": 0.622
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.776,
+            "sharpe_b": 0.698,
+            "diff": 0.078,
+            "rho": 0.731,
+            "z": 0.47,
+            "p_value": 0.6367
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.626,
+            "sharpe_b": 0.352,
+            "diff": 0.274,
+            "rho": 0.933,
+            "z": 2.22,
+            "p_value": 0.0263
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.496,
+            "sharpe_b": 0.352,
+            "diff": 0.143,
+            "rho": 0.955,
+            "z": 1.43,
+            "p_value": 0.1534
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.687,
+            "sharpe_b": 0.564,
+            "diff": 0.123,
+            "rho": 0.961,
+            "z": 1.31,
+            "p_value": 0.1909
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.626,
+            "sharpe_b": 0.687,
+            "diff": -0.061,
+            "rho": 0.697,
+            "z": -0.23,
+            "p_value": 0.8167
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.916,
+            "sharpe_b": 0.719,
+            "diff": 0.197,
+            "rho": 0.921,
+            "z": 1.63,
+            "p_value": 0.1026
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.865,
+            "sharpe_b": 0.719,
+            "diff": 0.146,
+            "rho": 0.95,
+            "z": 1.52,
+            "p_value": 0.128
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.707,
+            "sharpe_b": 0.758,
+            "diff": -0.051,
+            "rho": 0.976,
+            "z": -0.77,
+            "p_value": 0.4413
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.916,
+            "sharpe_b": 0.707,
+            "diff": 0.208,
+            "rho": 0.764,
+            "z": 1.0,
+            "p_value": 0.319
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 159,
+        "win_rate": 0.723,
+        "avg_trade": 0.005
+      }
+    },
+    "QQQ": {
+      "name": "Nasdaq-100",
+      "group": "US segments",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.843,
+          "sortino": 1.095,
+          "excess_return_pa": 0.1404,
+          "volatility_pa": 0.1666,
+          "cagr_total": 0.1526,
+          "max_drawdown_total": -0.3627,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.692,
+          "sortino": 0.896,
+          "excess_return_pa": 0.1542,
+          "volatility_pa": 0.2228,
+          "cagr_total": 0.1559,
+          "max_drawdown_total": -0.534,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.743,
+          "sortino": 0.927,
+          "excess_return_pa": 0.1947,
+          "volatility_pa": 0.2621,
+          "cagr_total": 0.1921,
+          "max_drawdown_total": -0.526,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.811,
+          "sortino": 1.124,
+          "excess_return_pa": 0.0861,
+          "volatility_pa": 0.1061,
+          "cagr_total": 0.1007,
+          "max_drawdown_total": -0.272,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.783,
+          "sortino": 1.037,
+          "excess_return_pa": 0.0995,
+          "volatility_pa": 0.1271,
+          "cagr_total": 0.1129,
+          "max_drawdown_total": -0.3099,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.843,
+            "sharpe_b": 0.692,
+            "diff": 0.15,
+            "rho": 0.936,
+            "z": 1.87,
+            "p_value": 0.0611
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.743,
+            "sharpe_b": 0.692,
+            "diff": 0.051,
+            "rho": 0.949,
+            "z": 0.71,
+            "p_value": 0.479
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.811,
+            "sharpe_b": 0.783,
+            "diff": 0.027,
+            "rho": 0.92,
+            "z": 0.3,
+            "p_value": 0.7613
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.843,
+            "sharpe_b": 0.811,
+            "diff": 0.032,
+            "rho": 0.758,
+            "z": 0.2,
+            "p_value": 0.8402
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.815,
+            "sharpe_b": 0.593,
+            "diff": 0.222,
+            "rho": 0.933,
+            "z": 1.8,
+            "p_value": 0.0716
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.665,
+            "sharpe_b": 0.593,
+            "diff": 0.072,
+            "rho": 0.949,
+            "z": 0.67,
+            "p_value": 0.5043
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.878,
+            "sharpe_b": 0.769,
+            "diff": 0.109,
+            "rho": 0.973,
+            "z": 1.39,
+            "p_value": 0.1652
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.815,
+            "sharpe_b": 0.878,
+            "diff": -0.063,
+            "rho": 0.692,
+            "z": -0.24,
+            "p_value": 0.812
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.864,
+            "sharpe_b": 0.773,
+            "diff": 0.092,
+            "rho": 0.94,
+            "z": 0.87,
+            "p_value": 0.3851
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.807,
+            "sharpe_b": 0.773,
+            "diff": 0.034,
+            "rho": 0.949,
+            "z": 0.36,
+            "p_value": 0.7225
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.764,
+            "sharpe_b": 0.807,
+            "diff": -0.044,
+            "rho": 0.899,
+            "z": -0.32,
+            "p_value": 0.7497
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.864,
+            "sharpe_b": 0.764,
+            "diff": 0.101,
+            "rho": 0.804,
+            "z": 0.53,
+            "p_value": 0.5967
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 168,
+        "win_rate": 0.702,
+        "avg_trade": 0.0047
+      }
+    },
+    "IWM": {
+      "name": "Russell 2000",
+      "group": "US segments",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.536,
+          "sortino": 0.718,
+          "excess_return_pa": 0.0941,
+          "volatility_pa": 0.1757,
+          "cagr_total": 0.0988,
+          "max_drawdown_total": -0.342,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.367,
+          "sortino": 0.489,
+          "excess_return_pa": 0.0902,
+          "volatility_pa": 0.246,
+          "cagr_total": 0.0783,
+          "max_drawdown_total": -0.5864,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.45,
+          "sortino": 0.583,
+          "excess_return_pa": 0.124,
+          "volatility_pa": 0.2755,
+          "cagr_total": 0.1067,
+          "max_drawdown_total": -0.5303,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.586,
+          "sortino": 0.812,
+          "excess_return_pa": 0.0642,
+          "volatility_pa": 0.1096,
+          "cagr_total": 0.0766,
+          "max_drawdown_total": -0.2574,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.532,
+          "sortino": 0.726,
+          "excess_return_pa": 0.0608,
+          "volatility_pa": 0.1143,
+          "cagr_total": 0.0723,
+          "max_drawdown_total": -0.2592,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.536,
+            "sharpe_b": 0.367,
+            "diff": 0.169,
+            "rho": 0.941,
+            "z": 2.19,
+            "p_value": 0.0283
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.45,
+            "sharpe_b": 0.367,
+            "diff": 0.083,
+            "rho": 0.951,
+            "z": 1.18,
+            "p_value": 0.237
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.586,
+            "sharpe_b": 0.532,
+            "diff": 0.054,
+            "rho": 0.967,
+            "z": 0.93,
+            "p_value": 0.3535
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.536,
+            "sharpe_b": 0.586,
+            "diff": -0.05,
+            "rho": 0.773,
+            "z": -0.33,
+            "p_value": 0.7408
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.549,
+            "sharpe_b": 0.304,
+            "diff": 0.245,
+            "rho": 0.944,
+            "z": 2.18,
+            "p_value": 0.0294
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.451,
+            "sharpe_b": 0.304,
+            "diff": 0.147,
+            "rho": 0.951,
+            "z": 1.4,
+            "p_value": 0.1603
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.632,
+            "sharpe_b": 0.525,
+            "diff": 0.107,
+            "rho": 0.948,
+            "z": 0.99,
+            "p_value": 0.3199
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.549,
+            "sharpe_b": 0.632,
+            "diff": -0.083,
+            "rho": 0.742,
+            "z": -0.35,
+            "p_value": 0.73
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.525,
+            "sharpe_b": 0.43,
+            "diff": 0.096,
+            "rho": 0.94,
+            "z": 0.91,
+            "p_value": 0.3653
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.452,
+            "sharpe_b": 0.43,
+            "diff": 0.022,
+            "rho": 0.951,
+            "z": 0.23,
+            "p_value": 0.8143
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.549,
+            "sharpe_b": 0.538,
+            "diff": 0.011,
+            "rho": 0.981,
+            "z": 0.18,
+            "p_value": 0.8558
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.525,
+            "sharpe_b": 0.549,
+            "diff": -0.024,
+            "rho": 0.804,
+            "z": -0.12,
+            "p_value": 0.9007
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 145,
+        "win_rate": 0.703,
+        "avg_trade": 0.0028
+      }
+    },
+    "MDY": {
+      "name": "S&P MidCap 400",
+      "group": "US segments",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.614,
+          "sortino": 0.783,
+          "excess_return_pa": 0.0993,
+          "volatility_pa": 0.1619,
+          "cagr_total": 0.1071,
+          "max_drawdown_total": -0.388,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.424,
+          "sortino": 0.536,
+          "excess_return_pa": 0.0961,
+          "volatility_pa": 0.2266,
+          "cagr_total": 0.0896,
+          "max_drawdown_total": -0.5533,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.521,
+          "sortino": 0.645,
+          "excess_return_pa": 0.1326,
+          "volatility_pa": 0.2542,
+          "cagr_total": 0.1225,
+          "max_drawdown_total": -0.5612,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.63,
+          "sortino": 0.856,
+          "excess_return_pa": 0.0661,
+          "volatility_pa": 0.1049,
+          "cagr_total": 0.0791,
+          "max_drawdown_total": -0.2302,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.586,
+          "sortino": 0.783,
+          "excess_return_pa": 0.0645,
+          "volatility_pa": 0.1102,
+          "cagr_total": 0.0768,
+          "max_drawdown_total": -0.2255,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.614,
+            "sharpe_b": 0.424,
+            "diff": 0.19,
+            "rho": 0.936,
+            "z": 2.36,
+            "p_value": 0.0183
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.521,
+            "sharpe_b": 0.424,
+            "diff": 0.097,
+            "rho": 0.951,
+            "z": 1.39,
+            "p_value": 0.1648
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.63,
+            "sharpe_b": 0.586,
+            "diff": 0.044,
+            "rho": 0.97,
+            "z": 0.81,
+            "p_value": 0.4187
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.614,
+            "sharpe_b": 0.63,
+            "diff": -0.016,
+            "rho": 0.753,
+            "z": -0.1,
+            "p_value": 0.918
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.638,
+            "sharpe_b": 0.374,
+            "diff": 0.264,
+            "rho": 0.94,
+            "z": 2.28,
+            "p_value": 0.0228
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.529,
+            "sharpe_b": 0.374,
+            "diff": 0.155,
+            "rho": 0.951,
+            "z": 1.48,
+            "p_value": 0.1393
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.693,
+            "sharpe_b": 0.587,
+            "diff": 0.106,
+            "rho": 0.96,
+            "z": 1.12,
+            "p_value": 0.2614
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.638,
+            "sharpe_b": 0.693,
+            "diff": -0.055,
+            "rho": 0.721,
+            "z": -0.22,
+            "p_value": 0.8273
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.593,
+            "sharpe_b": 0.475,
+            "diff": 0.117,
+            "rho": 0.933,
+            "z": 1.05,
+            "p_value": 0.2928
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.518,
+            "sharpe_b": 0.475,
+            "diff": 0.043,
+            "rho": 0.952,
+            "z": 0.45,
+            "p_value": 0.6515
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.578,
+            "sharpe_b": 0.585,
+            "diff": -0.007,
+            "rho": 0.979,
+            "z": -0.1,
+            "p_value": 0.9165
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.593,
+            "sharpe_b": 0.578,
+            "diff": 0.014,
+            "rho": 0.786,
+            "z": 0.07,
+            "p_value": 0.9427
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 159,
+        "win_rate": 0.767,
+        "avg_trade": 0.0038
+      }
+    },
+    "DIA": {
+      "name": "Dow Jones 30",
+      "group": "US segments",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.699,
+          "sortino": 0.88,
+          "excess_return_pa": 0.0947,
+          "volatility_pa": 0.1354,
+          "cagr_total": 0.1063,
+          "max_drawdown_total": -0.3008,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.508,
+          "sortino": 0.631,
+          "excess_return_pa": 0.0947,
+          "volatility_pa": 0.1864,
+          "cagr_total": 0.0973,
+          "max_drawdown_total": -0.5187,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.579,
+          "sortino": 0.699,
+          "excess_return_pa": 0.1231,
+          "volatility_pa": 0.2124,
+          "cagr_total": 0.123,
+          "max_drawdown_total": -0.4889,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.686,
+          "sortino": 0.94,
+          "excess_return_pa": 0.0663,
+          "volatility_pa": 0.0967,
+          "cagr_total": 0.0802,
+          "max_drawdown_total": -0.2118,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.65,
+          "sortino": 0.869,
+          "excess_return_pa": 0.0669,
+          "volatility_pa": 0.1029,
+          "cagr_total": 0.0802,
+          "max_drawdown_total": -0.203,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.699,
+            "sharpe_b": 0.508,
+            "diff": 0.191,
+            "rho": 0.92,
+            "z": 2.12,
+            "p_value": 0.034
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.579,
+            "sharpe_b": 0.508,
+            "diff": 0.072,
+            "rho": 0.952,
+            "z": 1.02,
+            "p_value": 0.3074
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.686,
+            "sharpe_b": 0.65,
+            "diff": 0.036,
+            "rho": 0.974,
+            "z": 0.69,
+            "p_value": 0.4883
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.699,
+            "sharpe_b": 0.686,
+            "diff": 0.014,
+            "rho": 0.718,
+            "z": 0.08,
+            "p_value": 0.9362
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.605,
+            "sharpe_b": 0.369,
+            "diff": 0.236,
+            "rho": 0.926,
+            "z": 1.83,
+            "p_value": 0.0672
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.452,
+            "sharpe_b": 0.369,
+            "diff": 0.083,
+            "rho": 0.954,
+            "z": 0.81,
+            "p_value": 0.4155
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.703,
+            "sharpe_b": 0.577,
+            "diff": 0.126,
+            "rho": 0.971,
+            "z": 1.55,
+            "p_value": 0.1209
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.605,
+            "sharpe_b": 0.703,
+            "diff": -0.098,
+            "rho": 0.68,
+            "z": -0.36,
+            "p_value": 0.7154
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.782,
+            "sharpe_b": 0.644,
+            "diff": 0.139,
+            "rho": 0.915,
+            "z": 1.11,
+            "p_value": 0.2686
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.7,
+            "sharpe_b": 0.644,
+            "diff": 0.057,
+            "rho": 0.949,
+            "z": 0.58,
+            "p_value": 0.5613
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.671,
+            "sharpe_b": 0.71,
+            "diff": -0.039,
+            "rho": 0.977,
+            "z": -0.59,
+            "p_value": 0.5534
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.782,
+            "sharpe_b": 0.671,
+            "diff": 0.111,
+            "rho": 0.751,
+            "z": 0.52,
+            "p_value": 0.6055
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 172,
+        "win_rate": 0.727,
+        "avg_trade": 0.0029
+      }
+    },
+    "OEF": {
+      "name": "S&P 100",
+      "group": "US segments",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.811,
+          "sortino": 1.032,
+          "excess_return_pa": 0.1138,
+          "volatility_pa": 0.1404,
+          "cagr_total": 0.1269,
+          "max_drawdown_total": -0.3025,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.553,
+          "sortino": 0.683,
+          "excess_return_pa": 0.1074,
+          "volatility_pa": 0.1942,
+          "cagr_total": 0.1096,
+          "max_drawdown_total": -0.5411,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.717,
+          "sortino": 0.878,
+          "excess_return_pa": 0.1573,
+          "volatility_pa": 0.2193,
+          "cagr_total": 0.1603,
+          "max_drawdown_total": -0.482,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.712,
+          "sortino": 0.978,
+          "excess_return_pa": 0.0704,
+          "volatility_pa": 0.0988,
+          "cagr_total": 0.0844,
+          "max_drawdown_total": -0.2351,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.685,
+          "sortino": 0.918,
+          "excess_return_pa": 0.0726,
+          "volatility_pa": 0.106,
+          "cagr_total": 0.086,
+          "max_drawdown_total": -0.2342,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.811,
+            "sharpe_b": 0.553,
+            "diff": 0.258,
+            "rho": 0.927,
+            "z": 2.99,
+            "p_value": 0.0028
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.717,
+            "sharpe_b": 0.553,
+            "diff": 0.164,
+            "rho": 0.955,
+            "z": 2.42,
+            "p_value": 0.0154
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.712,
+            "sharpe_b": 0.685,
+            "diff": 0.027,
+            "rho": 0.969,
+            "z": 0.49,
+            "p_value": 0.6248
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.811,
+            "sharpe_b": 0.712,
+            "diff": 0.099,
+            "rho": 0.73,
+            "z": 0.6,
+            "p_value": 0.5518
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.652,
+            "sharpe_b": 0.345,
+            "diff": 0.306,
+            "rho": 0.93,
+            "z": 2.45,
+            "p_value": 0.0145
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.52,
+            "sharpe_b": 0.345,
+            "diff": 0.175,
+            "rho": 0.956,
+            "z": 1.75,
+            "p_value": 0.0796
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.686,
+            "sharpe_b": 0.558,
+            "diff": 0.128,
+            "rho": 0.963,
+            "z": 1.4,
+            "p_value": 0.1622
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.652,
+            "sharpe_b": 0.686,
+            "diff": -0.034,
+            "rho": 0.687,
+            "z": -0.13,
+            "p_value": 0.8966
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.947,
+            "sharpe_b": 0.75,
+            "diff": 0.198,
+            "rho": 0.925,
+            "z": 1.68,
+            "p_value": 0.0934
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.898,
+            "sharpe_b": 0.75,
+            "diff": 0.148,
+            "rho": 0.954,
+            "z": 1.6,
+            "p_value": 0.1086
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.733,
+            "sharpe_b": 0.788,
+            "diff": -0.055,
+            "rho": 0.975,
+            "z": -0.8,
+            "p_value": 0.4242
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.947,
+            "sharpe_b": 0.733,
+            "diff": 0.214,
+            "rho": 0.767,
+            "z": 1.03,
+            "p_value": 0.303
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 160,
+        "win_rate": 0.762,
+        "avg_trade": 0.0055
+      }
+    },
+    "EFA": {
+      "name": "MSCI EAFE",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.424,
+          "sortino": 0.553,
+          "excess_return_pa": 0.0659,
+          "volatility_pa": 0.1555,
+          "cagr_total": 0.0718,
+          "max_drawdown_total": -0.3784,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.245,
+          "sortino": 0.309,
+          "excess_return_pa": 0.0528,
+          "volatility_pa": 0.2159,
+          "cagr_total": 0.046,
+          "max_drawdown_total": -0.6104,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.339,
+          "sortino": 0.422,
+          "excess_return_pa": 0.0801,
+          "volatility_pa": 0.2362,
+          "cagr_total": 0.07,
+          "max_drawdown_total": -0.5441,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.481,
+          "sortino": 0.675,
+          "excess_return_pa": 0.0518,
+          "volatility_pa": 0.1077,
+          "cagr_total": 0.0634,
+          "max_drawdown_total": -0.2522,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.448,
+          "sortino": 0.615,
+          "excess_return_pa": 0.0518,
+          "volatility_pa": 0.1155,
+          "cagr_total": 0.0625,
+          "max_drawdown_total": -0.2733,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.424,
+            "sharpe_b": 0.245,
+            "diff": 0.18,
+            "rho": 0.934,
+            "z": 2.2,
+            "p_value": 0.0278
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.339,
+            "sharpe_b": 0.245,
+            "diff": 0.095,
+            "rho": 0.955,
+            "z": 1.41,
+            "p_value": 0.1596
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.481,
+            "sharpe_b": 0.448,
+            "diff": 0.033,
+            "rho": 0.95,
+            "z": 0.46,
+            "p_value": 0.6481
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.424,
+            "sharpe_b": 0.481,
+            "diff": -0.057,
+            "rho": 0.784,
+            "z": -0.38,
+            "p_value": 0.7018
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.343,
+            "sharpe_b": 0.114,
+            "diff": 0.23,
+            "rho": 0.947,
+            "z": 2.09,
+            "p_value": 0.0362
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.255,
+            "sharpe_b": 0.114,
+            "diff": 0.141,
+            "rho": 0.963,
+            "z": 1.55,
+            "p_value": 0.1223
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.457,
+            "sharpe_b": 0.388,
+            "diff": 0.069,
+            "rho": 0.948,
+            "z": 0.64,
+            "p_value": 0.523
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.343,
+            "sharpe_b": 0.457,
+            "diff": -0.113,
+            "rho": 0.782,
+            "z": -0.51,
+            "p_value": 0.6084
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.519,
+            "sharpe_b": 0.418,
+            "diff": 0.101,
+            "rho": 0.92,
+            "z": 0.83,
+            "p_value": 0.4048
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.444,
+            "sharpe_b": 0.418,
+            "diff": 0.027,
+            "rho": 0.945,
+            "z": 0.26,
+            "p_value": 0.792
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.503,
+            "sharpe_b": 0.498,
+            "diff": 0.005,
+            "rho": 0.953,
+            "z": 0.06,
+            "p_value": 0.9553
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.519,
+            "sharpe_b": 0.503,
+            "diff": 0.016,
+            "rho": 0.793,
+            "z": 0.08,
+            "p_value": 0.936
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 135,
+        "win_rate": 0.726,
+        "avg_trade": 0.0033
+      }
+    },
+    "EZU": {
+      "name": "Eurozone",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.403,
+          "sortino": 0.537,
+          "excess_return_pa": 0.0707,
+          "volatility_pa": 0.1754,
+          "cagr_total": 0.0734,
+          "max_drawdown_total": -0.4285,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.223,
+          "sortino": 0.285,
+          "excess_return_pa": 0.0566,
+          "volatility_pa": 0.2537,
+          "cagr_total": 0.0407,
+          "max_drawdown_total": -0.6532,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.333,
+          "sortino": 0.424,
+          "excess_return_pa": 0.0887,
+          "volatility_pa": 0.2663,
+          "cagr_total": 0.0711,
+          "max_drawdown_total": -0.6016,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.459,
+          "sortino": 0.653,
+          "excess_return_pa": 0.0528,
+          "volatility_pa": 0.115,
+          "cagr_total": 0.0636,
+          "max_drawdown_total": -0.2681,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.429,
+          "sortino": 0.589,
+          "excess_return_pa": 0.0509,
+          "volatility_pa": 0.1188,
+          "cagr_total": 0.0612,
+          "max_drawdown_total": -0.2842,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.403,
+            "sharpe_b": 0.223,
+            "diff": 0.18,
+            "rho": 0.947,
+            "z": 2.45,
+            "p_value": 0.0144
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.333,
+            "sharpe_b": 0.223,
+            "diff": 0.11,
+            "rho": 0.961,
+            "z": 1.73,
+            "p_value": 0.0829
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.459,
+            "sharpe_b": 0.429,
+            "diff": 0.03,
+            "rho": 0.929,
+            "z": 0.36,
+            "p_value": 0.7202
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.403,
+            "sharpe_b": 0.459,
+            "diff": -0.056,
+            "rho": 0.81,
+            "z": -0.4,
+            "p_value": 0.6886
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.311,
+            "sharpe_b": 0.084,
+            "diff": 0.227,
+            "rho": 0.956,
+            "z": 2.28,
+            "p_value": 0.0224
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.243,
+            "sharpe_b": 0.084,
+            "diff": 0.159,
+            "rho": 0.965,
+            "z": 1.8,
+            "p_value": 0.0721
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.408,
+            "sharpe_b": 0.348,
+            "diff": 0.06,
+            "rho": 0.926,
+            "z": 0.46,
+            "p_value": 0.6432
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.311,
+            "sharpe_b": 0.408,
+            "diff": -0.097,
+            "rho": 0.813,
+            "z": -0.47,
+            "p_value": 0.637
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.518,
+            "sharpe_b": 0.404,
+            "diff": 0.114,
+            "rho": 0.933,
+            "z": 1.02,
+            "p_value": 0.3055
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.453,
+            "sharpe_b": 0.404,
+            "diff": 0.049,
+            "rho": 0.952,
+            "z": 0.52,
+            "p_value": 0.6007
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.508,
+            "sharpe_b": 0.495,
+            "diff": 0.012,
+            "rho": 0.934,
+            "z": 0.11,
+            "p_value": 0.9102
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.518,
+            "sharpe_b": 0.508,
+            "diff": 0.01,
+            "rho": 0.814,
+            "z": 0.05,
+            "p_value": 0.9564
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 130,
+        "win_rate": 0.7,
+        "avg_trade": 0.0042
+      }
+    },
+    "EWG": {
+      "name": "Germany",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.43,
+          "sortino": 0.562,
+          "excess_return_pa": 0.0785,
+          "volatility_pa": 0.1825,
+          "cagr_total": 0.0805,
+          "max_drawdown_total": -0.4283,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.241,
+          "sortino": 0.312,
+          "excess_return_pa": 0.0614,
+          "volatility_pa": 0.2542,
+          "cagr_total": 0.0456,
+          "max_drawdown_total": -0.631,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.364,
+          "sortino": 0.45,
+          "excess_return_pa": 0.1022,
+          "volatility_pa": 0.281,
+          "cagr_total": 0.0812,
+          "max_drawdown_total": -0.6131,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.474,
+          "sortino": 0.679,
+          "excess_return_pa": 0.0548,
+          "volatility_pa": 0.1157,
+          "cagr_total": 0.0657,
+          "max_drawdown_total": -0.2896,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.439,
+          "sortino": 0.606,
+          "excess_return_pa": 0.052,
+          "volatility_pa": 0.1185,
+          "cagr_total": 0.0624,
+          "max_drawdown_total": -0.3057,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.43,
+            "sharpe_b": 0.241,
+            "diff": 0.189,
+            "rho": 0.943,
+            "z": 2.49,
+            "p_value": 0.0128
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.364,
+            "sharpe_b": 0.241,
+            "diff": 0.122,
+            "rho": 0.951,
+            "z": 1.74,
+            "p_value": 0.0817
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.474,
+            "sharpe_b": 0.439,
+            "diff": 0.035,
+            "rho": 0.951,
+            "z": 0.5,
+            "p_value": 0.6162
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.43,
+            "sharpe_b": 0.474,
+            "diff": -0.044,
+            "rho": 0.802,
+            "z": -0.31,
+            "p_value": 0.7569
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.394,
+            "sharpe_b": 0.186,
+            "diff": 0.209,
+            "rho": 0.952,
+            "z": 2.0,
+            "p_value": 0.0455
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.317,
+            "sharpe_b": 0.186,
+            "diff": 0.131,
+            "rho": 0.953,
+            "z": 1.27,
+            "p_value": 0.2044
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.499,
+            "sharpe_b": 0.409,
+            "diff": 0.09,
+            "rho": 0.953,
+            "z": 0.88,
+            "p_value": 0.3805
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.394,
+            "sharpe_b": 0.499,
+            "diff": -0.105,
+            "rho": 0.791,
+            "z": -0.48,
+            "p_value": 0.6287
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.482,
+            "sharpe_b": 0.316,
+            "diff": 0.166,
+            "rho": 0.931,
+            "z": 1.47,
+            "p_value": 0.1421
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.437,
+            "sharpe_b": 0.316,
+            "diff": 0.121,
+            "rho": 0.949,
+            "z": 1.25,
+            "p_value": 0.2109
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.452,
+            "sharpe_b": 0.464,
+            "diff": -0.011,
+            "rho": 0.951,
+            "z": -0.12,
+            "p_value": 0.906
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.482,
+            "sharpe_b": 0.452,
+            "diff": 0.029,
+            "rho": 0.826,
+            "z": 0.16,
+            "p_value": 0.8696
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 137,
+        "win_rate": 0.715,
+        "avg_trade": 0.0048
+      }
+    },
+    "EWU": {
+      "name": "United Kingdom",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.406,
+          "sortino": 0.53,
+          "excess_return_pa": 0.0648,
+          "volatility_pa": 0.1595,
+          "cagr_total": 0.07,
+          "max_drawdown_total": -0.4014,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.211,
+          "sortino": 0.261,
+          "excess_return_pa": 0.0482,
+          "volatility_pa": 0.2287,
+          "cagr_total": 0.0382,
+          "max_drawdown_total": -0.6399,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.33,
+          "sortino": 0.413,
+          "excess_return_pa": 0.0798,
+          "volatility_pa": 0.2418,
+          "cagr_total": 0.0682,
+          "max_drawdown_total": -0.5621,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.456,
+          "sortino": 0.637,
+          "excess_return_pa": 0.0498,
+          "volatility_pa": 0.1094,
+          "cagr_total": 0.0612,
+          "max_drawdown_total": -0.251,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.429,
+          "sortino": 0.59,
+          "excess_return_pa": 0.0502,
+          "volatility_pa": 0.1169,
+          "cagr_total": 0.0607,
+          "max_drawdown_total": -0.2663,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.406,
+            "sharpe_b": 0.211,
+            "diff": 0.196,
+            "rho": 0.94,
+            "z": 2.5,
+            "p_value": 0.0123
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.33,
+            "sharpe_b": 0.211,
+            "diff": 0.119,
+            "rho": 0.96,
+            "z": 1.87,
+            "p_value": 0.0618
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.456,
+            "sharpe_b": 0.429,
+            "diff": 0.026,
+            "rho": 0.936,
+            "z": 0.32,
+            "p_value": 0.7458
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.406,
+            "sharpe_b": 0.456,
+            "diff": -0.049,
+            "rho": 0.792,
+            "z": -0.34,
+            "p_value": 0.7347
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.305,
+            "sharpe_b": 0.092,
+            "diff": 0.213,
+            "rho": 0.949,
+            "z": 1.98,
+            "p_value": 0.0478
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.219,
+            "sharpe_b": 0.092,
+            "diff": 0.127,
+            "rho": 0.962,
+            "z": 1.36,
+            "p_value": 0.1734
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.429,
+            "sharpe_b": 0.37,
+            "diff": 0.058,
+            "rho": 0.942,
+            "z": 0.51,
+            "p_value": 0.6108
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.305,
+            "sharpe_b": 0.429,
+            "diff": -0.124,
+            "rho": 0.789,
+            "z": -0.57,
+            "p_value": 0.5695
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.525,
+            "sharpe_b": 0.359,
+            "diff": 0.166,
+            "rho": 0.928,
+            "z": 1.44,
+            "p_value": 0.1497
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.468,
+            "sharpe_b": 0.359,
+            "diff": 0.109,
+            "rho": 0.957,
+            "z": 1.23,
+            "p_value": 0.218
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.481,
+            "sharpe_b": 0.478,
+            "diff": 0.003,
+            "rho": 0.932,
+            "z": 0.03,
+            "p_value": 0.9768
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.525,
+            "sharpe_b": 0.481,
+            "diff": 0.044,
+            "rho": 0.802,
+            "z": 0.23,
+            "p_value": 0.8185
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 130,
+        "win_rate": 0.708,
+        "avg_trade": 0.0043
+      }
+    },
+    "EWJ": {
+      "name": "Japan",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.372,
+          "sortino": 0.499,
+          "excess_return_pa": 0.0573,
+          "volatility_pa": 0.1538,
+          "cagr_total": 0.0629,
+          "max_drawdown_total": -0.3129,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.215,
+          "sortino": 0.29,
+          "excess_return_pa": 0.0442,
+          "volatility_pa": 0.2057,
+          "cagr_total": 0.0394,
+          "max_drawdown_total": -0.5355,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.28,
+          "sortino": 0.36,
+          "excess_return_pa": 0.0654,
+          "volatility_pa": 0.2337,
+          "cagr_total": 0.0551,
+          "max_drawdown_total": -0.4535,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.458,
+          "sortino": 0.654,
+          "excess_return_pa": 0.0492,
+          "volatility_pa": 0.1073,
+          "cagr_total": 0.0607,
+          "max_drawdown_total": -0.2674,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.433,
+          "sortino": 0.601,
+          "excess_return_pa": 0.0505,
+          "volatility_pa": 0.1166,
+          "cagr_total": 0.061,
+          "max_drawdown_total": -0.2849,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.372,
+            "sharpe_b": 0.215,
+            "diff": 0.157,
+            "rho": 0.931,
+            "z": 1.89,
+            "p_value": 0.0593
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.28,
+            "sharpe_b": 0.215,
+            "diff": 0.065,
+            "rho": 0.95,
+            "z": 0.91,
+            "p_value": 0.362
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.458,
+            "sharpe_b": 0.433,
+            "diff": 0.026,
+            "rho": 0.948,
+            "z": 0.35,
+            "p_value": 0.7253
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.372,
+            "sharpe_b": 0.458,
+            "diff": -0.086,
+            "rho": 0.781,
+            "z": -0.58,
+            "p_value": 0.5646
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.281,
+            "sharpe_b": 0.068,
+            "diff": 0.212,
+            "rho": 0.939,
+            "z": 1.81,
+            "p_value": 0.0707
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.177,
+            "sharpe_b": 0.068,
+            "diff": 0.108,
+            "rho": 0.954,
+            "z": 1.06,
+            "p_value": 0.2882
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.436,
+            "sharpe_b": 0.375,
+            "diff": 0.06,
+            "rho": 0.946,
+            "z": 0.55,
+            "p_value": 0.5835
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.281,
+            "sharpe_b": 0.436,
+            "diff": -0.155,
+            "rho": 0.764,
+            "z": -0.67,
+            "p_value": 0.502
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.463,
+            "sharpe_b": 0.379,
+            "diff": 0.084,
+            "rho": 0.926,
+            "z": 0.72,
+            "p_value": 0.4726
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.388,
+            "sharpe_b": 0.379,
+            "diff": 0.009,
+            "rho": 0.946,
+            "z": 0.09,
+            "p_value": 0.9286
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.478,
+            "sharpe_b": 0.479,
+            "diff": -0.001,
+            "rho": 0.95,
+            "z": -0.01,
+            "p_value": 0.9928
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.463,
+            "sharpe_b": 0.478,
+            "diff": -0.015,
+            "rho": 0.801,
+            "z": -0.08,
+            "p_value": 0.9371
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 125,
+        "win_rate": 0.688,
+        "avg_trade": 0.0026
+      }
+    },
+    "EWA": {
+      "name": "Australia",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.426,
+          "sortino": 0.562,
+          "excess_return_pa": 0.0848,
+          "volatility_pa": 0.1992,
+          "cagr_total": 0.0839,
+          "max_drawdown_total": -0.4529,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.273,
+          "sortino": 0.351,
+          "excess_return_pa": 0.0757,
+          "volatility_pa": 0.2769,
+          "cagr_total": 0.0543,
+          "max_drawdown_total": -0.6698,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.367,
+          "sortino": 0.466,
+          "excess_return_pa": 0.1117,
+          "volatility_pa": 0.3047,
+          "cagr_total": 0.0841,
+          "max_drawdown_total": -0.6056,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.472,
+          "sortino": 0.659,
+          "excess_return_pa": 0.058,
+          "volatility_pa": 0.1229,
+          "cagr_total": 0.0682,
+          "max_drawdown_total": -0.2799,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.442,
+          "sortino": 0.608,
+          "excess_return_pa": 0.0548,
+          "volatility_pa": 0.124,
+          "cagr_total": 0.0646,
+          "max_drawdown_total": -0.2548,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.426,
+            "sharpe_b": 0.273,
+            "diff": 0.153,
+            "rho": 0.95,
+            "z": 2.13,
+            "p_value": 0.0331
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.367,
+            "sharpe_b": 0.273,
+            "diff": 0.093,
+            "rho": 0.955,
+            "z": 1.38,
+            "p_value": 0.1684
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.472,
+            "sharpe_b": 0.442,
+            "diff": 0.03,
+            "rho": 0.964,
+            "z": 0.5,
+            "p_value": 0.6183
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.426,
+            "sharpe_b": 0.472,
+            "diff": -0.046,
+            "rho": 0.827,
+            "z": -0.35,
+            "p_value": 0.7299
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.342,
+            "sharpe_b": 0.207,
+            "diff": 0.134,
+            "rho": 0.954,
+            "z": 1.32,
+            "p_value": 0.1856
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.266,
+            "sharpe_b": 0.207,
+            "diff": 0.059,
+            "rho": 0.953,
+            "z": 0.57,
+            "p_value": 0.5676
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.473,
+            "sharpe_b": 0.395,
+            "diff": 0.078,
+            "rho": 0.968,
+            "z": 0.92,
+            "p_value": 0.3592
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.342,
+            "sharpe_b": 0.473,
+            "diff": -0.131,
+            "rho": 0.829,
+            "z": -0.67,
+            "p_value": 0.5049
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.537,
+            "sharpe_b": 0.363,
+            "diff": 0.174,
+            "rho": 0.942,
+            "z": 1.68,
+            "p_value": 0.0932
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.506,
+            "sharpe_b": 0.363,
+            "diff": 0.143,
+            "rho": 0.958,
+            "z": 1.63,
+            "p_value": 0.1021
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.473,
+            "sharpe_b": 0.483,
+            "diff": -0.01,
+            "rho": 0.962,
+            "z": -0.12,
+            "p_value": 0.904
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.537,
+            "sharpe_b": 0.473,
+            "diff": 0.064,
+            "rho": 0.833,
+            "z": 0.36,
+            "p_value": 0.7158
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 138,
+        "win_rate": 0.703,
+        "avg_trade": 0.0037
+      }
+    },
+    "EWC": {
+      "name": "Canada",
+      "group": "Developed ex-US",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.443,
+          "sortino": 0.561,
+          "excess_return_pa": 0.0731,
+          "volatility_pa": 0.165,
+          "cagr_total": 0.0779,
+          "max_drawdown_total": -0.4459,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.326,
+          "sortino": 0.405,
+          "excess_return_pa": 0.0724,
+          "volatility_pa": 0.2225,
+          "cagr_total": 0.0651,
+          "max_drawdown_total": -0.6075,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.351,
+          "sortino": 0.424,
+          "excess_return_pa": 0.0868,
+          "volatility_pa": 0.2475,
+          "cagr_total": 0.0741,
+          "max_drawdown_total": -0.6235,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.522,
+          "sortino": 0.718,
+          "excess_return_pa": 0.0594,
+          "volatility_pa": 0.1138,
+          "cagr_total": 0.0709,
+          "max_drawdown_total": -0.2584,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.481,
+          "sortino": 0.652,
+          "excess_return_pa": 0.0574,
+          "volatility_pa": 0.1193,
+          "cagr_total": 0.068,
+          "max_drawdown_total": -0.2559,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.443,
+            "sharpe_b": 0.326,
+            "diff": 0.117,
+            "rho": 0.938,
+            "z": 1.48,
+            "p_value": 0.1399
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.351,
+            "sharpe_b": 0.326,
+            "diff": 0.025,
+            "rho": 0.951,
+            "z": 0.35,
+            "p_value": 0.7237
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.522,
+            "sharpe_b": 0.481,
+            "diff": 0.041,
+            "rho": 0.972,
+            "z": 0.78,
+            "p_value": 0.4361
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.443,
+            "sharpe_b": 0.522,
+            "diff": -0.079,
+            "rho": 0.807,
+            "z": -0.57,
+            "p_value": 0.571
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.175,
+            "sharpe_b": 0.106,
+            "diff": 0.068,
+            "rho": 0.944,
+            "z": 0.61,
+            "p_value": 0.5419
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.044,
+            "sharpe_b": 0.106,
+            "diff": -0.063,
+            "rho": 0.95,
+            "z": -0.59,
+            "p_value": 0.5525
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.437,
+            "sharpe_b": 0.37,
+            "diff": 0.068,
+            "rho": 0.98,
+            "z": 1.0,
+            "p_value": 0.3154
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.175,
+            "sharpe_b": 0.437,
+            "diff": -0.263,
+            "rho": 0.806,
+            "z": -1.26,
+            "p_value": 0.2092
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.735,
+            "sharpe_b": 0.582,
+            "diff": 0.153,
+            "rho": 0.929,
+            "z": 1.34,
+            "p_value": 0.1804
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.7,
+            "sharpe_b": 0.582,
+            "diff": 0.118,
+            "rho": 0.952,
+            "z": 1.25,
+            "p_value": 0.2126
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.603,
+            "sharpe_b": 0.578,
+            "diff": 0.024,
+            "rho": 0.966,
+            "z": 0.31,
+            "p_value": 0.757
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.735,
+            "sharpe_b": 0.603,
+            "diff": 0.133,
+            "rho": 0.813,
+            "z": 0.71,
+            "p_value": 0.4751
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 144,
+        "win_rate": 0.674,
+        "avg_trade": 0.0016
+      }
+    },
+    "EEM": {
+      "name": "MSCI Emerging",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.449,
+          "sortino": 0.617,
+          "excess_return_pa": 0.0891,
+          "volatility_pa": 0.1986,
+          "cagr_total": 0.0887,
+          "max_drawdown_total": -0.4636,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.233,
+          "sortino": 0.308,
+          "excess_return_pa": 0.0653,
+          "volatility_pa": 0.2801,
+          "cagr_total": 0.0427,
+          "max_drawdown_total": -0.6643,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.411,
+          "sortino": 0.555,
+          "excess_return_pa": 0.1247,
+          "volatility_pa": 0.3035,
+          "cagr_total": 0.099,
+          "max_drawdown_total": -0.6329,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.437,
+          "sortino": 0.605,
+          "excess_return_pa": 0.0535,
+          "volatility_pa": 0.1222,
+          "cagr_total": 0.0635,
+          "max_drawdown_total": -0.299,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.419,
+          "sortino": 0.57,
+          "excess_return_pa": 0.0522,
+          "volatility_pa": 0.1246,
+          "cagr_total": 0.0618,
+          "max_drawdown_total": -0.3006,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.449,
+            "sharpe_b": 0.233,
+            "diff": 0.215,
+            "rho": 0.954,
+            "z": 3.14,
+            "p_value": 0.0017
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.411,
+            "sharpe_b": 0.233,
+            "diff": 0.178,
+            "rho": 0.964,
+            "z": 2.94,
+            "p_value": 0.0033
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.437,
+            "sharpe_b": 0.419,
+            "diff": 0.019,
+            "rho": 0.962,
+            "z": 0.3,
+            "p_value": 0.7657
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.449,
+            "sharpe_b": 0.437,
+            "diff": 0.011,
+            "rho": 0.83,
+            "z": 0.08,
+            "p_value": 0.9328
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.386,
+            "sharpe_b": 0.149,
+            "diff": 0.237,
+            "rho": 0.962,
+            "z": 2.57,
+            "p_value": 0.0103
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.347,
+            "sharpe_b": 0.149,
+            "diff": 0.199,
+            "rho": 0.968,
+            "z": 2.36,
+            "p_value": 0.0185
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.411,
+            "sharpe_b": 0.355,
+            "diff": 0.056,
+            "rho": 0.968,
+            "z": 0.67,
+            "p_value": 0.5039
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.386,
+            "sharpe_b": 0.411,
+            "diff": -0.025,
+            "rho": 0.84,
+            "z": -0.13,
+            "p_value": 0.8931
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.544,
+            "sharpe_b": 0.365,
+            "diff": 0.179,
+            "rho": 0.941,
+            "z": 1.71,
+            "p_value": 0.0865
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.517,
+            "sharpe_b": 0.365,
+            "diff": 0.152,
+            "rho": 0.956,
+            "z": 1.68,
+            "p_value": 0.0935
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.465,
+            "sharpe_b": 0.475,
+            "diff": -0.01,
+            "rho": 0.957,
+            "z": -0.11,
+            "p_value": 0.9148
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.544,
+            "sharpe_b": 0.465,
+            "diff": 0.078,
+            "rho": 0.83,
+            "z": 0.44,
+            "p_value": 0.6585
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 137,
+        "win_rate": 0.715,
+        "avg_trade": 0.0064
+      }
+    },
+    "EWZ": {
+      "name": "Brazil",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.321,
+          "sortino": 0.427,
+          "excess_return_pa": 0.0846,
+          "volatility_pa": 0.2637,
+          "cagr_total": 0.0674,
+          "max_drawdown_total": -0.5936,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.201,
+          "sortino": 0.264,
+          "excess_return_pa": 0.0755,
+          "volatility_pa": 0.3755,
+          "cagr_total": 0.0202,
+          "max_drawdown_total": -0.7725,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.277,
+          "sortino": 0.363,
+          "excess_return_pa": 0.1124,
+          "volatility_pa": 0.4055,
+          "cagr_total": 0.0463,
+          "max_drawdown_total": -0.7617,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.385,
+          "sortino": 0.529,
+          "excess_return_pa": 0.0568,
+          "volatility_pa": 0.1475,
+          "cagr_total": 0.0633,
+          "max_drawdown_total": -0.3819,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.355,
+          "sortino": 0.48,
+          "excess_return_pa": 0.0502,
+          "volatility_pa": 0.1416,
+          "cagr_total": 0.0573,
+          "max_drawdown_total": -0.3716,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.321,
+            "sharpe_b": 0.201,
+            "diff": 0.12,
+            "rho": 0.96,
+            "z": 1.87,
+            "p_value": 0.0613
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.277,
+            "sharpe_b": 0.201,
+            "diff": 0.076,
+            "rho": 0.957,
+            "z": 1.15,
+            "p_value": 0.2512
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.385,
+            "sharpe_b": 0.355,
+            "diff": 0.03,
+            "rho": 0.938,
+            "z": 0.38,
+            "p_value": 0.704
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.321,
+            "sharpe_b": 0.385,
+            "diff": -0.064,
+            "rho": 0.871,
+            "z": -0.56,
+            "p_value": 0.5749
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.247,
+            "sharpe_b": 0.029,
+            "diff": 0.218,
+            "rho": 0.96,
+            "z": 2.29,
+            "p_value": 0.0218
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.219,
+            "sharpe_b": 0.029,
+            "diff": 0.191,
+            "rho": 0.956,
+            "z": 1.91,
+            "p_value": 0.056
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.279,
+            "sharpe_b": 0.25,
+            "diff": 0.029,
+            "rho": 0.972,
+            "z": 0.37,
+            "p_value": 0.7113
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.247,
+            "sharpe_b": 0.279,
+            "diff": -0.033,
+            "rho": 0.864,
+            "z": -0.19,
+            "p_value": 0.8526
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.389,
+            "sharpe_b": 0.365,
+            "diff": 0.024,
+            "rho": 0.96,
+            "z": 0.27,
+            "p_value": 0.7838
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.332,
+            "sharpe_b": 0.365,
+            "diff": -0.034,
+            "rho": 0.958,
+            "z": -0.38,
+            "p_value": 0.7049
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.476,
+            "sharpe_b": 0.455,
+            "diff": 0.021,
+            "rho": 0.905,
+            "z": 0.16,
+            "p_value": 0.8753
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.389,
+            "sharpe_b": 0.476,
+            "diff": -0.087,
+            "rho": 0.879,
+            "z": -0.58,
+            "p_value": 0.5594
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 124,
+        "win_rate": 0.677,
+        "avg_trade": 0.0077
+      }
+    },
+    "FXI": {
+      "name": "China large caps",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.312,
+          "sortino": 0.436,
+          "excess_return_pa": 0.0738,
+          "volatility_pa": 0.2367,
+          "cagr_total": 0.0634,
+          "max_drawdown_total": -0.5724,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.186,
+          "sortino": 0.266,
+          "excess_return_pa": 0.0622,
+          "volatility_pa": 0.3351,
+          "cagr_total": 0.0223,
+          "max_drawdown_total": -0.7268,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.264,
+          "sortino": 0.362,
+          "excess_return_pa": 0.0965,
+          "volatility_pa": 0.3657,
+          "cagr_total": 0.0465,
+          "max_drawdown_total": -0.7606,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.381,
+          "sortino": 0.547,
+          "excess_return_pa": 0.0511,
+          "volatility_pa": 0.134,
+          "cagr_total": 0.0593,
+          "max_drawdown_total": -0.3805,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.368,
+          "sortino": 0.506,
+          "excess_return_pa": 0.0494,
+          "volatility_pa": 0.1342,
+          "cagr_total": 0.0575,
+          "max_drawdown_total": -0.3568,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.312,
+            "sharpe_b": 0.186,
+            "diff": 0.126,
+            "rho": 0.958,
+            "z": 1.93,
+            "p_value": 0.053
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.264,
+            "sharpe_b": 0.186,
+            "diff": 0.078,
+            "rho": 0.96,
+            "z": 1.23,
+            "p_value": 0.2171
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.381,
+            "sharpe_b": 0.368,
+            "diff": 0.013,
+            "rho": 0.956,
+            "z": 0.2,
+            "p_value": 0.843
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.312,
+            "sharpe_b": 0.381,
+            "diff": -0.069,
+            "rho": 0.854,
+            "z": -0.57,
+            "p_value": 0.5691
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.381,
+            "sharpe_b": 0.236,
+            "diff": 0.144,
+            "rho": 0.964,
+            "z": 1.6,
+            "p_value": 0.1105
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.331,
+            "sharpe_b": 0.236,
+            "diff": 0.094,
+            "rho": 0.964,
+            "z": 1.05,
+            "p_value": 0.2919
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.461,
+            "sharpe_b": 0.37,
+            "diff": 0.091,
+            "rho": 0.973,
+            "z": 1.17,
+            "p_value": 0.2423
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.381,
+            "sharpe_b": 0.461,
+            "diff": -0.08,
+            "rho": 0.861,
+            "z": -0.45,
+            "p_value": 0.6498
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.243,
+            "sharpe_b": 0.133,
+            "diff": 0.11,
+            "rho": 0.95,
+            "z": 1.15,
+            "p_value": 0.251
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.195,
+            "sharpe_b": 0.133,
+            "diff": 0.062,
+            "rho": 0.954,
+            "z": 0.67,
+            "p_value": 0.5008
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.308,
+            "sharpe_b": 0.367,
+            "diff": -0.06,
+            "rho": 0.938,
+            "z": -0.56,
+            "p_value": 0.5769
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.243,
+            "sharpe_b": 0.308,
+            "diff": -0.065,
+            "rho": 0.853,
+            "z": -0.39,
+            "p_value": 0.6932
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 126,
+        "win_rate": 0.659,
+        "avg_trade": 0.0021
+      }
+    },
+    "EWY": {
+      "name": "South Korea",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.471,
+          "sortino": 0.644,
+          "excess_return_pa": 0.1122,
+          "volatility_pa": 0.2382,
+          "cagr_total": 0.1046,
+          "max_drawdown_total": -0.5142,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.318,
+          "sortino": 0.431,
+          "excess_return_pa": 0.1048,
+          "volatility_pa": 0.3294,
+          "cagr_total": 0.0685,
+          "max_drawdown_total": -0.7414,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.425,
+          "sortino": 0.573,
+          "excess_return_pa": 0.1565,
+          "volatility_pa": 0.3679,
+          "cagr_total": 0.1105,
+          "max_drawdown_total": -0.6873,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.5,
+          "sortino": 0.693,
+          "excess_return_pa": 0.068,
+          "volatility_pa": 0.1358,
+          "cagr_total": 0.0771,
+          "max_drawdown_total": -0.3308,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.446,
+          "sortino": 0.593,
+          "excess_return_pa": 0.0606,
+          "volatility_pa": 0.1359,
+          "cagr_total": 0.0691,
+          "max_drawdown_total": -0.32,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.471,
+            "sharpe_b": 0.318,
+            "diff": 0.153,
+            "rho": 0.956,
+            "z": 2.3,
+            "p_value": 0.0216
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.425,
+            "sharpe_b": 0.318,
+            "diff": 0.107,
+            "rho": 0.955,
+            "z": 1.58,
+            "p_value": 0.1144
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.5,
+            "sharpe_b": 0.446,
+            "diff": 0.055,
+            "rho": 0.96,
+            "z": 0.86,
+            "p_value": 0.3902
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.471,
+            "sharpe_b": 0.5,
+            "diff": -0.029,
+            "rho": 0.851,
+            "z": -0.24,
+            "p_value": 0.8115
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.39,
+            "sharpe_b": 0.193,
+            "diff": 0.198,
+            "rho": 0.96,
+            "z": 2.08,
+            "p_value": 0.0378
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.335,
+            "sharpe_b": 0.193,
+            "diff": 0.142,
+            "rho": 0.958,
+            "z": 1.46,
+            "p_value": 0.1434
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.465,
+            "sharpe_b": 0.383,
+            "diff": 0.082,
+            "rho": 0.952,
+            "z": 0.79,
+            "p_value": 0.4305
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.39,
+            "sharpe_b": 0.465,
+            "diff": -0.075,
+            "rho": 0.829,
+            "z": -0.38,
+            "p_value": 0.7034
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.543,
+            "sharpe_b": 0.445,
+            "diff": 0.098,
+            "rho": 0.955,
+            "z": 1.08,
+            "p_value": 0.2785
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.511,
+            "sharpe_b": 0.445,
+            "diff": 0.066,
+            "rho": 0.951,
+            "z": 0.7,
+            "p_value": 0.4851
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.529,
+            "sharpe_b": 0.492,
+            "diff": 0.037,
+            "rho": 0.968,
+            "z": 0.47,
+            "p_value": 0.6359
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.543,
+            "sharpe_b": 0.529,
+            "diff": 0.015,
+            "rho": 0.872,
+            "z": 0.09,
+            "p_value": 0.9244
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 122,
+        "win_rate": 0.713,
+        "avg_trade": 0.0066
+      }
+    },
+    "EWT": {
+      "name": "Taiwan",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.613,
+          "sortino": 0.825,
+          "excess_return_pa": 0.1175,
+          "volatility_pa": 0.1916,
+          "cagr_total": 0.1215,
+          "max_drawdown_total": -0.4446,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.444,
+          "sortino": 0.603,
+          "excess_return_pa": 0.1147,
+          "volatility_pa": 0.2585,
+          "cagr_total": 0.1017,
+          "max_drawdown_total": -0.6291,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.55,
+          "sortino": 0.721,
+          "excess_return_pa": 0.1623,
+          "volatility_pa": 0.295,
+          "cagr_total": 0.1435,
+          "max_drawdown_total": -0.5937,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.613,
+          "sortino": 0.86,
+          "excess_return_pa": 0.0727,
+          "volatility_pa": 0.1186,
+          "cagr_total": 0.0846,
+          "max_drawdown_total": -0.2885,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.573,
+          "sortino": 0.772,
+          "excess_return_pa": 0.0713,
+          "volatility_pa": 0.1243,
+          "cagr_total": 0.0823,
+          "max_drawdown_total": -0.2913,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.613,
+            "sharpe_b": 0.444,
+            "diff": 0.169,
+            "rho": 0.946,
+            "z": 2.29,
+            "p_value": 0.0219
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.55,
+            "sharpe_b": 0.444,
+            "diff": 0.106,
+            "rho": 0.952,
+            "z": 1.53,
+            "p_value": 0.1266
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.613,
+            "sharpe_b": 0.573,
+            "diff": 0.04,
+            "rho": 0.97,
+            "z": 0.72,
+            "p_value": 0.4717
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.613,
+            "sharpe_b": 0.613,
+            "diff": -0.0,
+            "rho": 0.813,
+            "z": -0.0,
+            "p_value": 0.9998
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.393,
+            "sharpe_b": 0.179,
+            "diff": 0.214,
+            "rho": 0.952,
+            "z": 2.05,
+            "p_value": 0.0401
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.316,
+            "sharpe_b": 0.179,
+            "diff": 0.137,
+            "rho": 0.96,
+            "z": 1.44,
+            "p_value": 0.1491
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.495,
+            "sharpe_b": 0.409,
+            "diff": 0.086,
+            "rho": 0.96,
+            "z": 0.91,
+            "p_value": 0.3652
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.393,
+            "sharpe_b": 0.495,
+            "diff": -0.102,
+            "rho": 0.804,
+            "z": -0.48,
+            "p_value": 0.628
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.822,
+            "sharpe_b": 0.732,
+            "diff": 0.09,
+            "rho": 0.944,
+            "z": 0.88,
+            "p_value": 0.379
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.781,
+            "sharpe_b": 0.732,
+            "diff": 0.049,
+            "rho": 0.945,
+            "z": 0.49,
+            "p_value": 0.6272
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.714,
+            "sharpe_b": 0.699,
+            "diff": 0.015,
+            "rho": 0.98,
+            "z": 0.24,
+            "p_value": 0.8117
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.822,
+            "sharpe_b": 0.714,
+            "diff": 0.108,
+            "rho": 0.823,
+            "z": 0.6,
+            "p_value": 0.5497
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 153,
+        "win_rate": 0.712,
+        "avg_trade": 0.0057
+      }
+    },
+    "EWW": {
+      "name": "Mexico",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.354,
+          "sortino": 0.473,
+          "excess_return_pa": 0.0696,
+          "volatility_pa": 0.1967,
+          "cagr_total": 0.0679,
+          "max_drawdown_total": -0.4505,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.224,
+          "sortino": 0.301,
+          "excess_return_pa": 0.0616,
+          "volatility_pa": 0.275,
+          "cagr_total": 0.04,
+          "max_drawdown_total": -0.6494,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.282,
+          "sortino": 0.365,
+          "excess_return_pa": 0.0846,
+          "volatility_pa": 0.3005,
+          "cagr_total": 0.0563,
+          "max_drawdown_total": -0.6369,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.447,
+          "sortino": 0.621,
+          "excess_return_pa": 0.0546,
+          "volatility_pa": 0.1222,
+          "cagr_total": 0.0646,
+          "max_drawdown_total": -0.2764,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.418,
+          "sortino": 0.567,
+          "excess_return_pa": 0.0513,
+          "volatility_pa": 0.123,
+          "cagr_total": 0.0611,
+          "max_drawdown_total": -0.2552,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.354,
+            "sharpe_b": 0.224,
+            "diff": 0.13,
+            "rho": 0.948,
+            "z": 1.78,
+            "p_value": 0.0749
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.282,
+            "sharpe_b": 0.224,
+            "diff": 0.058,
+            "rho": 0.954,
+            "z": 0.85,
+            "p_value": 0.3967
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.447,
+            "sharpe_b": 0.418,
+            "diff": 0.029,
+            "rho": 0.943,
+            "z": 0.38,
+            "p_value": 0.702
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.354,
+            "sharpe_b": 0.447,
+            "diff": -0.093,
+            "rho": 0.826,
+            "z": -0.7,
+            "p_value": 0.4844
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.364,
+            "sharpe_b": 0.153,
+            "diff": 0.211,
+            "rho": 0.953,
+            "z": 2.04,
+            "p_value": 0.0417
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.292,
+            "sharpe_b": 0.153,
+            "diff": 0.139,
+            "rho": 0.961,
+            "z": 1.47,
+            "p_value": 0.1412
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.462,
+            "sharpe_b": 0.386,
+            "diff": 0.076,
+            "rho": 0.965,
+            "z": 0.85,
+            "p_value": 0.3955
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.364,
+            "sharpe_b": 0.462,
+            "diff": -0.098,
+            "rho": 0.813,
+            "z": -0.48,
+            "p_value": 0.6322
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.345,
+            "sharpe_b": 0.295,
+            "diff": 0.05,
+            "rho": 0.944,
+            "z": 0.49,
+            "p_value": 0.6225
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.273,
+            "sharpe_b": 0.295,
+            "diff": -0.022,
+            "rho": 0.948,
+            "z": -0.22,
+            "p_value": 0.8238
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.434,
+            "sharpe_b": 0.443,
+            "diff": -0.009,
+            "rho": 0.926,
+            "z": -0.07,
+            "p_value": 0.9404
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.345,
+            "sharpe_b": 0.434,
+            "diff": -0.088,
+            "rho": 0.84,
+            "z": -0.51,
+            "p_value": 0.6075
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 124,
+        "win_rate": 0.685,
+        "avg_trade": 0.0032
+      }
+    },
+    "EZA": {
+      "name": "South Africa",
+      "group": "Emerging",
+      "start": "2007-02-07",
+      "summary": {
+        "strategy": {
+          "sharpe": 0.382,
+          "sortino": 0.534,
+          "excess_return_pa": 0.0952,
+          "volatility_pa": 0.2493,
+          "cagr_total": 0.0829,
+          "max_drawdown_total": -0.4655,
+          "days": 4970
+        },
+        "market": {
+          "sharpe": 0.265,
+          "sortino": 0.363,
+          "excess_return_pa": 0.0917,
+          "volatility_pa": 0.3464,
+          "cagr_total": 0.0481,
+          "max_drawdown_total": -0.6464,
+          "days": 4970
+        },
+        "book1": {
+          "sharpe": 0.345,
+          "sortino": 0.472,
+          "excess_return_pa": 0.1301,
+          "volatility_pa": 0.3768,
+          "cagr_total": 0.0774,
+          "max_drawdown_total": -0.6936,
+          "days": 4970
+        },
+        "book2": {
+          "sharpe": 0.411,
+          "sortino": 0.582,
+          "excess_return_pa": 0.0604,
+          "volatility_pa": 0.1468,
+          "cagr_total": 0.0673,
+          "max_drawdown_total": -0.2758,
+          "days": 4970
+        },
+        "drift": {
+          "sharpe": 0.396,
+          "sortino": 0.548,
+          "excess_return_pa": 0.0556,
+          "volatility_pa": 0.1405,
+          "cagr_total": 0.0632,
+          "max_drawdown_total": -0.2662,
+          "days": 4970
+        }
+      },
+      "tests": {
+        "full": {
+          "ca_vs_market": {
+            "sharpe_a": 0.382,
+            "sharpe_b": 0.265,
+            "diff": 0.117,
+            "rho": 0.959,
+            "z": 1.82,
+            "p_value": 0.0686
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.345,
+            "sharpe_b": 0.265,
+            "diff": 0.081,
+            "rho": 0.955,
+            "z": 1.2,
+            "p_value": 0.231
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.411,
+            "sharpe_b": 0.396,
+            "diff": 0.016,
+            "rho": 0.966,
+            "z": 0.27,
+            "p_value": 0.7898
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.382,
+            "sharpe_b": 0.411,
+            "diff": -0.029,
+            "rho": 0.875,
+            "z": -0.26,
+            "p_value": 0.7941
+          }
+        },
+        "2007_2015": {
+          "ca_vs_market": {
+            "sharpe_a": 0.367,
+            "sharpe_b": 0.188,
+            "diff": 0.179,
+            "rho": 0.964,
+            "z": 2.0,
+            "p_value": 0.0452
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.33,
+            "sharpe_b": 0.188,
+            "diff": 0.142,
+            "rho": 0.964,
+            "z": 1.57,
+            "p_value": 0.1158
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.402,
+            "sharpe_b": 0.35,
+            "diff": 0.052,
+            "rho": 0.976,
+            "z": 0.71,
+            "p_value": 0.4747
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.367,
+            "sharpe_b": 0.402,
+            "diff": -0.035,
+            "rho": 0.864,
+            "z": -0.2,
+            "p_value": 0.8425
+          }
+        },
+        "2016_2026": {
+          "ca_vs_market": {
+            "sharpe_a": 0.396,
+            "sharpe_b": 0.342,
+            "diff": 0.054,
+            "rho": 0.955,
+            "z": 0.59,
+            "p_value": 0.5556
+          },
+          "book1_vs_market": {
+            "sharpe_a": 0.361,
+            "sharpe_b": 0.342,
+            "diff": 0.019,
+            "rho": 0.946,
+            "z": 0.19,
+            "p_value": 0.8526
+          },
+          "book2_vs_drift": {
+            "sharpe_a": 0.419,
+            "sharpe_b": 0.433,
+            "diff": -0.014,
+            "rho": 0.958,
+            "z": -0.16,
+            "p_value": 0.876
+          },
+          "ca_vs_book2_unregistered": {
+            "sharpe_a": 0.396,
+            "sharpe_b": 0.419,
+            "diff": -0.023,
+            "rho": 0.888,
+            "z": -0.16,
+            "p_value": 0.8741
+          }
+        }
+      },
+      "dip_trades": {
+        "trades": 130,
+        "win_rate": 0.677,
+        "avg_trade": 0.0048
+      }
+    }
+  },
+  "pooled": {
+    "full": {
+      "ca_vs_market": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 1.34,
+        "mean_rho": 0.733,
+        "mean_z": 2.2,
+        "pooled_z": 2.54,
+        "p_value": 0.0109
+      },
+      "ca_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.12,
+        "mean_rho": 0.871,
+        "mean_z": 2.306,
+        "pooled_z": 2.44,
+        "p_value": 0.0149
+      },
+      "ca_vs_market__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.2,
+        "mean_rho": 0.806,
+        "mean_z": 2.163,
+        "pooled_z": 2.37,
+        "p_value": 0.0178
+      },
+      "ca_vs_market__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.34,
+        "mean_rho": 0.705,
+        "mean_z": 2.161,
+        "pooled_z": 2.5,
+        "p_value": 0.0124
+      },
+      "book1_vs_market": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 2.62,
+        "mean_rho": 0.347,
+        "mean_z": 1.399,
+        "pooled_z": 2.27,
+        "p_value": 0.0235
+      },
+      "book1_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.41,
+        "mean_rho": 0.635,
+        "mean_z": 1.344,
+        "pooled_z": 1.6,
+        "p_value": 0.1103
+      },
+      "book1_vs_market__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.96,
+        "mean_rho": 0.429,
+        "mean_z": 1.341,
+        "pooled_z": 1.88,
+        "p_value": 0.0605
+      },
+      "book1_vs_market__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 2.43,
+        "mean_rho": 0.314,
+        "mean_z": 1.497,
+        "pooled_z": 2.33,
+        "p_value": 0.0197
+      },
+      "book2_vs_drift": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 1.56,
+        "mean_rho": 0.623,
+        "mean_z": 0.505,
+        "pooled_z": 0.63,
+        "p_value": 0.5286
+      },
+      "book2_vs_drift__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.25,
+        "mean_rho": 0.747,
+        "mean_z": 0.644,
+        "pooled_z": 0.72,
+        "p_value": 0.4709
+      },
+      "book2_vs_drift__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.1,
+        "mean_rho": 0.89,
+        "mean_z": 0.467,
+        "pooled_z": 0.49,
+        "p_value": 0.6236
+      },
+      "book2_vs_drift__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.34,
+        "mean_rho": 0.701,
+        "mean_z": 0.444,
+        "pooled_z": 0.52,
+        "p_value": 0.6064
+      },
+      "ca_vs_book2_unregistered": {
+        "wins": 4,
+        "n": 19,
+        "n_eff": 1.35,
+        "mean_rho": 0.728,
+        "mean_z": -0.249,
+        "pooled_z": -0.29,
+        "p_value": 0.7726
+      },
+      "ca_vs_book2_unregistered__US segments": {
+        "wins": 3,
+        "n": 5,
+        "n_eff": 1.11,
+        "mean_rho": 0.881,
+        "mean_z": 0.09,
+        "pooled_z": 0.09,
+        "p_value": 0.9246
+      },
+      "ca_vs_book2_unregistered__Developed ex-US": {
+        "wins": 0,
+        "n": 7,
+        "n_eff": 1.2,
+        "mean_rho": 0.805,
+        "mean_z": -0.419,
+        "pooled_z": -0.46,
+        "p_value": 0.6465
+      },
+      "ca_vs_book2_unregistered__Emerging": {
+        "wins": 1,
+        "n": 7,
+        "n_eff": 1.36,
+        "mean_rho": 0.689,
+        "mean_z": -0.321,
+        "pooled_z": -0.38,
+        "p_value": 0.7073
+      }
+    },
+    "2007_2015": {
+      "ca_vs_market": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 1.26,
+        "mean_rho": 0.78,
+        "mean_z": 1.961,
+        "pooled_z": 2.2,
+        "p_value": 0.0275
+      },
+      "ca_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.08,
+        "mean_rho": 0.903,
+        "mean_z": 2.108,
+        "pooled_z": 2.19,
+        "p_value": 0.0282
+      },
+      "ca_vs_market__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.19,
+        "mean_rho": 0.817,
+        "mean_z": 1.727,
+        "pooled_z": 1.88,
+        "p_value": 0.06
+      },
+      "ca_vs_market__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.23,
+        "mean_rho": 0.779,
+        "mean_z": 2.09,
+        "pooled_z": 2.32,
+        "p_value": 0.0203
+      },
+      "book1_vs_market": {
+        "wins": 18,
+        "n": 19,
+        "n_eff": 2.49,
+        "mean_rho": 0.369,
+        "mean_z": 1.284,
+        "pooled_z": 2.02,
+        "p_value": 0.0429
+      },
+      "book1_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.32,
+        "mean_rho": 0.696,
+        "mean_z": 1.222,
+        "pooled_z": 1.4,
+        "p_value": 0.1602
+      },
+      "book1_vs_market__Developed ex-US": {
+        "wins": 6,
+        "n": 7,
+        "n_eff": 1.92,
+        "mean_rho": 0.439,
+        "mean_z": 1.003,
+        "pooled_z": 1.39,
+        "p_value": 0.1641
+      },
+      "book1_vs_market__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 2.17,
+        "mean_rho": 0.371,
+        "mean_z": 1.609,
+        "pooled_z": 2.37,
+        "p_value": 0.0178
+      },
+      "book2_vs_drift": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 1.29,
+        "mean_rho": 0.766,
+        "mean_z": 0.888,
+        "pooled_z": 1.01,
+        "p_value": 0.3139
+      },
+      "book2_vs_drift__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.08,
+        "mean_rho": 0.909,
+        "mean_z": 1.29,
+        "pooled_z": 1.34,
+        "p_value": 0.1803
+      },
+      "book2_vs_drift__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.15,
+        "mean_rho": 0.846,
+        "mean_z": 0.709,
+        "pooled_z": 0.76,
+        "p_value": 0.4469
+      },
+      "book2_vs_drift__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.28,
+        "mean_rho": 0.747,
+        "mean_z": 0.781,
+        "pooled_z": 0.88,
+        "p_value": 0.3771
+      },
+      "ca_vs_book2_unregistered": {
+        "wins": 0,
+        "n": 19,
+        "n_eff": 1.27,
+        "mean_rho": 0.777,
+        "mean_z": -0.434,
+        "pooled_z": -0.49,
+        "p_value": 0.6254
+      },
+      "ca_vs_book2_unregistered__US segments": {
+        "wins": 0,
+        "n": 5,
+        "n_eff": 1.08,
+        "mean_rho": 0.912,
+        "mean_z": -0.26,
+        "pooled_z": -0.27,
+        "p_value": 0.7874
+      },
+      "ca_vs_book2_unregistered__Developed ex-US": {
+        "wins": 0,
+        "n": 7,
+        "n_eff": 1.19,
+        "mean_rho": 0.814,
+        "mean_z": -0.661,
+        "pooled_z": -0.72,
+        "p_value": 0.4707
+      },
+      "ca_vs_book2_unregistered__Emerging": {
+        "wins": 0,
+        "n": 7,
+        "n_eff": 1.24,
+        "mean_rho": 0.775,
+        "mean_z": -0.33,
+        "pooled_z": -0.37,
+        "p_value": 0.7134
+      }
+    },
+    "2016_2026": {
+      "ca_vs_market": {
+        "wins": 19,
+        "n": 19,
+        "n_eff": 1.45,
+        "mean_rho": 0.671,
+        "mean_z": 1.068,
+        "pooled_z": 1.29,
+        "p_value": 0.1981
+      },
+      "ca_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.15,
+        "mean_rho": 0.835,
+        "mean_z": 1.124,
+        "pooled_z": 1.21,
+        "p_value": 0.2277
+      },
+      "ca_vs_market__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.22,
+        "mean_rho": 0.788,
+        "mean_z": 1.214,
+        "pooled_z": 1.34,
+        "p_value": 0.1796
+      },
+      "ca_vs_market__Emerging": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 1.52,
+        "mean_rho": 0.599,
+        "mean_z": 0.881,
+        "pooled_z": 1.09,
+        "p_value": 0.2765
+      },
+      "book1_vs_market": {
+        "wins": 17,
+        "n": 19,
+        "n_eff": 2.76,
+        "mean_rho": 0.327,
+        "mean_z": 0.662,
+        "pooled_z": 1.1,
+        "p_value": 0.2715
+      },
+      "book1_vs_market__US segments": {
+        "wins": 5,
+        "n": 5,
+        "n_eff": 1.51,
+        "mean_rho": 0.576,
+        "mean_z": 0.644,
+        "pooled_z": 0.79,
+        "p_value": 0.4281
+      },
+      "book1_vs_market__Developed ex-US": {
+        "wins": 7,
+        "n": 7,
+        "n_eff": 2.0,
+        "mean_rho": 0.417,
+        "mean_z": 0.89,
+        "pooled_z": 1.26,
+        "p_value": 0.2081
+      },
+      "book1_vs_market__Emerging": {
+        "wins": 5,
+        "n": 7,
+        "n_eff": 2.71,
+        "mean_rho": 0.263,
+        "mean_z": 0.447,
+        "pooled_z": 0.74,
+        "p_value": 0.4613
+      },
+      "book2_vs_drift": {
+        "wins": 8,
+        "n": 19,
+        "n_eff": 1.76,
+        "mean_rho": 0.546,
+        "mean_z": -0.074,
+        "pooled_z": -0.1,
+        "p_value": 0.9222
+      },
+      "book2_vs_drift__US segments": {
+        "wins": 1,
+        "n": 5,
+        "n_eff": 1.31,
+        "mean_rho": 0.701,
+        "mean_z": -0.326,
+        "pooled_z": -0.37,
+        "p_value": 0.7086
+      },
+      "book2_vs_drift__Developed ex-US": {
+        "wins": 4,
+        "n": 7,
+        "n_eff": 1.07,
+        "mean_rho": 0.928,
+        "mean_z": 0.037,
+        "pooled_z": 0.04,
+        "p_value": 0.9694
+      },
+      "book2_vs_drift__Emerging": {
+        "wins": 3,
+        "n": 7,
+        "n_eff": 1.38,
+        "mean_rho": 0.678,
+        "mean_z": -0.004,
+        "pooled_z": -0.01,
+        "p_value": 0.996
+      },
+      "ca_vs_book2_unregistered": {
+        "wins": 13,
+        "n": 19,
+        "n_eff": 1.46,
+        "mean_rho": 0.665,
+        "mean_z": 0.159,
+        "pooled_z": 0.19,
+        "p_value": 0.847
+      },
+      "ca_vs_book2_unregistered__US segments": {
+        "wins": 4,
+        "n": 5,
+        "n_eff": 1.14,
+        "mean_rho": 0.846,
+        "mean_z": 0.406,
+        "pooled_z": 0.43,
+        "p_value": 0.6646
+      },
+      "ca_vs_book2_unregistered__Developed ex-US": {
+        "wins": 6,
+        "n": 7,
+        "n_eff": 1.22,
+        "mean_rho": 0.793,
+        "mean_z": 0.216,
+        "pooled_z": 0.24,
+        "p_value": 0.812
+      },
+      "ca_vs_book2_unregistered__Emerging": {
+        "wins": 3,
+        "n": 7,
+        "n_eff": 1.56,
+        "mean_rho": 0.58,
+        "mean_z": -0.073,
+        "pooled_z": -0.09,
+        "p_value": 0.9274
+      }
+    }
+  },
+  "M1": {
+    "wins": 19,
+    "p_value": 0.0109,
+    "pass": true
+  },
+  "M2": {
+    "full": {
+      "wins": 19,
+      "p_value": 0.0235
+    },
+    "2007_2015": {
+      "wins": 18,
+      "p_value": 0.0429
+    },
+    "2016_2026": {
+      "wins": 17,
+      "p_value": 0.2715
+    },
+    "pass": false
+  },
+  "M3": {
+    "wins": 19,
+    "spearman_vol_vs_premium": 0.739,
+    "pass": true
+  },
+  "M4": {
+    "wins_at_1bp": 19,
+    "wins_at_5bp": 19,
+    "pass": true,
+    "break_even_bp": {
+      "SPY": 37.7,
+      "QQQ": 27.1,
+      "IWM": 33.3,
+      "MDY": 32.9,
+      "DIA": 27.1,
+      "OEF": 39.4,
+      "EFA": 32.3,
+      "EZU": 36.6,
+      "EWG": 38.1,
+      "EWU": 37.1,
+      "EWJ": 29.2,
+      "EWA": 34.7,
+      "EWC": 21.9,
+      "EEM": 48.3,
+      "EWZ": 36.7,
+      "FXI": 33.2,
+      "EWY": 43.3,
+      "EWT": 35.8,
+      "EWW": 29.7,
+      "EZA": 33.9
+    }
+  },
+  "generalises": false
+}
