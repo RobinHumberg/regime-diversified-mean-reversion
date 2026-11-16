@@ -1,4 +1,4 @@
-// Deck: "Does C-A travel?" — styled after the club's PM session decks (no logo).
+// Deck: "Does the strategy travel?" — styled after the club's PM session decks (no logo).
 const path = require("path");
 const pptxgen = require("pptxgenjs");
 const { applyTheme } = require(process.env.PPTX_SKILL + "/scripts/apply_theme.js");
@@ -115,10 +115,10 @@ pres.addSection({ title: "Introduction" });
   const s = pres.addSlide({ masterName: "TITLE", sectionTitle: "Introduction" });
   s.addText("Regime-Diversified Mean Reversion", { placeholder: "title" });
   s.addText([
-    { text: "DOES THE STRATEGY TRAVEL? C-A ON 19 OTHER EQUITY MARKETS", options: { breakLine: true } },
+    { text: "DOES THE STRATEGY TRAVEL? 19 OTHER EQUITY MARKETS", options: { breakLine: true } },
     { text: "Public Markets Research · November 2026", options: { bold: false, color: MUTED, charSpacing: 0, fontSize: 14 } },
   ], { placeholder: "sub" });
-  s.addNotes("Title. One frozen strategy (C-A), replicated on US segments, developed markets outside the US and emerging markets.");
+  s.addNotes("Title. One frozen strategy, replicated on US segments, developed markets outside the US and emerging markets.");
 }
 
 // ---------- 2 disclaimer ----------
@@ -133,7 +133,7 @@ pres.addSection({ title: "Introduction" });
 // ---------- 3 agenda ----------
 {
   const s = content("Overview of Today's Session", "AGENDA", "Introduction");
-  const items = ["Recap: the C-A strategy on the S&P 500", "Why the two mechanisms should work elsewhere",
+  const items = ["Recap: the strategy on the S&P 500", "Why the two mechanisms should work elsewhere",
     "Implementation: data, code and testing discipline", "Research design and four registered hypotheses",
     "Results: headline, dip overlay, rebalancing, costs", "Verdict and honest caveats", "Q&A"];
   items.forEach((t, i) => {
@@ -154,7 +154,7 @@ pres.addSection({ title: "Introduction" });
 // ---------- 4 strategy recap ----------
 pres.addSection({ title: "Strategy and theory" });
 {
-  const s = content("The Strategy: C-A", "RECAP OF THE FROZEN RULES", "Strategy and theory");
+  const s = content("The Strategy", "RECAP OF THE FROZEN RULES", "Strategy and theory");
   const card = (x, head, sub, items) => {
     s.addShape(pres.shapes.RECTANGLE, { x, y: 1.9, w: 5.55, h: 3.2, fill: { color: TINT }, line: { color: TINT, width: 0 },
       objectName: `card-${head}` });
@@ -202,7 +202,7 @@ pres.addSection({ title: "Strategy and theory" });
     { text: "Registered prediction: ", options: { bold: true } },
     { text: "the dip overlay should be weaker in emerging markets, because their indices show more short-horizon momentum and USD-listed ETFs mix currency moves into their dips." }]);
   source(s, "Lehmann (1990); Nagel (2012); Booth & Fama (1992); Erb & Harvey (2006)");
-  s.addNotes("The two books rest on different premia. If C-A is more than a US artefact, both should show up abroad.");
+  s.addNotes("The two books rest on different premia. If the strategy is more than a US artefact, both should show up abroad.");
 }
 
 // ---------- implementation: section ----------
@@ -320,7 +320,7 @@ const CODE = "Courier New";
 {
   const s = content("How We Keep the Backtest Honest", "EVALUATION DISCIPLINE", "Implementation");
   const seg = [
-    [0.6, 5.45, "2007–2015 · pre-validation", TINT, BURG, "C-A 0.63 vs SPY 0.35"],
+    [0.6, 5.45, "2007–2015 · pre-validation", TINT, BURG, "Strategy 0.63 vs SPY 0.35"],
     [6.05, 4.8, "2016 – 2023-10 · validation", LINE, INK, "2016–19: 1.13 vs 1.00 · 2020–23: 0.52 vs 0.41"],
     [10.85, 1.85, "Holdout", BURG, "FFFFFF", "1.42 vs 1.09, p = 0.165"],
   ];
@@ -331,7 +331,7 @@ const CODE = "Courier New";
     txt(s, cap, { x: i === 2 ? x - 1.0 : x + 0.15, y: 2.75, w: i === 2 ? w + 1.0 : w - 0.3, h: 0.35, fontSize: 13,
       color: MUTED, align: i === 2 ? "right" : "left" });
   });
-  txt(s, "Sharpe ratios of C-A vs SPY. The holdout (2023-11 to 2026-11) was evaluated once, after the rules were frozen.",
+  txt(s, "Sharpe ratios of the strategy vs SPY. The holdout (2023-11 to 2026-11) was evaluated once, after the rules were frozen.",
     { x: 0.6, y: 3.15, w: 12.1, h: 0.35, fontSize: 13, color: MUTED, italic: true });
   const T = [
     ["Pre-registration", "Hypotheses, parameters and success conditions are committed to git before the first number."],
@@ -345,7 +345,7 @@ const CODE = "Courier New";
     txt(s, h, { x: x + 0.3, y: 3.95, w: 3.3, h: 0.5, fontFace: "Garamond", fontSize: 22, bold: true, color: BURG });
     txt(s, b, { x: x + 0.3, y: 4.6, w: 3.3, h: 1.6, fontSize: 16 });
   });
-  s.addNotes("34 candidates were tested over seven rounds before C-A was chosen; the Deflated Sharpe Ratio of 0.78 accounts for that search.");
+  s.addNotes("34 candidates were tested over seven rounds before the strategy was chosen; the Deflated Sharpe Ratio of 0.78 accounts for that search.");
 }
 
 // ---------- 6 design ----------
@@ -378,7 +378,7 @@ const CODE = "Courier New";
 {
   const s = content("Four Registered Hypotheses", "SUCCESS CONDITIONS FIXED IN ADVANCE", "Implementation");
   const H = [
-    ["M1", "C-A beats buy & hold of the local market", "Treasuries and gold diversify any equity market", "≥ 15 of 19 markets and pooled p < 0.10"],
+    ["M1", "The strategy beats buy & hold of the local market", "Treasuries and gold diversify any equity market", "≥ 15 of 19 markets and pooled p < 0.10"],
     ["M2", "The dip overlay (book 1) beats buy & hold", "Liquidity-provision premium exists everywhere", "≥ 13 of 19 and pooled p < 0.10, in both 2007–15 and 2016–26"],
     ["M3", "Monthly rebalancing beats never rebalancing", "Diversification return is mechanical", "≥ 13 of 19 and rank correlation with volatility > 0"],
     ["M4", "The result survives realistic costs", "Turnover is only ~10× per year", "At 5 bp per side, at most 2 markets fewer than at 1 bp"],
@@ -388,7 +388,7 @@ const CODE = "Courier New";
   s.addTable([tableHead(["", "Hypothesis", "Economic cause", "Success condition"]), ...body], {
     x: 0.6, y: 1.95, w: 12.1, colW: [0.7, 3.9, 3.6, 3.9], rowH: [0.45, 0.75, 0.75, 0.75, 0.75],
     border: { type: "solid", pt: 0.75, color: LINE }, margin: [4, 8, 4, 8] });
-  callout(s, 0.6, 5.65, 12.1, 0.85, [{ text: "“C-A generalises” = M1 and M2. ", options: { bold: true } },
+  callout(s, 0.6, 5.65, 12.1, 0.85, [{ text: "“The strategy generalises” = M1 and M2. ", options: { bold: true } },
     { text: "M1 alone would only say that bonds and gold diversify equities, which is not news." }], "🔑");
   s.addNotes("M2 is the strategy-specific test.");
 }
@@ -403,12 +403,12 @@ pres.addSection({ title: "Results" });
 
 // ---------- 9 headline chart ----------
 {
-  const s = content("C-A vs Buy & Hold", "SHARPE RATIO 2007–2026, EXCESS OVER T-BILL, USD", "Results");
-  s.addImage({ path: path.join(__dirname, "chart_headline.png"), x: 0.45, y: 1.7, w: 8.3, h: 5.15, altText: "Sharpe ratio of C-A and buy and hold in 20 markets" });
-  stat(s, 9.2, 1.9, 3.6, "19 / 19", "markets: C-A has the higher Sharpe");
+  const s = content("Strategy vs Buy & Hold", "SHARPE RATIO 2007–2026, EXCESS OVER T-BILL, USD", "Results");
+  s.addImage({ path: path.join(__dirname, "chart_headline.png"), x: 0.45, y: 1.7, w: 8.3, h: 5.15, altText: "Sharpe ratio of the strategy and buy and hold in 20 markets" });
+  stat(s, 9.2, 1.9, 3.6, "19 / 19", "markets: the strategy has the higher Sharpe");
   stat(s, 9.2, 3.35, 3.6, "p = 0.011", "pooled across markets");
   stat(s, 9.2, 4.8, 3.6, "n_eff = 1.3", "differences are 73 % correlated: one common cause");
-  s.addNotes("C-A beats buy & hold everywhere. But the 19 wins share one cause, the bond and gold half, so they count as about 1.3 independent markets.");
+  s.addNotes("The strategy beats buy & hold everywhere. But the 19 wins share one cause, the bond and gold half, so they count as about 1.3 independent markets.");
 }
 
 // ---------- 11 overlay ----------
@@ -418,7 +418,7 @@ pres.addSection({ title: "Results" });
   stat(s, 9.2, 1.9, 3.6, "19 / 19", "markets: the overlay adds Sharpe");
   stat(s, 9.2, 3.35, 3.6, "2 of 19", "significant on their own (OEF, EEM)");
   stat(s, 9.2, 4.8, 3.6, "p = 0.024", "pooled, n_eff = 2.6 (differences only 35 % correlated)");
-  s.addNotes("The overlay is the strategy-specific part. It is positive everywhere and explains 14 to 62 percent of C-A's edge; book 2 explains the rest.");
+  s.addNotes("The overlay is the strategy-specific part. It is positive everywhere and explains 14 to 62 percent of the strategy's edge; book 2 explains the rest.");
 }
 
 // ---------- 12 overlay faded ----------
@@ -456,7 +456,7 @@ pres.addSection({ title: "Results" });
   txt(s, "A possible explanation (untested)", { x: 0.6, y: 5.0, w: 12, h: 0.4, fontSize: 18, bold: true });
   bullets(s, [
     "A US-listed EM ETF trades while its local markets are closed, so US-hours selling can push it below the value of its holdings",
-    "That gap closes the next day: an ETF-microstructure effect, not the index reversal C-A is built on. Testing it needs NAV or local-index data",
+    "That gap closes the next day: an ETF-microstructure effect, not the index reversal the strategy is built on. Testing it needs NAV or local-index data",
   ], { x: 0.6, y: 5.45, w: 12.1, h: 1.3, fontSize: 15, paraSpaceAfter: 6 });
   s.addNotes("We report the failed prediction instead of hiding it. The explanation is a hypothesis for a new registered study.");
 }
@@ -477,8 +477,8 @@ pres.addSection({ title: "Results" });
 
 // ---------- 16 book 2 alone ----------
 {
-  const s = content("But: Book 2 Alone Was Often Better", "C-A MINUS BOOK 2 ALONE, SHARPE · NOT REGISTERED", "Results");
-  s.addImage({ path: path.join(__dirname, "chart_book2.png"), x: 0.45, y: 1.7, w: 7.6, h: 5.15, altText: "C-A minus book 2 alone, Sharpe by market" });
+  const s = content("But: Book 2 Alone Was Often Better", "STRATEGY MINUS BOOK 2 ALONE, SHARPE · NOT REGISTERED", "Results");
+  s.addImage({ path: path.join(__dirname, "chart_book2.png"), x: 0.45, y: 1.7, w: 7.6, h: 5.15, altText: "Strategy minus book 2 alone, Sharpe by market" });
   stat(s, 8.5, 1.9, 4.2, "15 / 19", "markets where book 2 alone has the higher Sharpe");
   stat(s, 8.5, 3.3, 4.2, "p = 0.77", "pooled: none of the differences is significant");
   callout(s, 8.5, 4.85, 4.2, 1.8, [{ text: "No contradiction: ", options: { bold: true } },
@@ -500,7 +500,7 @@ pres.addSection({ title: "Results" });
 pres.addSection({ title: "Verdict" });
 {
   const s = content("Verdict", "THE FOUR REGISTERED TESTS", "Verdict");
-  const V = [["M1", "C-A beats buy & hold", "19 / 19, pooled p = 0.011", true],
+  const V = [["M1", "Strategy beats buy & hold", "19 / 19, pooled p = 0.011", true],
     ["M2", "Dip overlay beats buy & hold, both halves", "2007–15: p = 0.043 · 2016–26: p = 0.27", false],
     ["M3", "Rebalancing beats never rebalancing", "19 / 19, ρ(volatility) = +0.74", true],
     ["M4", "Survives 5 bp per side", "19 / 19, break-even 22–48 bp", true]];
@@ -518,7 +518,7 @@ pres.addSection({ title: "Verdict" });
   });
   s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 5.5, w: 12.1, h: 1.05, fill: { color: BURG }, line: { color: BURG, width: 0 },
     objectName: "verdict-banner" });
-  s.addText([{ text: "“C-A generalises” (M1 and M2): not met. ", options: { bold: true } },
+  s.addText([{ text: "“The strategy generalises” (M1 and M2): not met. ", options: { bold: true } },
     { text: "The rebalancing book travels; the dip overlay travels in sign, but not in strength." }],
   { isTextBox: true, x: 0.9, y: 5.5, w: 11.5, h: 1.05, valign: "middle", margin: 0, fontSize: 17, color: "FFFFFF" });
   s.addNotes("Three of four registered tests pass, but the one that tests the strategy-specific idea fails after 2016.");
@@ -545,9 +545,9 @@ pres.addSection({ title: "Verdict" });
 {
   const s = content("Takeaways", "WHAT FOLLOWS FROM THE STUDY", "Verdict");
   const T = [
-    ["Rebalancing travels", "Its premium shows up in every market and grows with volatility. This half of C-A does not depend on the US."],
-    ["The dip overlay travels in sign, not in strength", "Positive in all 19 markets, but the evidence sits before 2016. It is no reason to trade C-A abroad instead of on SPY."],
-    ["C-A on SPY stays the strategy", "Nothing here changed its rules. Next: the forward test, and a newly registered study of the EEM gain with NAV data."],
+    ["Rebalancing travels", "Its premium shows up in every market and grows with volatility. This half of the strategy does not depend on the US."],
+    ["The dip overlay travels in sign, not in strength", "Positive in all 19 markets, but the evidence sits before 2016. It is no reason to trade the strategy abroad instead of on SPY."],
+    ["The strategy stays on SPY", "Nothing here changed its rules. Next: the forward test, and a newly registered study of the EEM gain with NAV data."],
   ];
   T.forEach(([h, b], i) => {
     const y = 1.95 + i * 1.5;
@@ -585,26 +585,26 @@ pres.addSection({ title: "Backup" });
     ["Emerging (7)", "0.42", "0.27", "+0.10", "−50 %", "−69 %", "37 bp"]];
   const body = G.map((r) => r.map((c, j) => ({ text: c, options: { fontSize: 15, align: j === 0 ? "left" : "center",
     bold: j === 0 || j === 1, color: j === 1 ? BURG : INK, valign: "middle" } })));
-  s.addTable([tableHead(["Group", "C-A Sharpe", "Buy & hold", "Book 1 − B&H", "C-A max DD", "B&H max DD", "Break-even"])
+  s.addTable([tableHead(["Group", "Strategy Sharpe", "Buy & hold", "Book 1 − B&H", "Strategy max DD", "B&H max DD", "Break-even"])
     .map((c, j) => ({ ...c, options: { ...c.options, align: j === 0 ? "left" : "center" } })), ...body], {
     x: 0.6, y: 1.95, w: 12.1, colW: [2.8, 1.55, 1.55, 1.6, 1.55, 1.55, 1.5], rowH: 0.55,
     border: { type: "solid", pt: 0.75, color: LINE }, margin: [4, 8, 4, 8] });
   stat(s, 0.6, 4.95, 3.7, "~20 pp", "smaller maximum drawdown than buy & hold, in every group");
   stat(s, 4.75, 4.95, 3.7, "18 / 19", "markets with a higher CAGR too (exception: QQQ, 15.3 % vs 15.6 %)");
-  stat(s, 8.9, 4.95, 3.8, "0.42 vs 0.78", "C-A abroad stays far below C-A on SPY: the market's own Sharpe matters most");
+  stat(s, 8.9, 4.95, 3.8, "0.42 vs 0.78", "abroad the strategy stays far below its SPY result: the market's own Sharpe matters most");
   s.addNotes("Group values are simple averages. The level of the local equity Sharpe dominates; the strategy adds a similar amount everywhere.");
 }
 
 // ---------- 15 equity curves ----------
 {
-  const s = content("Growth of 1 USD", "C-A VS BUY & HOLD, LOG SCALE", "Backup");
+  const s = content("Growth of 1 USD", "STRATEGY VS BUY & HOLD, LOG SCALE", "Backup");
   const names = { IWM: "Russell 2000 (IWM)", EFA: "MSCI EAFE (EFA)", EEM: "MSCI Emerging (EEM)" };
   ["IWM", "EFA", "EEM"].forEach((t, i) => {
     const x = 0.5 + i * 4.15;
     txt(s, names[t], { x: x + 0.15, y: 1.85, w: 3.8, h: 0.4, fontSize: 16, bold: true });
-    s.addImage({ path: path.join(__dirname, `chart_equity_${t}.png`), x, y: 2.3, w: 4.0, h: 4.4, altText: `Growth of 1 USD, C-A vs buy and hold, ${names[t]}` });
+    s.addImage({ path: path.join(__dirname, `chart_equity_${t}.png`), x, y: 2.3, w: 4.0, h: 4.4, altText: `Growth of 1 USD, strategy vs buy and hold, ${names[t]}` });
   });
-  s.addText([{ text: "━  C-A", options: { color: BURG, bold: true } }, { text: "      ━  Buy & hold", options: { color: GREY, bold: true } }],
+  s.addText([{ text: "━  Strategy", options: { color: BURG, bold: true } }, { text: "      ━  Buy & hold", options: { color: GREY, bold: true } }],
     { isTextBox: true, x: 8.7, y: 1.17, w: 4.0, h: 0.4, fontSize: 14, align: "right", margin: 0, valign: "top" });
   s.addNotes("Total-return growth including T-bill interest on cash.");
 }

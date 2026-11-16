@@ -63,7 +63,7 @@ def legend_below(ax, handles, labels, ncol):
               handlelength=1.0, columnspacing=1.6)
 
 
-# headline: C-A vs buy & hold
+# headline: strategy vs buy & hold
 o = ordered("ca_sharpe")
 fig, ax = barh_axes(8.3, 5.15, len(o))
 y = range(len(o))
@@ -72,7 +72,7 @@ ca = ax.barh([i - 0.19 for i in y], [r["ca_sharpe"] for r in o], height=0.36, co
 ax.set_yticks(list(y), [label(r) for r in o], fontsize=10)
 ax.set_xlim(0, 0.9)
 ax.xaxis.set_major_formatter(lambda v, _: f"{v:.1f}")
-legend_below(ax, [bh, ca], ["Buy & hold", "C-A"], 2)
+legend_below(ax, [bh, ca], ["Buy & hold", "Strategy"], 2)
 fig.tight_layout()
 save(fig, "chart_headline.png")
 
@@ -126,7 +126,7 @@ ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=4, fontsize=12, 
 fig.tight_layout()
 save(fig, "chart_rebal.png")
 
-# C-A minus book 2 alone
+# strategy minus book 2 alone
 o = sorted(rows, key=lambda r: -r["ca_minus_book2"])
 fig, ax = barh_axes(7.6, 5.15, len(o))
 vals = [r["ca_minus_book2"] for r in o]
@@ -136,7 +136,7 @@ ax.set_yticks(range(len(o)), [label(r) for r in o], fontsize=10)
 ax.set_xlim(-0.1, 0.1)
 ax.set_xticks([-0.1, -0.05, 0, 0.05, 0.1])
 ax.xaxis.set_major_formatter(lambda v, _: signed(v))
-legend_below(ax, [plt.Rectangle((0, 0), 1, 1, color=c) for c in (BURG, ROSE)], ["C-A ahead", "Book 2 alone ahead"], 2)
+legend_below(ax, [plt.Rectangle((0, 0), 1, 1, color=c) for c in (BURG, ROSE)], ["Strategy ahead", "Book 2 alone ahead"], 2)
 fig.tight_layout()
 save(fig, "chart_book2.png")
 
