@@ -144,15 +144,15 @@ pres.addSection({ title: "Introduction" });
 {
   const s = content("Overview of Today's Session", "AGENDA", "Introduction");
   const items = ["Recap: the C-A strategy on the S&P 500", "Why the two mechanisms should work elsewhere",
-    "Research design and four registered hypotheses", "Results: headline, dip overlay, rebalancing, costs",
-    "Verdict and honest caveats", "Q&A"];
+    "Implementation: data, code and testing discipline", "Research design and four registered hypotheses",
+    "Results: headline, dip overlay, rebalancing, costs", "Verdict and honest caveats", "Q&A"];
   items.forEach((t, i) => {
-    const y = 1.95 + i * 0.75;
-    s.addShape(pres.shapes.OVAL, { x: 0.65, y, w: 0.5, h: 0.5, fill: { color: i === 3 ? BURG : "FFFFFF" },
+    const y = 1.95 + i * 0.65;
+    s.addShape(pres.shapes.OVAL, { x: 0.65, y, w: 0.5, h: 0.5, fill: { color: i === 4 ? BURG : "FFFFFF" },
       line: { color: BURG, width: 1.5 }, objectName: `agenda-dot-${i + 1}` });
     s.addText(String(i + 1), { isTextBox: true, x: 0.65, y, w: 0.5, h: 0.5, align: "center", valign: "middle", margin: 0,
-      fontFace: "Garamond", fontSize: 18, bold: true, color: i === 3 ? "FFFFFF" : BURG });
-    txt(s, t, { x: 1.4, y, w: 6.2, h: 0.5, valign: "middle", fontSize: 18 });
+      fontFace: "Garamond", fontSize: 18, bold: true, color: i === 4 ? "FFFFFF" : BURG });
+    txt(s, t, { x: 1.4, y, w: 6.6, h: 0.5, valign: "middle", fontSize: 18 });
   });
   s.addShape(pres.shapes.RECTANGLE, { x: 8.3, y: 1.95, w: 4.4, h: 4.25, fill: { color: TINT }, line: { color: TINT, width: 0 },
     objectName: "scope-card" });
@@ -162,9 +162,9 @@ pres.addSection({ title: "Introduction" });
 }
 
 // ---------- 4 strategy recap ----------
-pres.addSection({ title: "Strategy and design" });
+pres.addSection({ title: "Strategy and theory" });
 {
-  const s = content("The Strategy: C-A", "RECAP OF THE FROZEN RULES", "Strategy and design");
+  const s = content("The Strategy: C-A", "RECAP OF THE FROZEN RULES", "Strategy and theory");
   const card = (x, head, sub, items) => {
     s.addShape(pres.shapes.RECTANGLE, { x, y: 1.9, w: 5.55, h: 3.2, fill: { color: TINT }, line: { color: TINT, width: 0 },
       objectName: `card-${head}` });
@@ -196,7 +196,7 @@ pres.addSection({ title: "Strategy and design" });
 
 // ---------- 5 theory ----------
 {
-  const s = content("Why It Should Travel", "ECONOMIC THEORY", "Strategy and design");
+  const s = content("Why It Should Travel", "ECONOMIC THEORY", "Strategy and theory");
   const col = (x, head, body, formula) => {
     txt(s, head, { x, y: 1.95, w: 5.6, h: 0.45, fontSize: 18, bold: true });
     txt(s, body, { x, y: 2.45, w: 5.6, h: 1.6, fontSize: 16 });
@@ -215,9 +215,153 @@ pres.addSection({ title: "Strategy and design" });
   s.addNotes("The two books rest on different premia. If C-A is more than a US artefact, both should show up abroad.");
 }
 
+// ---------- implementation: section ----------
+pres.addSection({ title: "Implementation" });
+{
+  const s = pres.addSlide({ masterName: "SECTION", sectionTitle: "Implementation" });
+  s.addText("Implementation", { placeholder: "title" });
+  s.addText("DATA · CODE · TESTING", { placeholder: "sub" });
+  s.addNotes("Handover from theory to practice: how the strategy is turned into code and tested.");
+}
+
+const CODE = "Courier New";
+
+// ---------- implementation: data ----------
+{
+  const s = content("Data: Sources and Choices", "WHAT WE USE, WHERE IT COMES FROM, AND WHY", "Implementation");
+  const card = (x, head, src, items) => {
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 1.95, w: 3.9, h: 3.35, fill: { color: TINT }, line: { color: TINT, width: 0 },
+      objectName: `data-card-${head}` });
+    txt(s, head, { x: x + 0.3, y: 2.1, w: 3.4, h: 0.5, fontFace: "Garamond", fontSize: 24, bold: true, color: BURG });
+    txt(s, src, { x: x + 0.3, y: 2.6, w: 3.4, h: 0.35, fontSize: 12, bold: true, color: SUBC, charSpacing: 1.5 });
+    bullets(s, items, { x: x + 0.3, y: 3.1, w: 3.35, h: 2.1, fontSize: 14, paraSpaceAfter: 6 });
+  };
+  card(0.6, "Prices", "YAHOO FINANCE · YFINANCE", [
+    "Daily closes of 22 US-listed ETFs",
+    "Adjusted for splits and dividends, so returns are total returns",
+    "ETFs, not indices: investable, after fund fees, one trading calendar",
+  ]);
+  card(4.7, "Risk-free rate", "FRED · DTB3, 3-MONTH T-BILL", [
+    "Uninvested cash earns it",
+    "Borrowing for the dip leg costs it\u00a0+\u00a01.5\u00a0%\u00a0p.a.",
+    "Every Sharpe ratio is measured on returns above it",
+  ]);
+  card(8.8, "Sample window", "2007-02 TO 2026-11-06", [
+    "Set by GLD (from 2004-11) plus a warm-up for the 200-day signals",
+    "4,970 trading days shared by all series",
+    "Gaps stay gaps: no interpolation, no backfilling",
+  ]);
+  callout(s, 0.6, 5.55, 12.1, 1.0, [{ text: "Why free, public data: ", options: { bold: true } },
+    { text: "anyone can rerun every number. The price: Yahoo revises adjusted prices slightly (about ±0.01 Sharpe), and only ETFs that still exist today are included." }]);
+  s.addNotes("Prices from Yahoo Finance, risk-free rate from FRED. Both are free, so the whole study can be reproduced by anyone with one command.");
+}
+
+// ---------- implementation: architecture ----------
+{
+  const s = content("Code Architecture", "FROM RAW PRICES TO A TESTED RESULT · PYTHON, PANDAS", "Implementation");
+  const P = [
+    ["data.py", "Load", "Downloads prices and T\u2011bill rates, caches them, refreshes when stale"],
+    ["books.py", "Strategy rules", "Signals, weights, costs and financing → daily excess return of each book"],
+    ["evaluate.py", "Statistics", "Sharpe, Sortino, drawdown, paired Sharpe test, bootstrap interval"],
+    ["run_*.py", "Experiments", "Periods, 19 markets, costs, leverage → results files and figures"],
+  ];
+  P.forEach(([file, head, body], i) => {
+    const x = 0.6 + i * 3.15;
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 1.95, w: 2.65, h: 2.35, fill: { color: TINT }, line: { color: TINT, width: 0 },
+      objectName: `pipe-${file}` });
+    txt(s, file, { x: x + 0.2, y: 2.1, w: 2.3, h: 0.4, fontFace: CODE, fontSize: 15, bold: true, color: BURG });
+    txt(s, head, { x: x + 0.2, y: 2.5, w: 2.3, h: 0.4, fontSize: 16, bold: true });
+    txt(s, body, { x: x + 0.2, y: 2.95, w: 2.3, h: 1.3, fontSize: 14, color: MUTED });
+    if (i < P.length - 1) {
+      s.addShape(pres.shapes.RIGHT_ARROW, { x: x + 2.73, y: 2.95, w: 0.34, h: 0.36, fill: { color: BURG },
+        line: { color: BURG, width: 0 }, objectName: `pipe-arrow-${i + 1}` });
+    }
+  });
+  const S = [
+    ["markets.py", "Swaps SPY for any other ETF, in both books. Check: on SPY it reproduces the main backtest exactly"],
+    ["tests/  (pytest)", "No look-ahead, one-day execution delay, cost and cash accounting, month-end logic"],
+    ["research/*.md", "Hypotheses and success conditions, committed to git before any result is computed"],
+  ];
+  S.forEach(([file, body], i) => {
+    const x = 0.6 + i * 4.1;
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 4.6, w: 3.9, h: 1.95, fill: { color: "FFFFFF" }, line: { color: LINE, width: 1 },
+      objectName: `support-${i + 1}` });
+    txt(s, file, { x: x + 0.25, y: 4.75, w: 3.4, h: 0.4, fontFace: CODE, fontSize: 15, bold: true, color: BURG });
+    txt(s, body, { x: x + 0.25, y: 5.2, w: 3.4, h: 1.25, fontSize: 14 });
+  });
+  s.addNotes("Four layers in a straight line, plus three supporting parts. Every number in the deck comes out of run_*.py; nothing is typed in by hand.");
+}
+
+// ---------- implementation: one backtest day ----------
+{
+  const s = content("One Backtest Day", "THE ACCOUNTING IN books.py", "Implementation");
+  const step = (x, head, body, fill, col) => {
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 1.95, w: 2.45, h: 1.25, fill: { color: fill }, line: { color: BURG, width: 1 },
+      objectName: `day-${head}` });
+    txt(s, head, { x: x + 0.15, y: 2.05, w: 2.15, h: 0.4, fontSize: 16, bold: true, color: col });
+    txt(s, body, { x: x + 0.15, y: 2.45, w: 2.15, h: 0.7, fontSize: 14, color: col });
+  };
+  step(0.6, "Close of day t", "Signal from prices up to t only", "FFFFFF", INK);
+  s.addShape(pres.shapes.RIGHT_ARROW, { x: 3.15, y: 2.4, w: 0.45, h: 0.36, fill: { color: BURG }, line: { color: BURG, width: 0 },
+    objectName: "day-arrow" });
+  step(3.7, "Day t+1", "Position held, return earned", BURG, "FFFFFF");
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 3.45, w: 5.55, h: 1.55, fill: { color: TINT }, line: { color: TINT, width: 0 },
+    objectName: "formula-box" });
+  s.addText([
+    { text: "total = held · r − cost", options: { breakLine: true } },
+    { text: "   + (1 − held) · cash − max(held − 1, 0) · spread", options: { breakLine: true } },
+    { text: "excess = total − cash" },
+  ], { isTextBox: true, x: 0.8, y: 3.55, w: 5.25, h: 1.35, fontFace: "Cambria Math", fontSize: 15, color: BURG, margin: 0,
+    valign: "middle", paraSpaceAfter: 4 });
+  stat(s, 0.6, 5.2, 2.6, "10× p.a.", "turnover of capital");
+  stat(s, 3.45, 5.2, 2.7, "35.6 bp", "cost per side at which the edge over SPY is gone");
+  txt(s, "What each term means, and why", { x: 6.7, y: 1.95, w: 6.0, h: 0.45, fontSize: 18, bold: true });
+  bullets(s, [
+    [{ text: "held: ", options: { bold: true } }, { text: "exposure decided at the previous close. The code shifts every signal by one day, so no same-day price is used" }],
+    [{ text: "cost: ", options: { bold: true } }, { text: "1 bp per side on the exact turnover against the drifted holdings. Conservative for SPY, TLT and GLD" }],
+    [{ text: "cash: ", options: { bold: true } }, { text: "unused capital earns the T-bill rate" }],
+    [{ text: "spread: ", options: { bold: true } }, { text: "borrowed money costs T-bill + 1.5 % p.a., a typical broker margin rate" }],
+    [{ text: "Reporting: ", options: { bold: true } }, { text: "Sharpe on excess returns; CAGR and drawdown on total returns" }],
+  ], { x: 6.7, y: 2.5, w: 6.0, h: 4.1, fontSize: 15, paraSpaceAfter: 10 });
+  s.addNotes("Every day the backtest does exactly this. The one-day shift is the most important line in the code: without it the backtest would trade on prices it could not have known.");
+}
+
+// ---------- implementation: evaluation discipline ----------
+{
+  const s = content("How We Avoid Fooling Ourselves", "EVALUATION DISCIPLINE", "Implementation");
+  const seg = [
+    [0.6, 5.45, "2007–2015 · pre-validation", TINT, BURG, "C-A 0.63 vs SPY 0.35"],
+    [6.05, 4.8, "2016 – 2023-10 · validation", LINE, INK, "2016–19: 1.13 vs 1.00 · 2020–23: 0.52 vs 0.41"],
+    [10.85, 1.85, "Holdout", BURG, "FFFFFF", "1.42 vs 1.09, p = 0.165"],
+  ];
+  seg.forEach(([x, w, lab, fill, col, cap], i) => {
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 1.95, w, h: 0.7, fill: { color: fill }, line: { color: "FFFFFF", width: 1.5 },
+      objectName: `split-${i + 1}` });
+    txt(s, lab, { x: x + 0.15, y: 1.95, w: w - 0.3, h: 0.7, fontSize: 15, bold: true, color: col, valign: "middle" });
+    txt(s, cap, { x: i === 2 ? x - 1.0 : x + 0.15, y: 2.75, w: i === 2 ? w + 1.0 : w - 0.3, h: 0.35, fontSize: 13,
+      color: MUTED, align: i === 2 ? "right" : "left" });
+  });
+  txt(s, "Sharpe ratios of C-A vs SPY. The holdout (2023-11 to 2026-11) was evaluated once, after the rules were frozen.",
+    { x: 0.6, y: 3.15, w: 12.1, h: 0.35, fontSize: 13, color: MUTED, italic: true });
+  const T = [
+    ["Pre-registration", "Hypotheses, parameters and success conditions are committed to git before the first number."],
+    ["Paired Sharpe test", "C-A and SPY are 92 % correlated. Jobson-Korkie/Memmel compares both Sharpe ratios on the same days."],
+    ["Effective sample", "Correlated markets are not independent witnesses: n_eff = n / (1 + (n − 1)·ρ̄)."],
+    ["Automated tests", "pytest checks that no signal sees the future and that a one-day delay keeps the edge."],
+  ];
+  T.forEach(([h, b], i) => {
+    const x = 0.6 + i * 3.075;
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 3.75, w: 2.875, h: 2.8, fill: { color: TINT }, line: { color: TINT, width: 0 },
+      objectName: `discipline-${i + 1}` });
+    txt(s, h, { x: x + 0.2, y: 3.9, w: 2.5, h: 0.5, fontFace: "Garamond", fontSize: 18, bold: true, color: BURG });
+    txt(s, b, { x: x + 0.2, y: 4.45, w: 2.5, h: 2.0, fontSize: 14 });
+  });
+  s.addNotes("34 candidates were tested over seven rounds before C-A was chosen; the Deflated Sharpe Ratio of 0.78 accounts for that search.");
+}
+
 // ---------- 6 design ----------
 {
-  const s = content("Research Design", "ONE CHANGE, EVERYTHING ELSE FROZEN", "Strategy and design");
+  const s = content("Research Design", "ONE CHANGE, EVERYTHING ELSE FROZEN", "Implementation");
   bullets(s, [
     [{ text: "Only the equity asset changes, ", options: { bold: true } }, { text: "in book 1 and in book 2" }],
     "TLT, GLD, every threshold, costs and cash accounting stay as they are",
@@ -243,7 +387,7 @@ pres.addSection({ title: "Strategy and design" });
 
 // ---------- 7 hypotheses ----------
 {
-  const s = content("Four Registered Hypotheses", "SUCCESS CONDITIONS FIXED IN ADVANCE", "Strategy and design");
+  const s = content("Four Registered Hypotheses", "SUCCESS CONDITIONS FIXED IN ADVANCE", "Implementation");
   const H = [
     ["M1", "C-A beats buy & hold of the local market", "Treasuries and gold diversify any equity market", "≥ 15 of 19 markets and pooled p < 0.10"],
     ["M2", "The dip overlay (book 1) beats buy & hold", "Liquidity-provision premium exists everywhere", "≥ 13 of 19 and pooled p < 0.10, in both 2007–15 and 2016–26"],
@@ -282,25 +426,6 @@ pres.addSection({ title: "Results" });
   stat(s, 9.2, 3.35, 3.6, "p = 0.011", "pooled across markets");
   stat(s, 9.2, 4.8, 3.6, "n_eff = 1.3", "differences are 73 % correlated: one common cause");
   s.addNotes("C-A beats buy & hold everywhere. But the 19 wins share one cause, the bond and gold half, so they count as about 1.3 independent markets.");
-}
-
-// ---------- 10 group table ----------
-{
-  const s = content("The Same Pattern in Every Region", "AVERAGES BY GROUP", "Results");
-  const G = [["Reference (SPY)", "0.78", "0.53", "+0.15", "−32 %", "−55 %", "38 bp"],
-    ["US segments (5)", "0.70", "0.51", "+0.09", "−34 %", "−55 %", "32 bp"],
-    ["Developed ex-US (7)", "0.42", "0.25", "+0.09", "−41 %", "−62 %", "33 bp"],
-    ["Emerging (7)", "0.42", "0.27", "+0.10", "−50 %", "−69 %", "37 bp"]];
-  const body = G.map((r) => r.map((c, j) => ({ text: c, options: { fontSize: 15, align: j === 0 ? "left" : "center",
-    bold: j === 0 || j === 1, color: j === 1 ? BURG : INK, valign: "middle" } })));
-  s.addTable([tableHead(["Group", "C-A Sharpe", "Buy & hold", "Book 1 − B&H", "C-A max DD", "B&H max DD", "Break-even"])
-    .map((c, j) => ({ ...c, options: { ...c.options, align: j === 0 ? "left" : "center" } })), ...body], {
-    x: 0.6, y: 1.95, w: 12.1, colW: [2.8, 1.55, 1.55, 1.6, 1.55, 1.55, 1.5], rowH: 0.55,
-    border: { type: "solid", pt: 0.75, color: LINE }, margin: [4, 8, 4, 8] });
-  stat(s, 0.6, 4.95, 3.7, "~20 pp", "smaller maximum drawdown than buy & hold, in every group");
-  stat(s, 4.75, 4.95, 3.7, "18 / 19", "markets with a higher CAGR too (exception: QQQ, 15.3 % vs 15.6 %)");
-  stat(s, 8.9, 4.95, 3.8, "0.42 vs 0.78", "C-A abroad stays far below C-A on SPY: the market's own Sharpe matters most");
-  s.addNotes("Group values are simple averages. The level of the local equity Sharpe dominates; the strategy adds a similar amount everywhere.");
 }
 
 // ---------- 11 overlay ----------
@@ -388,27 +513,6 @@ pres.addSection({ title: "Results" });
     [{ text: "2016–2026: ", options: { bold: true } }, { text: "only 8 of 19, letting gold run paid" }],
   ], { x: 8.5, y: 4.75, w: 4.2, h: 1.95, fontSize: 14, paraSpaceAfter: 6 });
   s.addNotes("M3 passes. The rebalancing premium behaves exactly like the diversification-return formula says.");
-}
-
-// ---------- 15 equity curves ----------
-{
-  const s = content("Growth of 1 USD", "C-A VS BUY & HOLD, LOG SCALE", "Results");
-  const names = { IWM: "Russell 2000 (IWM)", EFA: "MSCI EAFE (EFA)", EEM: "MSCI Emerging (EEM)" };
-  ["IWM", "EFA", "EEM"].forEach((t, i) => {
-    const c = D.curves[t];
-    const x = 0.5 + i * 4.15;
-    txt(s, names[t], { x: x + 0.15, y: 1.85, w: 3.8, h: 0.4, fontSize: 16, bold: true });
-    s.addChart(pres.charts.LINE, [
-      { name: "Buy & hold", labels: c.dates.map((d) => d.slice(0, 4)), values: c.market },
-      { name: "C-A", labels: c.dates.map((d) => d.slice(0, 4)), values: c.strategy },
-    ], { x, y: 2.3, w: 4.0, h: 4.4, chartColors: [GREY, BURG], lineSize: 1.75, lineDataSymbol: "none",
-      valAxisLogScaleBase: 2, valAxisMinVal: 0.5, valAxisMaxVal: 8, valAxisLabelFormatCode: "General",
-      catAxisLabelFrequency: 48, catAxisLabelPos: "low", showLegend: false, ...CHART_BASE(),
-      objectName: `chart-equity-${t}` });
-  });
-  s.addText([{ text: "━  C-A", options: { color: BURG, bold: true } }, { text: "      ━  Buy & hold", options: { color: GREY, bold: true } }],
-    { isTextBox: true, x: 8.7, y: 1.17, w: 4.0, h: 0.4, fontSize: 14, align: "right", margin: 0, valign: "top" });
-  s.addNotes("Total-return growth including T-bill interest on cash.");
 }
 
 // ---------- 16 book 2 alone ----------
@@ -516,6 +620,54 @@ pres.addSection({ title: "Verdict" });
 {
   const s = pres.addSlide({ masterName: "SECTION", sectionTitle: "Verdict" });
   s.addText("Q&A", { isTextBox: true, x: 2.0, y: 2.4, w: 9.33, h: 2.2, fontFace: "Garamond", fontSize: 110, bold: true, color: BURG, align: "center", valign: "middle", margin: 0 });
+}
+
+// ---------- backup ----------
+pres.addSection({ title: "Backup" });
+{
+  const s = pres.addSlide({ masterName: "SECTION", sectionTitle: "Backup" });
+  s.addText("Backup", { placeholder: "title" });
+  s.addText("FOR QUESTIONS", { placeholder: "sub" });
+}
+
+// ---------- 10 group table ----------
+{
+  const s = content("The Same Pattern in Every Region", "AVERAGES BY GROUP", "Backup");
+  const G = [["Reference (SPY)", "0.78", "0.53", "+0.15", "−32 %", "−55 %", "38 bp"],
+    ["US segments (5)", "0.70", "0.51", "+0.09", "−34 %", "−55 %", "32 bp"],
+    ["Developed ex-US (7)", "0.42", "0.25", "+0.09", "−41 %", "−62 %", "33 bp"],
+    ["Emerging (7)", "0.42", "0.27", "+0.10", "−50 %", "−69 %", "37 bp"]];
+  const body = G.map((r) => r.map((c, j) => ({ text: c, options: { fontSize: 15, align: j === 0 ? "left" : "center",
+    bold: j === 0 || j === 1, color: j === 1 ? BURG : INK, valign: "middle" } })));
+  s.addTable([tableHead(["Group", "C-A Sharpe", "Buy & hold", "Book 1 − B&H", "C-A max DD", "B&H max DD", "Break-even"])
+    .map((c, j) => ({ ...c, options: { ...c.options, align: j === 0 ? "left" : "center" } })), ...body], {
+    x: 0.6, y: 1.95, w: 12.1, colW: [2.8, 1.55, 1.55, 1.6, 1.55, 1.55, 1.5], rowH: 0.55,
+    border: { type: "solid", pt: 0.75, color: LINE }, margin: [4, 8, 4, 8] });
+  stat(s, 0.6, 4.95, 3.7, "~20 pp", "smaller maximum drawdown than buy & hold, in every group");
+  stat(s, 4.75, 4.95, 3.7, "18 / 19", "markets with a higher CAGR too (exception: QQQ, 15.3 % vs 15.6 %)");
+  stat(s, 8.9, 4.95, 3.8, "0.42 vs 0.78", "C-A abroad stays far below C-A on SPY: the market's own Sharpe matters most");
+  s.addNotes("Group values are simple averages. The level of the local equity Sharpe dominates; the strategy adds a similar amount everywhere.");
+}
+
+// ---------- 15 equity curves ----------
+{
+  const s = content("Growth of 1 USD", "C-A VS BUY & HOLD, LOG SCALE", "Backup");
+  const names = { IWM: "Russell 2000 (IWM)", EFA: "MSCI EAFE (EFA)", EEM: "MSCI Emerging (EEM)" };
+  ["IWM", "EFA", "EEM"].forEach((t, i) => {
+    const c = D.curves[t];
+    const x = 0.5 + i * 4.15;
+    txt(s, names[t], { x: x + 0.15, y: 1.85, w: 3.8, h: 0.4, fontSize: 16, bold: true });
+    s.addChart(pres.charts.LINE, [
+      { name: "Buy & hold", labels: c.dates.map((d) => d.slice(0, 4)), values: c.market },
+      { name: "C-A", labels: c.dates.map((d) => d.slice(0, 4)), values: c.strategy },
+    ], { x, y: 2.3, w: 4.0, h: 4.4, chartColors: [GREY, BURG], lineSize: 1.75, lineDataSymbol: "none",
+      valAxisLogScaleBase: 2, valAxisMinVal: 0.5, valAxisMaxVal: 8, valAxisLabelFormatCode: "General",
+      catAxisLabelFrequency: 48, catAxisLabelPos: "low", showLegend: false, ...CHART_BASE(),
+      objectName: `chart-equity-${t}` });
+  });
+  s.addText([{ text: "━  C-A", options: { color: BURG, bold: true } }, { text: "      ━  Buy & hold", options: { color: GREY, bold: true } }],
+    { isTextBox: true, x: 8.7, y: 1.17, w: 4.0, h: 0.4, fontSize: 14, align: "right", margin: 0, valign: "top" });
+  s.addNotes("Total-return growth including T-bill interest on cash.");
 }
 
 (async () => {
