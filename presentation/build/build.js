@@ -104,18 +104,8 @@ function source(s, text) {
   s.addText(text, { isTextBox: true, x: 1.3, y: 6.9, w: 9.2, h: 0.35, fontSize: 10, color: GREY, margin: 0,
     valign: "middle" });
 }
-const CHART_BASE = () => ({
-  catAxisLabelColor: MUTED, valAxisLabelColor: MUTED, catAxisLabelFontSize: 11, valAxisLabelFontSize: 11,
-  catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-lt", legendFontFace: "+mn-lt", legendFontSize: 12,
-  dataLabelFontFace: "+mn-lt", dataLabelFontSize: 10, dataLabelColor: MUTED,
-  valGridLine: { color: "E6E0E2", size: 0.75 }, catGridLine: { style: "none" },
-  catAxisLineShow: false, valAxisLineShow: false,
-});
-const fmt = (x, d = 2) => (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(d);
+// Charts are PNGs from make_charts.py: Keynote drops the native charts pptxgenjs writes.
 const rows = D.rows;
-const rank = { "Reference": 0, "US segments": 1, "Developed ex-US": 2, "Emerging": 3 };
-const ordered = (key) => [...rows].sort((a, b) => rank[a.group] - rank[b.group] || b[key] - a[key]);
-const label = (r) => `${r.ticker}  ${r.name}`;
 const tableHead = (cells) => cells.map((c) => ({ text: c, options: { bold: true, color: "FFFFFF", fill: { color: BURG },
   fontSize: 13, valign: "middle" } }));
 
@@ -134,7 +124,7 @@ pres.addSection({ title: "Introduction" });
 // ---------- 2 disclaimer ----------
 {
   const s = pres.addSlide({ masterName: "SECTION", sectionTitle: "Introduction" });
-  s.addText("These slides are for educational purposes only. All results are backtests on historical data from 2007 to 2026 and are in-sample in time. They do not constitute financial, legal or investment advice, and no guarantee is made regarding their accuracy or completeness. Past performance does not predict future returns.",
+  s.addText("These slides are for educational purposes only. All results are backtests on historical data from 2007 to 2026. They do not constitute financial, legal or investment advice, and no guarantee is made regarding their accuracy or completeness. Past performance does not predict future returns.",
     { isTextBox: true, x: 2.0, y: 2.3, w: 9.33, h: 2.6, fontFace: "Garamond", fontSize: 20, color: INK, align: "center",
       valign: "middle", margin: 0 });
   s.addNotes("Disclaimer.");
@@ -328,7 +318,7 @@ const CODE = "Courier New";
 
 // ---------- implementation: evaluation discipline ----------
 {
-  const s = content("How We Avoid Fooling Ourselves", "EVALUATION DISCIPLINE", "Implementation");
+  const s = content("How We Keep the Backtest Honest", "EVALUATION DISCIPLINE", "Implementation");
   const seg = [
     [0.6, 5.45, "2007–2015 · pre-validation", TINT, BURG, "C-A 0.63 vs SPY 0.35"],
     [6.05, 4.8, "2016 – 2023-10 · validation", LINE, INK, "2016–19: 1.13 vs 1.00 · 2020–23: 0.52 vs 0.41"],
@@ -345,16 +335,15 @@ const CODE = "Courier New";
     { x: 0.6, y: 3.15, w: 12.1, h: 0.35, fontSize: 13, color: MUTED, italic: true });
   const T = [
     ["Pre-registration", "Hypotheses, parameters and success conditions are committed to git before the first number."],
-    ["Paired Sharpe test", "C-A and SPY are 92 % correlated. Jobson-Korkie/Memmel compares both Sharpe ratios on the same days."],
     ["Effective sample", "Correlated markets are not independent witnesses: n_eff = n / (1 + (n − 1)·ρ̄)."],
     ["Automated tests", "pytest checks that no signal sees the future and that a one-day delay keeps the edge."],
   ];
   T.forEach(([h, b], i) => {
-    const x = 0.6 + i * 3.075;
-    s.addShape(pres.shapes.RECTANGLE, { x, y: 3.75, w: 2.875, h: 2.8, fill: { color: TINT }, line: { color: TINT, width: 0 },
+    const x = 0.6 + i * 4.1;
+    s.addShape(pres.shapes.RECTANGLE, { x, y: 3.75, w: 3.9, h: 2.6, fill: { color: TINT }, line: { color: TINT, width: 0 },
       objectName: `discipline-${i + 1}` });
-    txt(s, h, { x: x + 0.2, y: 3.9, w: 2.5, h: 0.5, fontFace: "Garamond", fontSize: 18, bold: true, color: BURG });
-    txt(s, b, { x: x + 0.2, y: 4.45, w: 2.5, h: 2.0, fontSize: 14 });
+    txt(s, h, { x: x + 0.3, y: 3.95, w: 3.3, h: 0.5, fontFace: "Garamond", fontSize: 22, bold: true, color: BURG });
+    txt(s, b, { x: x + 0.3, y: 4.6, w: 3.3, h: 1.6, fontSize: 16 });
   });
   s.addNotes("34 candidates were tested over seven rounds before C-A was chosen; the Deflated Sharpe Ratio of 0.78 accounts for that search.");
 }
@@ -415,13 +404,7 @@ pres.addSection({ title: "Results" });
 // ---------- 9 headline chart ----------
 {
   const s = content("C-A vs Buy & Hold", "SHARPE RATIO 2007–2026, EXCESS OVER T-BILL, USD", "Results");
-  const o = ordered("ca_sharpe");
-  s.addChart(pres.charts.BAR, [
-    { name: "Buy & hold", labels: o.map(label), values: o.map((r) => r.market_sharpe) },
-    { name: "C-A", labels: o.map(label), values: o.map((r) => r.ca_sharpe) },
-  ], { x: 0.45, y: 1.7, w: 8.3, h: 5.15, barDir: "bar", barGapWidthPct: 45, chartColors: [GREY, BURG],
-    catAxisOrientation: "maxMin", valAxisMinVal: 0, valAxisMaxVal: 0.9, valAxisMajorUnit: 0.2, valAxisLabelFormatCode: "0.0",
-    showLegend: true, legendPos: "b", catAxisLabelFontSize: 10, ...CHART_BASE(), objectName: "chart-headline" });
+  s.addImage({ path: path.join(__dirname, "chart_headline.png"), x: 0.45, y: 1.7, w: 8.3, h: 5.15, altText: "Sharpe ratio of C-A and buy and hold in 20 markets" });
   stat(s, 9.2, 1.9, 3.6, "19 / 19", "markets: C-A has the higher Sharpe");
   stat(s, 9.2, 3.35, 3.6, "p = 0.011", "pooled across markets");
   stat(s, 9.2, 4.8, 3.6, "n_eff = 1.3", "differences are 73 % correlated: one common cause");
@@ -431,14 +414,7 @@ pres.addSection({ title: "Results" });
 // ---------- 11 overlay ----------
 {
   const s = content("The Dip Overlay", "BOOK 1 MINUS BUY & HOLD, SHARPE 2007–2026", "Results");
-  const o = ordered("overlay_diff");
-  const gs = ["Reference", "US segments", "Developed ex-US", "Emerging"];
-  s.addChart(pres.charts.BAR, gs.map((g) => ({ name: g, labels: o.map(label),
-    values: o.map((r) => (r.group === g ? r.overlay_diff : 0)) })), {
-    x: 0.45, y: 1.7, w: 8.3, h: 5.15, barDir: "bar", barGrouping: "stacked", barGapWidthPct: 40,
-    chartColors: gs.map((g) => GROUP_COLOR[g]), catAxisOrientation: "maxMin", valAxisMinVal: 0, valAxisMaxVal: 0.2,
-    valAxisMajorUnit: 0.05, valAxisLabelFormatCode: "+0.00;-0.00;0", showLegend: true, legendPos: "b",
-    catAxisLabelFontSize: 10, ...CHART_BASE(), objectName: "chart-overlay" });
+  s.addImage({ path: path.join(__dirname, "chart_overlay.png"), x: 0.45, y: 1.7, w: 8.3, h: 5.15, altText: "Sharpe gain of the dip overlay over buy and hold by market" });
   stat(s, 9.2, 1.9, 3.6, "19 / 19", "markets: the overlay adds Sharpe");
   stat(s, 9.2, 3.35, 3.6, "2 of 19", "significant on their own (OEF, EEM)");
   stat(s, 9.2, 4.8, 3.6, "p = 0.024", "pooled, n_eff = 2.6 (differences only 35 % correlated)");
@@ -448,14 +424,7 @@ pres.addSection({ title: "Results" });
 // ---------- 12 overlay faded ----------
 {
   const s = content("The Overlay Faded After 2016", "AVERAGE SHARPE GAIN OF BOOK 1 OVER BUY & HOLD", "Results");
-  const cats = ["US segments", "Developed ex-US", "Emerging", "All 19"];
-  s.addChart(pres.charts.BAR, [
-    { name: "2007–2015", labels: cats, values: cats.map((c) => D.period_avg[c]["2007_2015"]) },
-    { name: "2016–2026", labels: cats, values: cats.map((c) => D.period_avg[c]["2016_2026"]) },
-  ], { x: 0.45, y: 1.75, w: 7.2, h: 4.9, barDir: "col", barGapWidthPct: 60, chartColors: [BURG, ROSE],
-    valAxisMinVal: 0, valAxisMaxVal: 0.16, valAxisMajorUnit: 0.04, valAxisLabelFormatCode: "+0.00;-0.00;0",
-    showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "+0.00", showLegend: true, legendPos: "b",
-    catAxisLabelFontSize: 12, ...CHART_BASE(), objectName: "chart-periods" });
+  s.addImage({ path: path.join(__dirname, "chart_periods.png"), x: 0.45, y: 1.75, w: 7.2, h: 4.9, altText: "Average overlay gain by group, 2007-2015 vs 2016-2026" });
   const P = D.pooled;
   const rowsP = [["2007–2015", `${P["2007_2015"].book1_vs_market.wins} / 19`, P["2007_2015"].book1_vs_market.p_value.toFixed(3)],
     ["2016–2026", `${P["2016_2026"].book1_vs_market.wins} / 19`, P["2016_2026"].book1_vs_market.p_value.toFixed(2)]];
@@ -495,16 +464,7 @@ pres.addSection({ title: "Results" });
 // ---------- 14 rebalancing ----------
 {
   const s = content("Rebalancing Scales with Volatility", "BOOK 2 MINUS NEVER-REBALANCED, RETURN % P.A.", "Results");
-  const o = [...rows].sort((a, b) => a.market_vol - b.market_vol);
-  const gs = ["Reference", "US segments", "Developed ex-US", "Emerging"];
-  const data = [{ name: "Volatility", values: o.map((r) => +(r.market_vol * 100).toFixed(2)) },
-    ...gs.map((g) => ({ name: g, values: o.map((r) => (r.group === g ? +(r.rebal_return_diff * 100).toFixed(3) : null)) }))];
-  s.addChart(pres.charts.SCATTER, data, { x: 0.45, y: 1.7, w: 7.6, h: 5.1, chartColors: gs.map((g) => GROUP_COLOR[g]),
-    lineSize: 0, lineDataSymbol: "circle", lineDataSymbolSize: 10, valAxisMinVal: -1.5, valAxisMaxVal: 1.0,
-    valAxisMajorUnit: 0.5, valAxisLabelFormatCode: "+0.0;-0.0;0", catAxisMinVal: 15, catAxisMaxVal: 40,
-    catAxisMajorUnit: 5, catAxisCrossesAt: 15, valAxisCrossesAt: -1.5, showValAxisTitle: true, valAxisTitle: "Book 2 minus drift, % p.a.", valAxisTitleFontSize: 11,
-    valAxisTitleColor: MUTED, showCatAxisTitle: true, catAxisTitle: "Equity volatility, % p.a.", catAxisTitleFontSize: 11,
-    catAxisTitleColor: MUTED, showLegend: true, legendPos: "b", ...CHART_BASE(), objectName: "chart-rebal" });
+  s.addImage({ path: path.join(__dirname, "chart_rebal.png"), x: 0.45, y: 1.7, w: 7.6, h: 5.1, altText: "Rebalancing premium against equity volatility" });
   stat(s, 8.5, 1.9, 4.2, "19 / 19", "markets: higher Sharpe with monthly rebalancing");
   stat(s, 8.5, 3.3, 4.2, "ρ = +0.74", "rank correlation with equity volatility, as theory predicts");
   bullets(s, [
@@ -518,14 +478,7 @@ pres.addSection({ title: "Results" });
 // ---------- 16 book 2 alone ----------
 {
   const s = content("But: Book 2 Alone Was Often Better", "C-A MINUS BOOK 2 ALONE, SHARPE · NOT REGISTERED", "Results");
-  const o = [...rows].sort((a, b) => b.ca_minus_book2 - a.ca_minus_book2);
-  s.addChart(pres.charts.BAR, [
-    { name: "C-A ahead", labels: o.map(label), values: o.map((r) => (r.ca_minus_book2 > 0 ? r.ca_minus_book2 : 0)) },
-    { name: "Book 2 alone ahead", labels: o.map(label), values: o.map((r) => (r.ca_minus_book2 <= 0 ? r.ca_minus_book2 : 0)) },
-  ], { x: 0.45, y: 1.7, w: 7.6, h: 5.15, barDir: "bar", barGrouping: "stacked", barGapWidthPct: 40,
-    chartColors: [BURG, ROSE], catAxisOrientation: "maxMin", valAxisMinVal: -0.1, valAxisMaxVal: 0.1,
-    valAxisMajorUnit: 0.05, valAxisLabelFormatCode: "+0.00;-0.00;0", catAxisLabelPos: "low", showLegend: true,
-    legendPos: "b", catAxisLabelFontSize: 10, ...CHART_BASE(), objectName: "chart-book2" });
+  s.addImage({ path: path.join(__dirname, "chart_book2.png"), x: 0.45, y: 1.7, w: 7.6, h: 5.15, altText: "C-A minus book 2 alone, Sharpe by market" });
   stat(s, 8.5, 1.9, 4.2, "15 / 19", "markets where book 2 alone has the higher Sharpe");
   stat(s, 8.5, 3.3, 4.2, "p = 0.77", "pooled: none of the differences is significant");
   callout(s, 8.5, 4.85, 4.2, 1.8, [{ text: "No contradiction: ", options: { bold: true } },
@@ -536,12 +489,7 @@ pres.addSection({ title: "Results" });
 // ---------- 17 costs ----------
 {
   const s = content("Costs Are Not the Problem", "BREAK-EVEN COST PER SIDE VS BUY & HOLD, BASIS POINTS", "Results");
-  const o = ordered("break_even_bp");
-  s.addChart(pres.charts.BAR, [{ name: "Break-even", labels: o.map(label), values: o.map((r) => r.break_even_bp) }], {
-    x: 0.45, y: 1.7, w: 8.3, h: 5.15, barDir: "bar", barGapWidthPct: 40, chartColors: [BURG], catAxisOrientation: "maxMin",
-    valAxisMinVal: 0, valAxisMaxVal: 55, valAxisMajorUnit: 10, valAxisLabelFormatCode: "0", showValue: true,
-    dataLabelPosition: "outEnd", dataLabelFormatCode: "0", showLegend: false, catAxisLabelFontSize: 10, ...CHART_BASE(),
-    objectName: "chart-costs" });
+  s.addImage({ path: path.join(__dirname, "chart_costs.png"), x: 0.45, y: 1.7, w: 8.3, h: 5.15, altText: "Break-even trading cost per side by market" });
   stat(s, 9.2, 1.9, 3.6, "22–48 bp", "per side before the edge over buy & hold disappears");
   stat(s, 9.2, 3.35, 3.6, "1–5 bp", "realistic cost of trading these ETFs");
   stat(s, 9.2, 4.8, 3.6, "19 / 19", "markets still ahead at 5 bp per side (M4 passes)");
@@ -579,18 +527,16 @@ pres.addSection({ title: "Verdict" });
 // ---------- 19 caveats ----------
 {
   const s = content("Honest Caveats", "WHAT THIS STUDY DOES NOT SHOW", "Verdict");
-  const C4 = [
-    ["In-sample in time", "Every day from 2007 to 2026 has been looked at. The markets are out-of-sample only in the cross-section."],
+  const C2 = [
     ["Correlated witnesses", "The 19 headline wins count as 1.3 independent markets. They share one cause: the Treasury and gold half."],
-    ["A prior partial run", "Six of the 19 markets overlap an earlier eight-country check. The registration missed it; an erratum is in the repository."],
     ["Survivorship and USD lens", "Only ETFs that exist today. Returns include currency moves. Yahoo revises adjusted prices slightly over time."],
   ];
-  C4.forEach(([h, b], i) => {
-    const x = 0.6 + (i % 2) * 6.15, y = 1.95 + Math.floor(i / 2) * 2.4;
-    s.addShape(pres.shapes.RECTANGLE, { x, y, w: 5.95, h: 2.15, fill: { color: TINT }, line: { color: TINT, width: 0 },
+  C2.forEach(([h, b], i) => {
+    const x = 0.6, y = 1.95 + i * 2.35;
+    s.addShape(pres.shapes.RECTANGLE, { x, y, w: 12.1, h: 2.1, fill: { color: TINT }, line: { color: TINT, width: 0 },
       objectName: `caveat-${i + 1}` });
-    txt(s, h, { x: x + 0.3, y: y + 0.2, w: 5.35, h: 0.5, fontFace: "Garamond", fontSize: 24, bold: true, color: BURG });
-    txt(s, b, { x: x + 0.3, y: y + 0.8, w: 5.35, h: 1.2, fontSize: 15 });
+    txt(s, h, { x: x + 0.4, y: y + 0.3, w: 11.3, h: 0.55, fontFace: "Garamond", fontSize: 26, bold: true, color: BURG });
+    txt(s, b, { x: x + 0.4, y: y + 1.0, w: 11.3, h: 0.9, fontSize: 18 });
   });
   s.addNotes("These limits apply to every number in the deck.");
 }
@@ -654,16 +600,9 @@ pres.addSection({ title: "Backup" });
   const s = content("Growth of 1 USD", "C-A VS BUY & HOLD, LOG SCALE", "Backup");
   const names = { IWM: "Russell 2000 (IWM)", EFA: "MSCI EAFE (EFA)", EEM: "MSCI Emerging (EEM)" };
   ["IWM", "EFA", "EEM"].forEach((t, i) => {
-    const c = D.curves[t];
     const x = 0.5 + i * 4.15;
     txt(s, names[t], { x: x + 0.15, y: 1.85, w: 3.8, h: 0.4, fontSize: 16, bold: true });
-    s.addChart(pres.charts.LINE, [
-      { name: "Buy & hold", labels: c.dates.map((d) => d.slice(0, 4)), values: c.market },
-      { name: "C-A", labels: c.dates.map((d) => d.slice(0, 4)), values: c.strategy },
-    ], { x, y: 2.3, w: 4.0, h: 4.4, chartColors: [GREY, BURG], lineSize: 1.75, lineDataSymbol: "none",
-      valAxisLogScaleBase: 2, valAxisMinVal: 0.5, valAxisMaxVal: 8, valAxisLabelFormatCode: "General",
-      catAxisLabelFrequency: 48, catAxisLabelPos: "low", showLegend: false, ...CHART_BASE(),
-      objectName: `chart-equity-${t}` });
+    s.addImage({ path: path.join(__dirname, `chart_equity_${t}.png`), x, y: 2.3, w: 4.0, h: 4.4, altText: `Growth of 1 USD, C-A vs buy and hold, ${names[t]}` });
   });
   s.addText([{ text: "━  C-A", options: { color: BURG, bold: true } }, { text: "      ━  Buy & hold", options: { color: GREY, bold: true } }],
     { isTextBox: true, x: 8.7, y: 1.17, w: 4.0, h: 0.4, fontSize: 14, align: "right", margin: 0, valign: "top" });

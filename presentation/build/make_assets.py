@@ -2,6 +2,7 @@
 
 Run from the repo root after run_markets.py:
     python presentation/build/make_assets.py presentation/build
+    python presentation/build/make_charts.py presentation/build
     cd presentation/build && npm install pptxgenjs@3.12.0
     PPTX_SKILL=<path to the pptx skill> node build.js ../regime_mr_other_markets.pptx
 """
