@@ -609,6 +609,21 @@ pres.addSection({ title: "Backup" });
   s.addNotes("Total-return growth including T-bill interest on cash.");
 }
 
+// ---------- backup: leverage ----------
+{
+  const s = content("What Leverage Does", "WHOLE STRATEGY SCALED 0.5× TO 3×, REBALANCED DAILY", "Backup");
+  s.addImage({ path: path.join(__dirname, "../../results/figures/leverage.png"), x: 1.17, y: 1.7, w: 11.0, h: 3.6,
+    altText: "CAGR, maximum drawdown and Sharpe ratio of the strategy at leverage 0.5 to 3, 2007-2026 and holdout, SPY dashed" });
+  txt(s, "Blue: 2007–2026 · orange: holdout 2023-11 to 2026-11 · dashed: SPY · vertical line: the strategy as defined (1×). Borrowing at T-bill + 1.5 %.",
+    { x: 0.6, y: 5.35, w: 12.1, h: 0.3, fontSize: 12, color: MUTED, italic: true });
+  [[0.6, "Sharpe barely moves: ", "0.78 at 1× vs 0.70 at 3×. Leverage only rescales risk."],
+    [4.7, "Drawdown is the cost: ", "−32 % at 1× grows to −76 % at 3× (2008)."],
+    [8.8, "At SPY's volatility (1.39×): ", "15.3 % vs 10.6 % p.a., max drawdown −43 % vs −55 %."],
+  ].forEach(([x, b, t]) => txt(s, [{ text: b, options: { bold: true, color: BURG } }, { text: t }],
+    { x, y: 5.8, w: 3.9, h: 0.95, fontSize: 15 }));
+  s.addNotes("In-sample diagnostic on data already used to build the strategy. Static leverage cannot raise the Sharpe ratio; it moves along the same risk-return line, minus financing costs.");
+}
+
 (async () => {
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);
