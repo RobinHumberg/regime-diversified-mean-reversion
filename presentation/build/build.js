@@ -176,11 +176,8 @@ pres.addSection({ title: "Strategy and theory" });
     objectName: "split-badge" });
   s.addText("50/50", { isTextBox: true, x: 6.07, y: 2.9, w: 1.2, h: 1.2, align: "center", valign: "middle", margin: 0,
     fontFace: "Garamond", fontSize: 20, bold: true, color: "FFFFFF" });
-  txt(s, [{ text: "On SPY, 2007–2026: ", options: { bold: true } },
-    { text: "Sharpe 0.78 vs 0.53 for buy & hold. Holdout 2023-11 to 2026-11: 1.42 vs 1.09, paired p = 0.165." }],
-  { x: 0.6, y: 5.45, w: 12.1, h: 0.4, fontSize: 16 });
   txt(s, "Decision at the close of day t, held on day t+1 · 1 bp per side · Sharpe on excess returns over the 3-month T-bill",
-    { x: 0.6, y: 5.95, w: 12.1, h: 0.35, fontSize: 14, color: MUTED });
+    { x: 0.6, y: 5.45, w: 12.1, h: 0.35, fontSize: 14, color: MUTED });
   s.addNotes("Nothing about these rules changes in this study. Only the equity asset is swapped.");
 }
 
@@ -200,7 +197,7 @@ pres.addSection({ title: "Strategy and theory" });
   s.addShape(pres.shapes.LINE, { x: 6.67, y: 2.0, w: 0, h: 2.6, line: { color: LINE, width: 1.25 } });
   callout(s, 0.6, 4.95, 12.1, 1.15, [
     { text: "Registered prediction: ", options: { bold: true } },
-    { text: "the dip overlay should be weaker in emerging markets, because their indices show more short-horizon momentum and USD-listed ETFs mix currency moves into their dips." }]);
+    { text: "the dip overlay should be weaker in emerging markets, because their indices show more short-horizon momentum." }]);
   source(s, "Lehmann (1990); Nagel (2012); Booth & Fama (1992); Erb & Harvey (2006)");
   s.addNotes("The two books rest on different premia. If the strategy is more than a US artefact, both should show up abroad.");
 }
